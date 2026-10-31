@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "name": "MeshLens convolutional autoencoder",
+  "model_version": "meshlens-ae-b8d984eef4d4",
+  "owner": {
+    "name": "Kumar Waibhav Akshat",
+    "email": "kwa.waibhav@gmail.com"
+  },
+  "image_size": 256,
+  "input_name": "image",
+  "output_name": "reconstruction",
+  "input_shape": [
+    1,
+    3,
+    256,
+    256
+  ],
+  "input": {
+    "color": "RGB",
+    "layout": "NCHW",
+    "dtype": "float32",
+    "range": [
+      0,
+      1
+    ],
+    "resize": "Pillow BILINEAR to256x256 for benchmark; browser canvas resampling can differ for arbitrary uploads.",
+    "exif_orientation": "transpose before resize",
+    "alpha_compositing": "opaque white before resize",
+    "supported_upload_formats": [
+      "PNG",
+      "JPEG",
+      "WEBP"
+    ],
+    "animation": "unsupported; inspect one still frame",
+    "min_side": 32,
+    "max_side": 4096,
+    "max_pixels": 16000000,
+    "max_file_bytes": 12582912
+  },
+  "threshold": 0.02402208368407517,
+  "top_fraction": 0.01,
+  "score_top_fraction": 0.01,
+  "score": {
+    "pixel_error": "mean squared RGB reconstruction error",
+    "aggregation": "mean of largest ceil(H*W*top_fraction) pixel errors",
+    "top_fraction": 0.01,
+    "pixel_count": 656,
+    "is_probability": false,
+    "smoothing": null
+  },
+  "calibration": {
+    "count": 52,
+    "alpha": 0.05,
+    "order_statistic_rank": 51,
+    "method": "Finite-sample upper normal order statistic; defects never used for calibration",
+    "strict_greater_than": true
+  },
+  "decision": {
+    "above_threshold": "review",
+    "at_or_below_threshold": "within_range",
+    "caveat": "Research decision support; reconstruction residual is not proof or a calibrated defect probability."
+  },
+  "architecture": {
+    "type": "convolutional denoising autoencoder",
+    "activation": "LeakyReLU0.1 hidden, linear bottleneck, sigmoid output",
+    "latent_channels": 8,
+    "patch_size": 64,
+    "reflection_padding": 16,
+    "parameters": 25339,
+    "epochs": 26,
+    "best_epoch": 26,
+    "noise_std": 0.035,
+    "training_seed": 43
+  },
+  "training_framework": {
+    "name": "PyTorch",
+    "version": "2.9.0+cpu",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "device": "CPU",
+    "threads": 4
+  },
+  "dataset": {
+    "name": "MVTec AD",
+    "category": "grid",
+    "license": "CC-BY-NC-SA-4.0",
+    "fit": 160,
+    "tune": 52,
+    "calibration": 52,
+    "test": 78
+  },
+  "metrics": {
+    "auroc": 0.7593984962406015,
+    "average_precision": 0.9004571216615995,
+    "precision": 1.0,
+    "recall": 0.19298245614035087,
+    "f1": 0.3235294117647059,
+    "accuracy": 0.41025641025641024,
+    "true_negative": 21,
+    "false_positive": 0,
+    "false_negative": 46,
+    "true_positive": 11,
+    "threshold": 0.02402208368407517,
+    "samples": 78
+  },
+  "limitations": [
+    "Single grid category and fixed benchmark distribution.",
+    "52 calibration normals and78 test images yield substantial sampling uncertainty.",
+    "Reconstruction may reproduce defects and miss them; residual maps are not segmentation predictions.",
+    "Lighting, viewpoint, material and camera changes require local validation.",
+    "Browser benchmark samples are preprocessed identically; arbitrary image resizing differs across runtimes."
+  ],
+  "history_mode": "browser-local",
+  "export": {
+    "export": "PyTorch legacy ONNX exporter; browser-compatible opset17",
+    "onnx_version": "1.22.0",
+    "onnxruntime_version": "1.23.2",
+    "opset": 17,
+    "ir_version": 8,
+    "model_bytes": 107135,
+    "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+    "test_images_checked": 78,
+    "max_tensor_absolute_difference": 2.980232238769531e-07,
+    "max_score_absolute_difference": 4.286071421388815e-09,
+    "decision_disagreements": 0,
+    "native_ort_warm_latency_ms": {
+      "median": 14.037199999961558,
+      "p95": 14.71885380001936,
+      "threads": 2
+    },
+    "browser_verification": "Native ORT parity here; actual browser WASM verification is a separate required check."
+  },
+  "model_path": "model.onnx",
+  "qualification": {
+    "status": "research_prototype",
+    "automated_line_inspection_qualified": false,
+    "physical_camera_validation_completed": false,
+    "reason": "Frozen benchmark recall11/57;46 defects missed. No factory camera, deadline or process qualification."
+  }
+}

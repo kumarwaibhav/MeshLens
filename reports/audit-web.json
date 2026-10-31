@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-10-31T05:08:47.188166+00:00",
+  "status": "completed_with_limitations",
+  "scope": "Browser application, asset integrity, local static build/server and recorded software lifecycle cases",
+  "findings": [
+    {
+      "id": "WEB-01",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Model and gallery integrity",
+      "finding": "The browser created sessions from a URL without verifying the recorded model digest; sample digests were ignored.",
+      "resolution": "Build a coherent release manifest; verify sizes and SHA256 of metadata, graph, evaluation and gallery bytes; verify each sample before decoding. Same-host digests detect corruption and mixed releases, not malicious replacement of all files.",
+      "source_files": [
+        "web/validation.js",
+        "web/app.js",
+        "scripts/build_web.mjs"
+      ]
+    },
+    {
+      "id": "WEB-02",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Numerical contracts",
+      "finding": "Metadata and runtime input/output tensor names, dtype and fixed shapes were insufficiently validated.",
+      "resolution": "Require the frozen shared image/score contract and validate both session and actual output tensor contracts before recording decisions.",
+      "source_files": [
+        "web/validation.js",
+        "web/app.js"
+      ]
+    },
+    {
+      "id": "WEB-03",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Stale inference",
+      "finding": "An earlier in-flight result could publish after a newer image was selected.",
+      "resolution": "Capture source pixels, session and image generation; discard invalidated work before and after inference and dispose every tensor.",
+      "source_files": [
+        "web/app.js"
+      ]
+    },
+    {
+      "id": "WEB-04",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Replay cancellation",
+      "finding": "Stopping a replay did not invalidate its pending sample fetch/decode.",
+      "resolution": "Abort pending fetches and invalidate image/replay generations; no late history entry after cancellation.",
+      "source_files": [
+        "web/app.js"
+      ]
+    },
+    {
+      "id": "WEB-05",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Camera asynchronous races",
+      "finding": "Stopped playback could reactivate controls and a stale permission rejection could stop a newer stream.",
+      "resolution": "Check the media generation after every asynchronous operation; stop only the captured stale stream and expose pending-camera cancellation.",
+      "source_files": [
+        "web/app.js"
+      ]
+    },
+    {
+      "id": "WEB-06",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Camera track lifecycle",
+      "finding": "Empty streams and ended tracks were accepted or ignored.",
+      "resolution": "Require live video tracks, stop on disconnect or inference failure, release tracks on stop/hide and keep one inference at a time.",
+      "source_files": [
+        "web/app.js"
+      ]
+    },
+    {
+      "id": "WEB-07",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Bounded image decoding",
+      "finding": "Image dimensions were checked after native decoding could allocate memory.",
+      "resolution": "Check PNG/JPEG/WebP signatures, bounded container lengths and dimensions before bitmap allocation; reject animated containers, unsupported types and oversized inputs. Native decoding remains required to validate pixel data.",
+      "source_files": [
+        "web/validation.js",
+        "web/app.js"
+      ]
+    },
+    {
+      "id": "WEB-08",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Failed model outputs",
+      "finding": "Invalid output shapes or failed attempts could leave an earlier decision visible/downloadable.",
+      "resolution": "Clear the previous decision, score and downloadable result as soon as reinspection starts; mark cancelled work without recording a new decision. Reject nonfinite, out-of-range, incorrect dtype/shape/length output; retain only completed history records.",
+      "source_files": [
+        "web/app.js"
+      ]
+    },
+    {
+      "id": "WEB-09",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Persisted history",
+      "finding": "Stored records were weakly checked for dates, scores, decisions and filename size.",
+      "resolution": "Validate deserialized history; render filenames as text and neutralize CSV formulas. A quota failure keeps the current result and export available.",
+      "source_files": [
+        "web/app.js",
+        "web/inference.js"
+      ]
+    },
+    {
+      "id": "WEB-10",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Safe build replacement",
+      "finding": "Copying into an existing output left stale files and could leave a partial failed build.",
+      "resolution": "Validate all frozen artifacts before staging, publish a fresh directory with rollback, clean stale outputs and refuse source-directory replacement or symlinked public inputs.",
+      "source_files": [
+        "scripts/build_web.mjs"
+      ]
+    },
+    {
+      "id": "WEB-11",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Local application startup",
+      "finding": "The browser app lacked a Node-only local serving entry point.",
+      "resolution": "Add a loopback static server with GET/HEAD, exact MIME types, true404/405 responses, traversal/dotfile/symlink protection and friendly startup errors.",
+      "source_files": [
+        "scripts/serve_web.mjs",
+        "package.json"
+      ]
+    },
+    {
+      "id": "WEB-12",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Timing interpretation",
+      "finding": "Camera sampling and model-call time could be mistaken for full-frame real-time throughput.",
+      "resolution": "Expose a serial250/1000/2500ms post-inference delay, source_timestamp, processing_ms and inference_ms; document their boundaries. Physical exposure-to-result throughput remains unmeasured.",
+      "source_files": [
+        "web/app.js",
+        "web/index.html",
+        "docs/RUNBOOK.md"
+      ]
+    },
+    {
+      "id": "WEB-13",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Distributed runtime notices",
+      "finding": "The npm runtime package omitted upstream license files.",
+      "resolution": "Bundle unmodified official ONNX Runtime v1.23.2 LICENSE/ThirdPartyNotices and nobleMIT license with the static release.",
+      "source_files": [
+        "third_party/onnxruntime",
+        "scripts/build_web.mjs",
+        "THIRD_PARTY_NOTICES.md"
+      ]
+    }
+  ],
+  "browser_observations": {
+    "environment": "Managed Chrome via the supported Sites preview; actual onnxruntime-web WebAssembly; HTTP preview also exercises the bundled SHA fallback",
+    "normal_sample": {
+      "sample": "good-000.png",
+      "displayed_score": 0.01567,
+      "decision": "Within learned range",
+      "observed_model_call_ms": 57
+    },
+    "defect_sample": {
+      "sample": "bent-000.png",
+      "result": {
+        "id": "mesh-1793423069774-1",
+        "timestamp": "2026-10-31T05:04:29.774Z",
+        "source_timestamp": "2026-10-31T05:04:29.396Z",
+        "filename": "Mesh sample 02",
+        "source": "sample",
+        "score": 0.02586200690214954,
+        "threshold": 0.02402208368407517,
+        "is_anomaly": true,
+        "inference_ms": 50,
+        "processing_ms": 378,
+        "model_version": "meshlens-ae-b8d984eef4d4",
+        "input_width": 256,
+        "input_height": 256,
+        "model_image_size": 256,
+        "score_is_probability": false
+      },
+      "json_download_sha256": "0fd384d32580e543df8d78d59a8d9b932518577d488559a353937cabfdf5684c"
+    },
+    "views_verified": [
+      "input",
+      "reconstruction",
+      "relative_error_map"
+    ],
+    "replay": "Started, advanced real samples and stopped with controls restored; software generation races independently tested in NodeVM",
+    "history_reload": "Four completed records retained after reload; automatic normal sample added a fifth completed record",
+    "csv_download": {
+      "rows": 4,
+      "columns": [
+        "timestamp",
+        "source_timestamp",
+        "filename",
+        "source",
+        "score",
+        "threshold",
+        "is_anomaly",
+        "inference_ms",
+        "processing_ms",
+        "model_version"
+      ],
+      "sha256": "2de843ff4ad24cff98f6f80340447820d473e845ae5a18271aaf98b1c9d6911e"
+    },
+    "camera_fallback": "Camera access unavailable on HTTP preview; displayed upload fallback without accepting a permission prompt",
+    "physical_camera": "unverified; deterministic streams test software lifecycle only",
+    "keyboard_navigation": "Home selects Original and End selects Error map; overlay checkbox off renders the residual-only view.",
+    "layout": {
+      "viewport_width": 1363,
+      "document_scroll_width": 1348,
+      "horizontal_overflow": false,
+      "canvas_size": [
+        256,
+        256
+      ],
+      "viewport_meta": "width=device-width, initial-scale=1"
+    },
+    "diagnostics": "No observed application failure. ONNX Runtime logs a nonfatal unknown-CPU-vendor warning in this cloud environment; unrelated browser-extension metadata errors are present."
+  },
+  "coverage_limits": [
+    "Native operating-system file chooser was not reverified in this browser; actual File objects and the application upload functions are covered in the VM, and browser PNG decoding is exercised by real gallery samples.",
+    "Physical camera capture, exposure timestamps, target-line motion and long-duration high-rate operation were not measured.",
+    "Browser/device/codec coverage is finite; this audit does not establish absence of unknown bugs.",
+    "Software correctness does not change the frozen19.3%defect recall or establish production qualification."
+  ],
+  "completed_timestamp_utc": "2026-10-31T05:15:39.819240+00:00",
+  "final_software_verification": {
+    "status": "passed",
+    "python_test_summary": {
+      "tests": 145,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "node_test_summary": {
+      "tests": 85,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "tested_source_sha256": {
+    "scripts/build_web.mjs": "8ed6de4073d24dc06618143799bb64e53ebf165fe331564507e11d2163fde220",
+    "scripts/serve_web.mjs": "337c6a307b5caa47a734c1317df9930bf6d2e168e6b682e44c194c5188bf3297",
+    "web/app.js": "479ecd9eedeaa71351faf1b06bc40e7a4279843e5887ec42da4a33a38a38f4ea",
+    "web/index.html": "e1e62c3cb482dcddb563512f79ae47cb15aee6a372c4588856042be8f3ba1102",
+    "web/inference.js": "8362fd1d3c640c7ff57080fde11d0009b63961e1dbfd59955be0854244c7c03d",
+    "web/styles.css": "c6653c7d631952226a87cf6214f0c2203b3a46c0b78ba9c9c99750f45942a5ab",
+    "web/validation.js": "b5a0f0c9dd5c86e43aa18176c0acf76a71ec277566ffc83da7d402af9d0e3a70"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "input_name": "image",
+  "output_name": "reconstruction",
+  "shape": [
+    1,
+    3,
+    256,
+    256
+  ],
+  "formula": "Float32Array[i] = (i % 257) / 256",
+  "output_indices": [
+    0,
+    1,
+    17,
+    255,
+    256,
+    4096,
+    16384,
+    65535,
+    65536,
+    81920,
+    131072,
+    196607
+  ],
+  "expected_output": [
+    0.15712180733680725,
+    0.15655124187469482,
+    0.20991197228431702,
+    0.8767968416213989,
+    0.2026682198047638,
+    0.8708372116088867,
+    0.7212880849838257,
+    0.21373501420021057,
+    0.1614593267440796,
+    0.7151949405670166,
+    0.15728729963302612,
+    0.21153351664543152
+  ],
+  "expected_score": 0.20071958827718003,
+  "absolute_tolerance": 1e-05,
+  "score_tolerance": 1e-06,
+  "top_fraction": 0.01,
+  "source": "Deterministic synthetic arithmetic probe; not an accuracy example"
+}

@@ -1,0 +1,65 @@
+{
+  "timestamp_utc": "2026-10-31T05:12:17.784357+00:00",
+  "service": "pip-audit default PyPI vulnerability service",
+  "version_normalization": "Official CPU torch local suffix +cpu removed for public upstream-version advisory matching; all other versions audited unchanged.",
+  "ignored_vulnerability_ids": [],
+  "scopes": {
+    "runtime": {
+      "status": "passed",
+      "exit_code": 0,
+      "expected_packages": 36,
+      "audited_packages": 36,
+      "vulnerability_count": 0,
+      "findings": [],
+      "skipped_packages": [],
+      "report": "dependency-audit.json",
+      "scanner_stdout": "",
+      "scanner_stderr": "WARNING:pip_audit._cli:--no-deps is supported, but users are encouraged to fully hash their pinned dependencies\nWARNING:pip_audit._cli:Consider using a tool like `pip-compile`: https://pip-tools.readthedocs.io/en/latest/#using-hashes\nNo known vulnerabilities found\n"
+    },
+    "development": {
+      "status": "passed",
+      "exit_code": 0,
+      "expected_packages": 97,
+      "audited_packages": 97,
+      "vulnerability_count": 0,
+      "findings": [],
+      "skipped_packages": [],
+      "report": "dependency-audit-development.json",
+      "scanner_stdout": "",
+      "scanner_stderr": "WARNING:pip_audit._cli:--no-deps is supported, but users are encouraged to fully hash their pinned dependencies\nWARNING:pip_audit._cli:Consider using a tool like `pip-compile`: https://pip-tools.readthedocs.io/en/latest/#using-hashes\nNo known vulnerabilities found\n"
+    },
+    "original_training": {
+      "status": "findings",
+      "exit_code": 1,
+      "expected_packages": 36,
+      "audited_packages": 36,
+      "vulnerability_count": 5,
+      "findings": [
+        [
+          "torch",
+          "PYSEC-2026-139"
+        ],
+        [
+          "torch",
+          "PYSEC-2025-193"
+        ],
+        [
+          "torch",
+          "PYSEC-2025-194"
+        ],
+        [
+          "torch",
+          "PYSEC-2025-195"
+        ],
+        [
+          "torch",
+          "PYSEC-2026-2286"
+        ]
+      ],
+      "skipped_packages": [],
+      "report": "dependency-audit-training-original.json",
+      "scanner_stdout": "",
+      "scanner_stderr": "WARNING:pip_audit._cli:--no-deps is supported, but users are encouraged to fully hash their pinned dependencies\nWARNING:pip_audit._cli:Consider using a tool like `pip-compile`: https://pip-tools.readthedocs.io/en/latest/#using-hashes\nFound 5 known vulnerabilities in 1 package\n"
+    }
+  }
+}

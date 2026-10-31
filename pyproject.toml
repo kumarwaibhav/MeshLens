@@ -1,0 +1,18 @@
+[build-system]
+requires=["setuptools>=75", "wheel"]
+build-backend="setuptools.build_meta"
+[project]
+name="meshlens-inspect"
+version="1.0.0"
+requires-python=">=3.12,<3.13"
+authors=[{name="Kumar Waibhav Akshat",email="kwa.waibhav@gmail.com"}]
+[project.optional-dependencies]
+dev=["pytest>=9,<10", "ruff>=0.17,<1"]
+[tool.setuptools.packages.find]
+where=["src"]
+[tool.pytest.ini_options]
+testpaths=["tests"]
+pythonpath=["src"]
+addopts="-ra"
+[tool.ruff.lint]
+select=["E4","E7","E9","F"]

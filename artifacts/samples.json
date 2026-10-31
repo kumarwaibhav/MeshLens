@@ -1,0 +1,187 @@
+{
+  "samples": [
+    {
+      "id": "good-000",
+      "filename": "good-000.png",
+      "label": 0,
+      "defect_type": "good",
+      "expected_score": 0.015665514523833537,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/good/000.png",
+      "sha256": "0a372ae7db454254585b6f90d34962aa0f59479426387d811eadce7f2aa755e8"
+    },
+    {
+      "id": "bent-000",
+      "filename": "bent-000.png",
+      "label": 1,
+      "defect_type": "bent",
+      "expected_score": 0.025862005533559655,
+      "expected_anomaly": true,
+      "source_path": "data/raw/grid/test/bent/000.png",
+      "sha256": "9131bb8b38abaaaf581ab2a5cecf68105e367246fd79c59191895555b480ff62"
+    },
+    {
+      "id": "bent-001",
+      "filename": "bent-001.png",
+      "label": 1,
+      "defect_type": "bent",
+      "expected_score": 0.01760860454580724,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/bent/001.png",
+      "sha256": "9e8c3b8d073104f319cd16483e9bb9ca8a452b3aaae32bcfc92c7269823413ce"
+    },
+    {
+      "id": "bent-002",
+      "filename": "bent-002.png",
+      "label": 1,
+      "defect_type": "bent",
+      "expected_score": 0.01711324748026616,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/bent/002.png",
+      "sha256": "5059b866043653ced7dba5edc040120984b8d72dc4c30df39d576178d71f7f9e"
+    },
+    {
+      "id": "broken-000",
+      "filename": "broken-000.png",
+      "label": 1,
+      "defect_type": "broken",
+      "expected_score": 0.02261560003943287,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/broken/000.png",
+      "sha256": "0997718fda3b53f3e6a07a30584b86b77e1db6411b9d518f40cf275177709ee0"
+    },
+    {
+      "id": "broken-001",
+      "filename": "broken-001.png",
+      "label": 1,
+      "defect_type": "broken",
+      "expected_score": 0.024283898213492115,
+      "expected_anomaly": true,
+      "source_path": "data/raw/grid/test/broken/001.png",
+      "sha256": "8fceb07ba850049c9a52655d9ebffec5f663b5c3c25c82884ef63f18b7d7c87c"
+    },
+    {
+      "id": "broken-002",
+      "filename": "broken-002.png",
+      "label": 1,
+      "defect_type": "broken",
+      "expected_score": 0.02462586483963561,
+      "expected_anomaly": true,
+      "source_path": "data/raw/grid/test/broken/002.png",
+      "sha256": "1fe54b2254ae052143232a7c5206935044c2483d96dc462b256b93e7e450dc83"
+    },
+    {
+      "id": "glue-000",
+      "filename": "glue-000.png",
+      "label": 1,
+      "defect_type": "glue",
+      "expected_score": 0.026293513288426145,
+      "expected_anomaly": true,
+      "source_path": "data/raw/grid/test/glue/000.png",
+      "sha256": "f9cb82c7038b1146bdb8e2719636948a2ecb17f61ec48f56a802e437cde61600"
+    },
+    {
+      "id": "glue-001",
+      "filename": "glue-001.png",
+      "label": 1,
+      "defect_type": "glue",
+      "expected_score": 0.03615501113576678,
+      "expected_anomaly": true,
+      "source_path": "data/raw/grid/test/glue/001.png",
+      "sha256": "cfc4dc62da3fe24d7071e356b44d67414ea8ec4bbd144b95e580f777b034070b"
+    },
+    {
+      "id": "glue-002",
+      "filename": "glue-002.png",
+      "label": 1,
+      "defect_type": "glue",
+      "expected_score": 0.019091489499082744,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/glue/002.png",
+      "sha256": "127024233f08da0e87378dcbd656c230ae9f855027d3017d32f728e87c8ad7cd"
+    },
+    {
+      "id": "good-001",
+      "filename": "good-001.png",
+      "label": 0,
+      "defect_type": "good",
+      "expected_score": 0.013139995431141338,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/good/001.png",
+      "sha256": "49b016f0a84662244eab19cc082eae9a53c9d86e234aabda6a9d5f04bcd4a34f"
+    },
+    {
+      "id": "good-002",
+      "filename": "good-002.png",
+      "label": 0,
+      "defect_type": "good",
+      "expected_score": 0.011565946793558485,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/good/002.png",
+      "sha256": "d51af3a65d5a661ffb8030fec1cf2c76e7d35d1c4d0b170c562362fc6bc1da9f"
+    },
+    {
+      "id": "metal_contamination-000",
+      "filename": "metal_contamination-000.png",
+      "label": 1,
+      "defect_type": "metal_contamination",
+      "expected_score": 0.022221530134585207,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/metal_contamination/000.png",
+      "sha256": "bb89c0ccece5675cc5def540ac96f461aa6339dc932f500c1b8945fa8f20e91e"
+    },
+    {
+      "id": "metal_contamination-001",
+      "filename": "metal_contamination-001.png",
+      "label": 1,
+      "defect_type": "metal_contamination",
+      "expected_score": 0.019827035590779127,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/metal_contamination/001.png",
+      "sha256": "0f797679d7c3c9865a41fccb6d1a2fe00540e3e309d4497b5dc610455cf3eca6"
+    },
+    {
+      "id": "metal_contamination-002",
+      "filename": "metal_contamination-002.png",
+      "label": 1,
+      "defect_type": "metal_contamination",
+      "expected_score": 0.020833594869345246,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/metal_contamination/002.png",
+      "sha256": "b22c46af67e385ad1de4b7d7c1ebea4f00b691fc6c165fbd1a23b9866808ded4"
+    },
+    {
+      "id": "thread-000",
+      "filename": "thread-000.png",
+      "label": 1,
+      "defect_type": "thread",
+      "expected_score": 0.019550292389240206,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/thread/000.png",
+      "sha256": "4fffe97d39eebe6c4ee143b8a0f913f439e2add2a32d9035b9d0b346aecf06de"
+    },
+    {
+      "id": "thread-001",
+      "filename": "thread-001.png",
+      "label": 1,
+      "defect_type": "thread",
+      "expected_score": 0.028811401659168484,
+      "expected_anomaly": true,
+      "source_path": "data/raw/grid/test/thread/001.png",
+      "sha256": "df3ca9147d6e636da4fa7bea61e453a36ee62e6bd7039e617ff6349346401b5a"
+    },
+    {
+      "id": "thread-002",
+      "filename": "thread-002.png",
+      "label": 1,
+      "defect_type": "thread",
+      "expected_score": 0.015233679758328036,
+      "expected_anomaly": false,
+      "source_path": "data/raw/grid/test/thread/002.png",
+      "sha256": "ccc57f1d37a4e0a13d8105958f01f1cb3b0761b5635993592515ecc3f125d4c9"
+    }
+  ],
+  "count": 18,
+  "purpose": "Labeled held-out examples, not independent user uploads; includes a missed defect if available.",
+  "license": "CC-BY-NC-SA-4.0"
+}

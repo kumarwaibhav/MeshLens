@@ -1,0 +1,68 @@
+{
+  "timestamp_utc": "2026-10-31T05:10:49.748917+00:00",
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "frozen_threshold": 0.02402208368407517,
+  "environment": "Managed Chrome with Sites HTTP preview; real single-thread ONNX Runtime Web WebAssembly; actual bundled SHA fallback",
+  "checks": [
+    {
+      "name": "normal opaque benchmark image real WASM inference",
+      "status": "passed",
+      "displayed_score": 0.01567,
+      "decision": "Within learned range",
+      "observed_model_call_ms": 57
+    },
+    {
+      "name": "defective bent benchmark image real WASM inference",
+      "status": "passed",
+      "displayed_score": 0.02586,
+      "decision": "Review recommended",
+      "observed_model_call_ms": 50
+    },
+    {
+      "name": "input/reconstruction/relative-error views and overlay toggle",
+      "status": "passed"
+    },
+    {
+      "name": "keyboard Home/End tab navigation",
+      "status": "passed"
+    },
+    {
+      "name": "dataset replay start advance and stop",
+      "status": "passed",
+      "completed_samples_seen": 2
+    },
+    {
+      "name": "browser-local history survives reload",
+      "status": "passed",
+      "retained_records_before_default_inspection": 4
+    },
+    {
+      "name": "JSON record browser download parsed and fields verified",
+      "status": "passed"
+    },
+    {
+      "name": "CSV browser download parsed with timing columns",
+      "status": "passed",
+      "rows": 4
+    },
+    {
+      "name": "camera unavailable upload fallback",
+      "status": "passed",
+      "physical_capture": false
+    },
+    {
+      "name": "desktop layout fits viewport with fixed256canvas",
+      "status": "passed",
+      "viewport_width": 1363,
+      "document_scroll_width": 1348
+    }
+  ],
+  "not_verified": [
+    "Native operating-system file chooser was not reverified in this browser; actual File objects and the application upload functions are covered in the VM, and browser PNG decoding is exercised by real gallery samples.",
+    "Physical camera capture, exposure timestamps, target-line motion and long-duration high-rate operation were not measured.",
+    "Browser/device/codec coverage is finite; this audit does not establish absence of unknown bugs.",
+    "Software correctness does not change the frozen19.3%defect recall or establish production qualification."
+  ],
+  "detailed_evidence": "audit-web.json",
+  "preview_lifecycle": "Atomic build output replacement requires restarting the managed preview daemon to refresh its working directory; production deployment packages the complete new output."
+}

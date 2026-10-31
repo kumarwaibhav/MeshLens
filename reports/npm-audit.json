@@ -1,0 +1,26 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {},
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 20,
+      "dev": 0,
+      "optional": 0,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 19
+    }
+  },
+  "timestamp_utc": "2026-10-31T05:12:22.320926+00:00",
+  "audit_exit_code": 0,
+  "scanner_stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n",
+  "package_lock_sha256": "54c6622b3caf7260f87b84bbc096577126e25c3e5bea4f7bca1140cfa0eb8712"
+}

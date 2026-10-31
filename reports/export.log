@@ -1,0 +1,27 @@
+/workspace/scratch/489f51eb6a7b/meshlens_final/MeshLens/scripts/export_model.py:27: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter will be the default. To switch now, set dynamo=True in torch.onnx.export. This new exporter supports features like exporting LLMs with DynamicCache. We encourage you to try it and share feedback to help improve the experience. Learn more about the new export logic: https://pytorch.org/docs/stable/onnx_dynamo.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html.
+  torch.onnx.export(
+/workspace/scratch/489f51eb6a7b/meshlens_final/deps/torch/onnx/_internal/torchscript_exporter/jit_utils.py:303: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_node_shape_type_inference(node, params_dict, opset_version)
+/workspace/scratch/489f51eb6a7b/meshlens_final/deps/torch/onnx/_internal/torchscript_exporter/utils.py:711: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+/workspace/scratch/489f51eb6a7b/meshlens_final/deps/torch/onnx/_internal/torchscript_exporter/utils.py:1181: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+{
+  "export": "PyTorch legacy ONNX exporter; browser-compatible opset17",
+  "onnx_version": "1.22.0",
+  "onnxruntime_version": "1.23.2",
+  "opset": 17,
+  "ir_version": 8,
+  "model_bytes": 107135,
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "test_images_checked": 78,
+  "max_tensor_absolute_difference": 2.980232238769531e-07,
+  "max_score_absolute_difference": 4.286071421388815e-09,
+  "decision_disagreements": 0,
+  "native_ort_warm_latency_ms": {
+    "median": 14.037199999961558,
+    "p95": 14.71885380001936,
+    "threads": 2
+  },
+  "browser_verification": "Native ORT parity here; actual browser WASM verification is a separate required check."
+}

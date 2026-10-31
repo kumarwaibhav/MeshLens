@@ -1,0 +1,8 @@
+{"candidate": "compact-clean", "epoch": 1, "fit_patch_mse": 0.02717963429167867, "tune_image_mse": 0.025740908458828926, "elapsed_seconds": 56.385}
+{"candidate": "compact-clean", "epoch": 2, "fit_patch_mse": 0.024891536869108676, "tune_image_mse": 0.024758590385317802, "elapsed_seconds": 159.146}
+{"candidate": "compact-clean", "epoch": 3, "fit_patch_mse": 0.02101890426129103, "tune_image_mse": 0.0182466022670269, "elapsed_seconds": 224.793}
+{"candidate": "compact-clean", "epoch": 4, "fit_patch_mse": 0.011990518495440482, "tune_image_mse": 0.007929330691695213, "elapsed_seconds": 253.422}
+{"candidate": "compact-clean", "epoch": 5, "fit_patch_mse": 0.0072388351429253815, "tune_image_mse": 0.006029284093528986, "elapsed_seconds": 286.378}
+{"candidate": "compact-clean", "epoch": 6, "fit_patch_mse": 0.0055997389368712906, "tune_image_mse": 0.005105044227093458, "elapsed_seconds": 319.059}
+{"candidate": "compact-clean", "epoch": 7, "fit_patch_mse": 0.004389099311083555, "tune_image_mse": 0.0040507847443223, "elapsed_seconds": 353.906}
+{"candidate": "compact-clean", "epoch": 8, "fit_patch_mse": 0.0037322483491152524, "tune_image_mse": 0.0035126209259033203, "elapsed_seconds": 403.154}

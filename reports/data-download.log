@@ -1,0 +1,41 @@
+Downloading pinned grid archive (160,763,852 bytes)...
+Downloaded 25 MiB
+Downloaded 50 MiB
+Downloaded 75 MiB
+Downloaded 100 MiB
+Downloaded 125 MiB
+Downloaded 150 MiB
+{
+  "dataset": "MVTec AD",
+  "category": "grid",
+  "image_count": 342,
+  "mask_count": 57,
+  "official_source": "https://www.mvtec.com/research-teaching/datasets/mvtec-ad",
+  "license": "CC-BY-NC-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "copyright": "MVTec Software GmbH and original authors",
+  "mirror_url": "https://huggingface.co/datasets/XavierZXY/MvT-tar/resolve/dc1c313de9de1be8e41fe6818dc43caac8601efa/grid.tar.xz",
+  "mirror_revision": "dc1c313de9de1be8e41fe6818dc43caac8601efa",
+  "archive_sha256": "d94a9a651cbfaee22c94d06cf8fa8204a590c872362de0489eb34f1645328de8",
+  "source_counts": {
+    "train/good": 264,
+    "test/good": 21,
+    "test/bent": 12,
+    "test/broken": 12,
+    "test/glue": 11,
+    "test/metal_contamination": 11,
+    "test/thread": 11
+  },
+  "split_counts": {
+    "fit": 160,
+    "tune": 52,
+    "calibration": 52,
+    "test": 78
+  },
+  "split_seed": 42,
+  "duplicate_image_hashes": 0,
+  "manifest_sha256": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+  "audit_scope": "Pinned mirror LFS SHA256 matched; all decoded images and duplicate hashes checked. Not independently byte-compared with an official download.",
+  "selection_policy": "Fit160/tune52/calibration52 drawn only from official normal train images. All official test78 withheld from model and threshold selection.",
+  "project_owner": "Kumar Waibhav Akshat <kwa.waibhav@gmail.com>"
+}

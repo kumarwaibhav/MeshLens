@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-10-31T05:07:59.855785+00:00",
+  "scope": [
+    "Python model/core",
+    "pinned dataset acquisition and image/mask integrity",
+    "training and resume/cache boundaries",
+    "development selection and calibration/test separation",
+    "ONNX export and local prediction CLI"
+  ],
+  "excluded_scope": [
+    "frontend/build/server (root audit)",
+    "independent regression test authoring (validation audit)",
+    "physical camera/factory/actuator qualification"
+  ],
+  "status": "scoped_ml_software_checks_passed_model_not_industrially_qualified",
+  "findings": [
+    {
+      "id": "ML-01",
+      "severity": "critical",
+      "status": "open_model_qualification_limit",
+      "title": "Frozen model is not qualified for automated industrial acceptance/rejection",
+      "evidence": {
+        "test_images": 78,
+        "defects": 57,
+        "detected": 11,
+        "missed": 46,
+        "normal_false_alarms": 0,
+        "normal_test_images": 21,
+        "auroc": 0.7593984962406015,
+        "recall": 0.19298245614035087,
+        "brightened_normal_false_alarms": 20,
+        "brightened_normal_images": 21
+      },
+      "resolution": "Keep research/review-support labeling. Real camera, material, lighting, motion, missed-defect and deadline qualification require new representative data and a predefined independent evaluation; no frozen-test retuning.",
+      "locations": [
+        {
+          "path": "scripts/evaluate.py",
+          "line": 618
+        },
+        {
+          "path": "scripts/predict.py",
+          "line": 125
+        }
+      ]
+    },
+    {
+      "id": "ML-02",
+      "severity": "high",
+      "status": "fixed",
+      "title": "Existing raw-data verification could bless corruption by regenerating its reference hashes",
+      "evidence": "Previous audit_dataset overwrote manifest and mask checksums from whatever raw bytes were present, including --verify-only.",
+      "resolution": "Pinned canonical manifest and mask fingerprints now gate all acquisition/audits. --verify-only is read-only. --repair stages and fully verifies the archive before promotion, preserves a recovery backup, and rolls back failed/interrupted promotion.",
+      "locations": [
+        {
+          "path": "scripts/download_data.py",
+          "line": 73
+        },
+        {
+          "path": "scripts/download_data.py",
+          "line": 85
+        },
+        {
+          "path": "scripts/download_data.py",
+          "line": 251
+        }
+      ]
+    },
+    {
+      "id": "ML-03",
+      "severity": "high",
+      "status": "fixed",
+      "title": "Training/evaluation image loader trusted files without checking manifest digests",
+      "evidence": "A modified raw image could enter optimization/inference while retaining the old recorded SHA256.",
+      "resolution": "load_images checks each file digest and decodes the same checked bytes; empty rows and escaped paths fail explicitly.",
+      "locations": [
+        {
+          "path": "src/meshlens/core.py",
+          "line": 179
+        }
+      ]
+    },
+    {
+      "id": "ML-04",
+      "severity": "high",
+      "status": "fixed",
+      "title": "Inference CLI did not bind graph, threshold and calibration artifacts",
+      "evidence": "Old CLI read arbitrary metadata and model.onnx without verifying they belonged to the frozen model/calibration.",
+      "resolution": "Frozen loader checks schema, exact tensor contract, score aliases, calibration digest/rank/normal labels, threshold equality, checkpoint-derived version and ONNX digest/size. ONNX Runtime receives the same verified bytes, closing file-replacement races. A bundled checkpoint, when present, must also match its frozen SHA256; ONNX-only inference bundles need no PyTorch file.",
+      "locations": [
+        {
+          "path": "src/meshlens/artifacts.py",
+          "line": 61
+        },
+        {
+          "path": "src/meshlens/artifacts.py",
+          "line": 88
+        },
+        {
+          "path": "scripts/predict.py",
+          "line": 84
+        }
+      ]
+    },
+    {
+      "id": "ML-05",
+      "severity": "medium",
+      "status": "fixed",
+      "title": "CLI decision and malformed-image behavior diverged from review-support UI",
+      "evidence": "CLI used accept below threshold and exposed tracebacks for missing/corrupt images or artifact mismatch.",
+      "resolution": "Decision now within_range; --bundle selects a frozen project root; invalid/missing/corrupt/oversized/unsupported/animated images and output failures return friendly exit2. Outputs cannot overwrite the input or frozen bundle artifacts/data/reports.",
+      "locations": [
+        {
+          "path": "scripts/predict.py",
+          "line": 55
+        },
+        {
+          "path": "scripts/predict.py",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "id": "ML-06",
+      "severity": "medium",
+      "status": "fixed",
+      "title": "Python discarded transparency while browser used a white background",
+      "evidence": "An RGBA PNG could produce different observation RGB values because convertRGB ignores alpha.",
+      "resolution": "Python now EXIF-transposes and composites alpha over opaque white before Pillow bilinear resize. Shared still-image bounds are32..4096px per side,<=16m pixels,<=12MiB. Every one of342 opaque benchmark images was compared to the old path and is exactly unchanged. All APNG/WebP animation containers, including singleton-frame containers, are rejected by the CLI before decoding.",
+      "locations": [
+        {
+          "path": "src/meshlens/core.py",
+          "line": 96
+        },
+        {
+          "path": "scripts/predict.py",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "ML-07",
+      "severity": "high",
+      "status": "fixed",
+      "title": "Resume payload semantic validation was incomplete",
+      "evidence": "Old resume verified candidate/manifest/budget but did not reject impossible epoch/history, nonfinite weights, poisoned AdamW moments or mismatched step/LR state.",
+      "resolution": "Resume validates consecutive finite history, best error, current/best parameter names/shapes/dtypes/finiteness, AdamW steps20*epoch, LR schedule, moments and RNG states before restoring process state. Original full26epoch payload passes unchanged. Legacy compact reuse is restricted to its exact original checkpoint and manifest digest.",
+      "locations": [
+        {
+          "path": "scripts/train.py",
+          "line": 55
+        },
+        {
+          "path": "scripts/train.py",
+          "line": 305
+        },
+        {
+          "path": "src/meshlens/model.py",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "id": "ML-08",
+      "severity": "high",
+      "status": "fixed",
+      "title": "Checkpoint and export paths lacked explicit integrity/finiteness checks",
+      "evidence": "Prior load_checkpoint directly loaded state; export could overwrite the release graph before parity completed.",
+      "resolution": "Checkpoint loader hashes and loads the same bytes using weights_only=True, validates configuration and finite state, and wraps unsafe/corrupt payload failures as ValueError. Export requires the frozen checkpoint digest and valid calibration metadata, writes a temporary graph, and promotes after parity succeeds.",
+      "locations": [
+        {
+          "path": "src/meshlens/model.py",
+          "line": 60
+        },
+        {
+          "path": "scripts/export_model.py",
+          "line": 22
+        },
+        {
+          "path": "scripts/export_model.py",
+          "line": 133
+        }
+      ]
+    },
+    {
+      "id": "ML-09",
+      "severity": "high",
+      "status": "fixed",
+      "title": "Selection and evaluated checkpoint were not explicitly bound",
+      "evidence": "A stale checkpoint could be evaluated beside a different development selection report.",
+      "resolution": "Selection loader checks manifest digest, four planned comparisons, recorded winner rule and exclusion flags. Evaluation compares selected candidate configuration and exact tensors against the final checkpoint before calibration/test loading.",
+      "locations": [
+        {
+          "path": "src/meshlens/artifacts.py",
+          "line": 196
+        },
+        {
+          "path": "scripts/evaluate.py",
+          "line": 156
+        }
+      ]
+    },
+    {
+      "id": "ML-10",
+      "severity": "medium",
+      "status": "fixed",
+      "title": "Manifest and archive schema admitted ambiguous paths/categories",
+      "evidence": "Old extraction did not reject duplicate normalized targets or Windows separators; manifest did not fully bind label, defect, mask and source partition paths.",
+      "resolution": "Reject duplicate archive targets, unsafe member types, traversal, Windows paths, excess count/size; require canonical manifest schema/paths and matching label/category/mask relationships.",
+      "locations": [
+        {
+          "path": "scripts/download_data.py",
+          "line": 51
+        },
+        {
+          "path": "src/meshlens/core.py",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "id": "ML-11",
+      "severity": "medium",
+      "status": "fixed",
+      "title": "evaluate/export --help could execute expensive or mutating work",
+      "evidence": "These scripts previously ignored command-line options and had no argument parser.",
+      "resolution": "Both now handle --help without doing evaluation/export and reject unknown options before work.",
+      "locations": [
+        {
+          "path": "scripts/evaluate.py",
+          "line": 629
+        },
+        {
+          "path": "scripts/export_model.py",
+          "line": 141
+        }
+      ]
+    },
+    {
+      "id": "ML-12",
+      "severity": "medium",
+      "status": "documented_limit",
+      "title": "Cross-runtime resizing and benchmark timing do not establish factory performance",
+      "evidence": "Pillow and browser canvas interpolation/color handling can differ for arbitrary uploads; native/WASM tests do not exercise a physical inspection line.",
+      "resolution": "Use identically preprocessed tracked samples for parity. Treat reported latency as environment-specific inference timing, not a line-rate or deadline guarantee. Data remain CC-BY-NC-SA-4.0; original code licensing does not replace data rights.",
+      "locations": [
+        {
+          "path": "scripts/evaluate.py",
+          "line": 545
+        },
+        {
+          "path": "scripts/export_model.py",
+          "line": 131
+        }
+      ]
+    }
+  ],
+  "frozen_release_and_data_sha256": {
+    "artifacts/checkpoint.pt": "b8d984eef4d4bfcd7a6b8906d13d913078a448f113b9d894504445bfa4208cc4",
+    "artifacts/model.onnx": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+    "reports/frozen_configuration.json": "807469e880678f55c693d6f8d88b03abb4979c64b4595902872a05f3b1f19710",
+    "reports/test_scores.csv": "cfa6813ec39bdca90caabc64b629d994e8f8f79907aa8ee0550118651037a0d9",
+    "data/manifest.csv": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+    "data/mask_checksums.json": "ab3b77fd3708004eb5bef8b54d086975fdc0e75d477865ae995306c97ae94411"
+  },
+  "frozen_release_unchanged": true,
+  "frozen_model_metrics": {
+    "auroc": 0.7593984962406015,
+    "average_precision": 0.9004571216615995,
+    "precision": 1.0,
+    "recall": 0.19298245614035087,
+    "f1": 0.3235294117647059,
+    "accuracy": 0.41025641025641024,
+    "true_negative": 21,
+    "false_positive": 0,
+    "false_negative": 46,
+    "true_positive": 11,
+    "threshold": 0.02402208368407517,
+    "samples": 78
+  },
+  "verification": {
+    "raw_verify_only": "passed fresh after environment restore, all342images/57masks; metadata preserved",
+    "raw_repair": "passed fresh pinned-cache extraction, complete staged verification and promotion",
+    "opaque_preprocessing_equivalence": {
+      "images": 342,
+      "exact_array_equality_to_previous_opaque_path": true
+    },
+    "real_cli_sample": {
+      "sample": "artifacts/samples/good-000.png",
+      "score": 0.015665512530576076,
+      "decision": "within_range",
+      "threshold": 0.02402208368407517
+    },
+    "strict_original_resume": "passed26completedepochs without optimizer steps",
+    "both_completed_candidate_caches": "passed configuration/history/finiteweights checks; no optimization",
+    "evaluate_export_help": "both exit0 and no work",
+    "ruff": "ownedfiles format+lint passed",
+    "independent_adversarial_tests": {
+      "status": "passed",
+      "adversarial_plus_original_core_data": 110,
+      "workflow": 21,
+      "scope": "Fresh post-reset independent reviewer run. Singleton-animation/checkpoint-present regressions and final whole-project suite are reported separately by the reviewer."
+    },
+    "bounded_training_continuity": {
+      "status": "passed",
+      "test": "tests/test_workflow.py::test_interrupted_training_resumes_identical_optimizer_and_rng_streams",
+      "scope": "Actual train_candidate loop using a tiny1x1convolution+sigmoid substitute and two deterministic64x64images. Original1280patches/epoch,batch64,AdamW/noise/flip logic;2epochs uninterrupted versus atomic epoch1 interruption+resume epoch2. Final selected weights and epoch losses exactly identical. This tests continuity software, not full-network training quality.",
+      "release_model_retrained": false
+    }
+  },
+  "reproduction": {
+    "release_model_retrained_during_audit": false,
+    "default_train_entrypoint": "Reuse matching completed candidate-*.pt; otherwise resume matching training-resume-*.pt; otherwise fit from scratch. Full raw dataset is required even for cached development reproduction.",
+    "fresh_run": "Use a separate clean checkout/copy, move candidate-*.pt and training-resume-*.pt out of artifacts, install the declared training environment, run download_data.py; train.py --epochs26; evaluate.py; export_model.py in order. Do not run fresh experiments over the published frozen release.",
+    "training_split": "160 normal fit images only;52normal tune and52normal calibration held out. Training on all264normal images would consume this calibration set and requires separate independent calibration data.",
+    "seeds": "split42,compact42,denoising43,synthetic4201",
+    "allocator_environment": {
+      "MALLOC_MMAP_THRESHOLD_": "1073741824",
+      "MALLOC_TRIM_THRESHOLD_": "-1"
+    },
+    "floating_point_limit": "Same-runtime exact continuity can be tested; independent hardware/library versions can change floating-point results. No bitwise cross-version retraining claim."
+  },
+  "limits": "This scoped audit tests concrete failure classes; it cannot prove all possible inputs, devices or future operating conditions safe. Frozen benchmark scores were not used to retune model, score aggregation or threshold."
+}

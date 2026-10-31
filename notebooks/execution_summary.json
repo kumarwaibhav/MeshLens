@@ -1,0 +1,20 @@
+{
+  "execution_started_utc": "2026-10-31T05:13:52.596575+00:00",
+  "execution_finished_utc": "2026-10-31T05:13:54.339778+00:00",
+  "notebook": "notebooks/01_meshlens_walkthrough.ipynb",
+  "code_cells": 7,
+  "executed_cells": 7,
+  "error_outputs": 0,
+  "image_outputs": 4,
+  "uses_frozen_trained_model": true,
+  "retrained_during_walkthrough": false,
+  "model_version": "meshlens-ae-b8d984eef4d4",
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "metrics_sha256": "b2a0d03c07c71f1804ee57bf87bc93bc29ab559b107cdb927d8a3dbe55f2640e",
+  "checkpoint_sha256": "b8d984eef4d4bfcd7a6b8906d13d913078a448f113b9d894504445bfa4208cc4",
+  "selection_sha256": "b5a5896e8c4ce8d2e8f2746a42c04d5f36c06d9d68d70c158dabe9310dee5dac",
+  "execution_engine": "socketless IPython",
+  "execution_python": "3.12.14",
+  "execution_pytorch": "2.14.1+cpu",
+  "execution_onnxruntime": "1.23.2"
+}

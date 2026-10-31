@@ -1,0 +1,70 @@
+{
+  "selected": {
+    "name": "denoising",
+    "latent_channels": 8,
+    "noise_std": 0.035,
+    "seed": 43,
+    "epochs": 26,
+    "top_fraction": 0.01,
+    "development_synthetic_auroc": 0.9123520710059172,
+    "normal_tune_mse": 0.002289531985297799,
+    "checkpoint": "artifacts/candidate-denoising.pt",
+    "best_epoch": 26
+  },
+  "candidates": [
+    {
+      "name": "compact-clean",
+      "latent_channels": 4,
+      "noise_std": 0.0,
+      "seed": 42,
+      "epochs": 26,
+      "top_fraction": 0.01,
+      "development_synthetic_auroc": 0.9093934911242604,
+      "normal_tune_mse": 0.0023794721346348524,
+      "checkpoint": "artifacts/candidate-compact-clean.pt",
+      "best_epoch": 26
+    },
+    {
+      "name": "compact-clean",
+      "latent_channels": 4,
+      "noise_std": 0.0,
+      "seed": 42,
+      "epochs": 26,
+      "top_fraction": 0.05,
+      "development_synthetic_auroc": 0.7792159763313609,
+      "normal_tune_mse": 0.0023794721346348524,
+      "checkpoint": "artifacts/candidate-compact-clean.pt",
+      "best_epoch": 26
+    },
+    {
+      "name": "denoising",
+      "latent_channels": 8,
+      "noise_std": 0.035,
+      "seed": 43,
+      "epochs": 26,
+      "top_fraction": 0.01,
+      "development_synthetic_auroc": 0.9123520710059172,
+      "normal_tune_mse": 0.002289531985297799,
+      "checkpoint": "artifacts/candidate-denoising.pt",
+      "best_epoch": 26
+    },
+    {
+      "name": "denoising",
+      "latent_channels": 8,
+      "noise_std": 0.035,
+      "seed": 43,
+      "epochs": 26,
+      "top_fraction": 0.05,
+      "development_synthetic_auroc": 0.7884615384615384,
+      "normal_tune_mse": 0.002289531985297799,
+      "checkpoint": "artifacts/candidate-denoising.pt",
+      "best_epoch": 26
+    }
+  ],
+  "selection_rule": "Maximize AUROC of normal tune52 versus fixed synthetic alterations of the same tune52; ties favor lower normal MSE, then smaller top fraction. Checkpoint minimizes normal tune MSE.",
+  "test_loaded_during_selection": false,
+  "calibration_loaded_during_selection": false,
+  "seed_policy": "Data split42; compact42; denoising43; synthetic4201",
+  "manifest_sha256": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+  "synthetic_defects": "Colored 16x24 rectangle, dark5x45 cut, bright32x9 streak on tune images only; proxies do not replace real held-out defects."
+}

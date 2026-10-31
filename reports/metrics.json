@@ -1,0 +1,155 @@
+{
+  "model": {
+    "auroc": 0.7593984962406015,
+    "average_precision": 0.9004571216615995,
+    "precision": 1.0,
+    "recall": 0.19298245614035087,
+    "f1": 0.3235294117647059,
+    "accuracy": 0.41025641025641024,
+    "true_negative": 21,
+    "false_positive": 0,
+    "false_negative": 46,
+    "true_positive": 11,
+    "threshold": 0.02402208368407517,
+    "samples": 78
+  },
+  "baseline_patch_pca": {
+    "auroc": 0.7602339181286549,
+    "average_precision": 0.8986582062410342,
+    "precision": 1.0,
+    "recall": 0.08771929824561403,
+    "f1": 0.16129032258064516,
+    "accuracy": 0.3333333333333333,
+    "true_negative": 21,
+    "false_positive": 0,
+    "false_negative": 52,
+    "true_positive": 5,
+    "threshold": 0.01870466927605931,
+    "samples": 78
+  },
+  "baseline_configuration": {
+    "patch_size": 16,
+    "components": 32,
+    "fit_patches": 4096,
+    "same_preprocessing_and_top_fraction": true
+  },
+  "confidence_intervals_95": {
+    "auroc": {
+      "lower": 0.6390768588137009,
+      "upper": 0.8654970760233918
+    },
+    "average_precision": {
+      "lower": 0.8443849642310362,
+      "upper": 0.9494461112186953
+    },
+    "precision": {
+      "lower": 1.0,
+      "upper": 1.0
+    },
+    "recall": {
+      "lower": 0.08771929824561403,
+      "upper": 0.2982456140350877
+    },
+    "f1": {
+      "lower": 0.16129032258064516,
+      "upper": 0.4594594594594595
+    }
+  },
+  "binomial_wilson_intervals_95": {
+    "precision": {
+      "lower": 0.7411670330319684,
+      "upper": 1.0
+    },
+    "recall": {
+      "lower": 0.11132746980050533,
+      "upper": 0.3134069024776395
+    },
+    "specificity": {
+      "lower": 0.8453609810751531,
+      "upper": 1.0
+    },
+    "false_alarm_rate": {
+      "lower": 0.0,
+      "upper": 0.154639018924847
+    }
+  },
+  "uncertainty_notes": "Bootstrap intervals condition on observed samples and fixed class counts. If no false positives are observed, the precision bootstrap can degenerate at1; Wilson finite-count intervals remain informative. Neither method covers dataset shift or model-selection uncertainty.",
+  "bootstrap": {
+    "iterations": 2000,
+    "seed": 2026,
+    "sampling": "stratified with replacement; fixed model and threshold"
+  },
+  "per_defect": {
+    "bent": {
+      "count": 12,
+      "flagged": 1,
+      "mean_score": 0.018000413398319908,
+      "flag_rate": 0.08333333333333333
+    },
+    "broken": {
+      "count": 12,
+      "flagged": 3,
+      "mean_score": 0.021553430533059303,
+      "flag_rate": 0.25
+    },
+    "glue": {
+      "count": 11,
+      "flagged": 5,
+      "mean_score": 0.024230061263489245,
+      "flag_rate": 0.45454545454545453
+    },
+    "good": {
+      "count": 21,
+      "flagged": 0,
+      "mean_score": 0.016829903906402717,
+      "flag_rate": 0.0
+    },
+    "metal_contamination": {
+      "count": 11,
+      "flagged": 1,
+      "mean_score": 0.021533987847411853,
+      "flag_rate": 0.09090909090909091
+    },
+    "thread": {
+      "count": 11,
+      "flagged": 1,
+      "mean_score": 0.018180579722352003,
+      "flag_rate": 0.09090909090909091
+    }
+  },
+  "stress_tests": {
+    "original": {
+      "normal_samples": 21,
+      "false_alarms": 0,
+      "false_alarm_rate": 0.0,
+      "mean_score": 0.016829903906402717
+    },
+    "dim_70_percent": {
+      "normal_samples": 21,
+      "false_alarms": 0,
+      "false_alarm_rate": 0.0,
+      "mean_score": 0.010457732367596203
+    },
+    "bright_130_percent": {
+      "normal_samples": 21,
+      "false_alarms": 20,
+      "false_alarm_rate": 0.9523809523809523,
+      "mean_score": 0.030985356116657654
+    },
+    "circular_shift_8_pixels": {
+      "normal_samples": 21,
+      "false_alarms": 3,
+      "false_alarm_rate": 0.14285714285714285,
+      "mean_score": 0.019585612771719472
+    }
+  },
+  "torch_test_inference": {
+    "total_seconds": 0.6928992140000219,
+    "mean_ms": 8.883323256410538,
+    "threads": 4
+  },
+  "evaluation_policy": "Official test evaluated after selection and calibration. No tuning on test results.",
+  "test_count": 78,
+  "test_normal": 21,
+  "test_defect": 57
+}

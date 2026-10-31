@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-10-31T05:18:13.054254+00:00",
+  "technical_report": "reports/technical_report.pdf",
+  "technical_report_sha256": "594a67edcacd26cbd7945462661403541823b9b90990003e9cf73840eae93d17",
+  "pdf_pages": 10,
+  "rendered_pages_visually_reviewed": 10,
+  "pdf_layout_review": "All10 final pages rendered to PNG and visually inspected; no clipping, overlap or broken table observed.",
+  "local_markdown_links": "passed",
+  "notebook": "notebooks/01_meshlens_walkthrough.ipynb",
+  "notebook_code_cells_executed": 7,
+  "notebook_image_outputs": 4,
+  "notebook_error_outputs": 0,
+  "notebook_artifact_hashes_match": true,
+  "executable_source_matches_final_tested_snapshot": true,
+  "python_tests_passed": 145,
+  "node_tests_passed": 85,
+  "source_only_raw_skip": 1,
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "physical_camera_industry_qualified": false,
+  "scope": "Document integrity and visual review, separate from named model/software/physical qualification evidence.",
+  "pdf_git_attribute": "*.pdf binary prevents text-diff/xref whitespace false positives and text newline conversion"
+}

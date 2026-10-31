@@ -1,0 +1,19 @@
+{
+  "export": "PyTorch legacy ONNX exporter; browser-compatible opset17",
+  "onnx_version": "1.22.0",
+  "onnxruntime_version": "1.23.2",
+  "opset": 17,
+  "ir_version": 8,
+  "model_bytes": 107135,
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "test_images_checked": 78,
+  "max_tensor_absolute_difference": 2.980232238769531e-07,
+  "max_score_absolute_difference": 4.286071421388815e-09,
+  "decision_disagreements": 0,
+  "native_ort_warm_latency_ms": {
+    "median": 14.037199999961558,
+    "p95": 14.71885380001936,
+    "threads": 2
+  },
+  "browser_verification": "Native ORT parity here; actual browser WASM verification is a separate required check."
+}

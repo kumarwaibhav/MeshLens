@@ -1,0 +1,349 @@
+{
+  "timestamp_utc": "2026-10-31T05:16:25.288965+00:00",
+  "status": "completed_with_open_limits",
+  "owner": "Kumar Waibhav Akshat <kwa.waibhav@gmail.com>",
+  "scope": "Independent documentation, workflow, archive-completeness and operational-claim review. Code tests and physical validation have distinct scopes.",
+  "reviewed_files": [
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DATASET_CARD.md",
+    "docs/MODEL_CARD.md",
+    "docs/deployment.md",
+    "docs/github-windows.md",
+    "docs/RUNBOOK.md",
+    "pyproject.toml",
+    "package.json",
+    "requirements-dev.lock",
+    "requirements-inference.lock",
+    "scripts/train.py",
+    "scripts/predict.py",
+    "scripts/verify_project.py",
+    "scripts/verify_wasm.py",
+    "scripts/make_report.py",
+    "scripts/make_notebook.py",
+    "web/app.js",
+    ".github/workflows/ci.yml"
+  ],
+  "findings": [
+    {
+      "id": "DOC-01",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Clean setup",
+      "finding": "Reproduction omitted npm ci and explicit venv activation.",
+      "resolution": "README/RUNBOOK now install locks and local package, activate Python3.12 and install npm assets before checks."
+    },
+    {
+      "id": "DOC-02",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Install scope and entrypoints",
+      "finding": "Lock installation alone does not install the local package, and inference-only dependencies cannot execute notebooks/reports.",
+      "resolution": "Document inference versus development environments and explicit python -m pip install --no-deps -e ."
+    },
+    {
+      "id": "DOC-03",
+      "severity": "medium",
+      "status": "open",
+      "area": "Native platforms",
+      "finding": "The exact Python closure is Linux x86_64; full native Windows/macOS and a physical WSL machine were not executed.",
+      "resolution": "State observed platform and distinguish Node application use from Linux/WSL Python development."
+    },
+    {
+      "id": "DOC-04",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Operational claims",
+      "finding": "Industrial subject matter and completed software do not establish production qualification.",
+      "resolution": "Make the human-review prototype scope and measured misses prominent."
+    },
+    {
+      "id": "MODEL-01",
+      "severity": "critical",
+      "status": "open",
+      "area": "Automatic quality control",
+      "finding": "Frozen model flags11/57 defects, misses46, and flags20/21 normals after+30% brightness.",
+      "resolution": "Do not use for automatic acceptance/rejection; representative target-line data and substantially stronger validated performance remain necessary."
+    },
+    {
+      "id": "DOC-05",
+      "severity": "high",
+      "status": "physical-unverified",
+      "area": "Camera and line timing",
+      "finding": "Physical hardware, optics, motion, line speeds and long-duration end-to-end throughput have not been tested.",
+      "resolution": "Separate serial sampled-camera behavior, model-call time, processing time, source timestamp and physical exposure-to-result latency."
+    },
+    {
+      "id": "DOC-06",
+      "severity": "medium",
+      "status": "pass",
+      "area": "Existing archive completeness",
+      "finding": "Both saved release ZIPs passed CRC with37 required files and18 tracked examples; complete had342 images,57 masks and source license/readme.",
+      "resolution": "Recheck regenerated archives after all audit code changes; exclude caches, dependencies, hosting/Git metadata and temporary files."
+    },
+    {
+      "id": "DOC-07",
+      "severity": "medium",
+      "status": "pass",
+      "area": "Rights and attribution",
+      "finding": "Code authorship differs from dataset/runtime rights.",
+      "resolution": "Keep MIT original-code ownership, MVTec CC BY-NC-SA4.0 notices and bundled dependency licenses; add @noble/hashes MIT notice."
+    },
+    {
+      "id": "DOC-08",
+      "severity": "medium",
+      "status": "pass",
+      "area": "Strict framework diagnostic",
+      "finding": "An exact calibration tie crosses the threshold between PyTorch runtimes.",
+      "resolution": "Retain strict failed status, calibration1/test0 decision changes, frozen threshold and unchanged frozen ONNX inference path."
+    },
+    {
+      "id": "DOC-09",
+      "severity": "medium",
+      "status": "open",
+      "area": "Unknown edge cases",
+      "finding": "A finite review/test suite does not cover every possible input, browser, hardware or operating scenario.",
+      "resolution": "Publish observed tests and exclusions; avoid complete edge-coverage or zero-bug guarantees."
+    },
+    {
+      "id": "DOC-10",
+      "severity": "high",
+      "status": "fixed",
+      "area": "Bundled runtime license notices",
+      "finding": "The pinned ONNX Runtime Web npm package omitted LICENSE and ThirdPartyNotices files, so a best-effort optional copy did not ship the upstream notices.",
+      "resolution": "Check in unmodified official v1.23.2 LICENSE and complete ThirdPartyNotices with source URLs/byte hashes, require static build copies, and retain noble/hashes MIT license.",
+      "evidence": [
+        "third_party/onnxruntime/LICENSE",
+        "third_party/onnxruntime/ThirdPartyNotices.txt",
+        "third_party/onnxruntime/provenance.json",
+        "THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "id": "DOC-11",
+      "severity": "medium",
+      "status": "fixed",
+      "area": "Generated environment/result exclusions",
+      "finding": "The new development-venv tutorial used .venv-dev, while the original ignore rule only covered .venv; older CLI examples wrote result files outside ignored scratch.",
+      "resolution": "Ignore .venv-* environments, write tutorial inspection outputs under tmp, and include development-venv/tmp paths in Git publication exclusion checks.",
+      "evidence": [
+        ".gitignore",
+        "README.md",
+        "docs/RUNBOOK.md",
+        "docs/github-windows.md"
+      ]
+    }
+  ],
+  "existing_release_archive_checks": {
+    "required_files_checked_per_archive": 37,
+    "missing_required_files": 0,
+    "tracked_real_examples_per_archive": 18,
+    "git_ready_entries": 119,
+    "complete_entries": 555,
+    "complete_raw_images": 342,
+    "complete_masks": 57,
+    "crc_checks": "passed",
+    "scope": "Delivered pre-audit archive snapshot, not final regenerated archive counts."
+  },
+  "recovery": {
+    "complete_archive_sha256": "ea0e49b97045271fac8c2511cafc1cfcb2b5b4cdc9820ee0fd2fab16000251fb",
+    "archive_crc": "passed",
+    "recovered_raw_files": 401,
+    "source_overwritten": false
+  },
+  "camera_timing_contract": {
+    "delay_options_ms": [
+      250,
+      1000,
+      2500
+    ],
+    "default_delay_ms": 1000,
+    "scheduling": "serial; delay after completed inspection; no queue",
+    "source_timestamp": "source pixels selected after decode",
+    "processing_ms": "animation-frame wait+preprocess+ORT+residual/scoring; excludes file decode and final DOM paint",
+    "inference_ms": "session.run only",
+    "physical_camera_tested": false
+  },
+  "unknown_coverage": [
+    "Physical camera hardware, optics, motion and target-line throughput",
+    "Full native Windows/macOS Python dependency installation and a particular WSL machine",
+    "Every browser/device/codec variant",
+    "Long-duration resource behavior and high-rate capture",
+    "Factory generalization, drift and industrial acceptance criteria",
+    "Native operating-system file picker was not reverified in the cloud browser; actual File objects are covered by VM lifecycle tests and gallery PNG decoding is observed in the browser, but arbitrary uploaded codec combinations remain bounded coverage."
+  ],
+  "official_command_references": [
+    "https://docs.python.org/3.12/library/venv.html",
+    "https://docs.npmjs.com/cli/v11/commands/npm-ci/",
+    "https://learn.microsoft.com/en-us/windows/wsl/install"
+  ],
+  "completion_gate": "Completed documentation checks and final software evidence integration. Final generated documents and archive validation are recorded separately after rendering/packaging.",
+  "command_entrypoint_checks": [
+    {
+      "script": "scripts/download_data.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--verify-only",
+        "--repair"
+      ],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/train.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--epochs"
+      ],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/evaluate.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/export_model.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/predict.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--bundle",
+        "--output",
+        "--evidence"
+      ],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/verify_project.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--full-data"
+      ],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/verify_wasm.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--full-test"
+      ],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/make_notebook.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--engine"
+      ],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/make_report.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--output"
+      ],
+      "status": "passed"
+    },
+    {
+      "script": "scripts/make_audit_report.py",
+      "help_exit": 0,
+      "unknown_option_exit": 2,
+      "required_options": [
+        "--draft"
+      ],
+      "status": "passed"
+    }
+  ],
+  "command_entrypoint_environment": {
+    "python": "3.12.14",
+    "torch": "2.14.1+cpu",
+    "method": "Separate venv; editable --no-deps --no-build-isolation project install; dependencies supplied externally and no src entry in PYTHONPATH.",
+    "project_import": "src/meshlens/__init__.py",
+    "frozen_artifacts_unchanged_by_help": true,
+    "scope": "Importability, help/invalid-option behavior and actual tracked-sample CLI inference; not a fresh full lock install or native Windows execution."
+  },
+  "actual_cli_smoke": {
+    "input": "artifacts/samples/good-000.png",
+    "decision": "within_range",
+    "score": 0.015665512530576076,
+    "threshold": 0.02402208368407517,
+    "evidence_files": 4,
+    "status": "passed"
+  },
+  "runtime_license_verification": {
+    "onnxruntime_version": "1.23.2",
+    "upstream_license_sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+    "upstream_notices_sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+    "noble_hashes_version": "2.4.0",
+    "noble_license": "MIT; actual installed LICENSE inspected",
+    "checked_in_sources": "third_party/onnxruntime/",
+    "static_build_requires_upstream_notices": true
+  },
+  "final_verification_snapshot": {
+    "python": {
+      "tests": 145,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "node": {
+      "tests": 85,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "source_only_python": {
+      "tests": 145,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "source_only_node": {
+      "tests": 85,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "actual_wasm_official_images": 78,
+    "wasm_decision_changes": 0,
+    "source_matches_tested_snapshot": true,
+    "clean_installation_status": "passed",
+    "physical_industry_qualified": false,
+    "local_markdown_links": "passed",
+    "audit_validation_status": "completed_with_limitations"
+  },
+  "local_markdown_link_validation": {
+    "status": "passed",
+    "missing_links": []
+  },
+  "operational_implementation_confirmed": {
+    "node_static_server": "scripts/serve_web.mjs; loopback127.0.0.1:4173",
+    "camera_delay_default_ms": 1000,
+    "camera_delay_options_ms": [
+      250,
+      1000,
+      2500
+    ],
+    "timing_fields": [
+      "source_timestamp",
+      "processing_ms",
+      "inference_ms"
+    ],
+    "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4"
+  }
+}

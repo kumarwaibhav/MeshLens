@@ -1,0 +1,21 @@
+{
+  "version": "1.23.2",
+  "retrieved_utc": "2026-10-31T05:04:30.966816+00:00",
+  "upstream_repository": "https://github.com/microsoft/onnxruntime",
+  "upstream_tag": "v1.23.2",
+  "files": [
+    {
+      "file": "LICENSE",
+      "upstream_url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "file": "ThirdPartyNotices.txt",
+      "upstream_url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+      "bytes": 326866,
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc"
+    }
+  ],
+  "modifications": "none; upstream bytes retained"
+}

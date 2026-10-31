@@ -1,0 +1,22 @@
+{
+  "candidate": {
+    "name": "denoising",
+    "latent_channels": 8,
+    "noise_std": 0.035,
+    "seed": 43,
+    "epochs": 26,
+    "top_fraction": 0.01,
+    "development_synthetic_auroc": 0.9123520710059172,
+    "normal_tune_mse": 0.002289531985297799,
+    "checkpoint": "artifacts/candidate-denoising.pt",
+    "best_epoch": 26
+  },
+  "threshold": 0.02402208368407517,
+  "top_fraction": 0.01,
+  "calibration_alpha": 0.05,
+  "calibration_count": 52,
+  "calibration_order_rank": 51,
+  "calibration_score_sha256": "6d7f7b42fd7a8f3c92f635414b607cc09afff6414ce92a9bd278c0c8e919a365",
+  "checkpoint_sha256": "b8d984eef4d4bfcd7a6b8906d13d913078a448f113b9d894504445bfa4208cc4",
+  "policy": "Model, score aggregation and threshold fixed before loading official test images."
+}

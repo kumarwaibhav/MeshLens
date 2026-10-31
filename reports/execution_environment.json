@@ -1,0 +1,52 @@
+{
+  "timestamp_utc": "2026-10-30T22:46:06.530562+00:00",
+  "training_algorithm_changed": false,
+  "training_budget_epochs_per_candidate": 26,
+  "runtime": {
+    "python": "3.12.14",
+    "torch": "2.9.0+cpu",
+    "numpy": "2.3.5",
+    "pillow": "13.0.0",
+    "device": "CPU",
+    "threads": 4
+  },
+  "final_allocator_environment": {
+    "MALLOC_MMAP_THRESHOLD_": "1073741824",
+    "MALLOC_TRIM_THRESHOLD_": "-1"
+  },
+  "recovery": {
+    "retained_completed_candidate": "artifacts/candidate-compact-clean.pt",
+    "retained_candidate_sha256": "1c1dd61431d666deb3e9ba9b0555939cd4ac1ff7ed3a2f332865851d2db7feb4",
+    "retained_candidate_epochs": 26,
+    "retained_candidate_tune_mse_recomputed": true,
+    "retained_candidate_history": "Original26epoch records recovered from reports/training.log; no compact retraining.",
+    "newly_trained_candidate": "denoising",
+    "newly_trained_candidate_epochs": 26,
+    "prior_partial_denoising_weights_available": false,
+    "prior_partial_denoising_log_used_for_optimization": false,
+    "new_training_elapsed_seconds": 90.51193740899998
+  },
+  "epoch_resume": {
+    "path": "artifacts/training-resume-denoising.pt",
+    "saved_every_epoch": true,
+    "completed_epoch": 26,
+    "contains": [
+      "model",
+      "AdamW optimizer",
+      "patch generator",
+      "torch RNG",
+      "Python RNG",
+      "NumPy RNG",
+      "best weights",
+      "history"
+    ],
+    "safe_weights_only_load_verified": true
+  },
+  "manifest_sha256": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+  "training_source_sha256": "402e835800f6a9d398138da5d6645856a3ae207b442a2feb3dcfa1801d61b67a",
+  "candidate_sha256": {
+    "compact-clean": "1c1dd61431d666deb3e9ba9b0555939cd4ac1ff7ed3a2f332865851d2db7feb4",
+    "denoising": "e8f0813a70d6fad0a629923924d558990c1c1c44dab887ea81aacf116b310bd8"
+  },
+  "development_selection": "Normal tune52 plus fixed synthetic alterations only; calibration and official test excluded."
+}

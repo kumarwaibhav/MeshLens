@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-10-31T05:19:10.593920+00:00",
+  "status": "completed_with_limitations",
+  "software_verification_status": "passed",
+  "source_matches_tested_snapshot": true,
+  "python_test_summary": {
+    "tests": 145,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "node_test_summary": {
+    "tests": 85,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "checkpoint_sha256": "b8d984eef4d4bfcd7a6b8906d13d913078a448f113b9d894504445bfa4208cc4",
+  "scope": "Named unit, adversarial, integration, build/server and model checks. Physical industrial qualification and unknown edges are explicitly not guaranteed.",
+  "baseline_defects_reproduced_then_fixed": [
+    "stale inference result after source replacement",
+    "replay fetch resolved after stop",
+    "camera play completion after stop",
+    "stale camera denial stopped a newer stream",
+    "empty camera stream accepted",
+    "ended camera track ignored",
+    "model bytes were not digest checked",
+    "session tensor-name mismatch accepted",
+    "sample bytes were not digest checked"
+  ],
+  "matrix": [
+    {
+      "area": "Preprocessing, residual mathematics and finite-sample normal calibration",
+      "status": "pass",
+      "tests": 45,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-junit.xml"
+      ],
+      "limitations": ""
+    },
+    {
+      "area": "Dataset role/path/hash contracts, archive extraction and acquisition rollback",
+      "status": "pass",
+      "tests": 31,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-junit.xml"
+      ],
+      "limitations": ""
+    },
+    {
+      "area": "Actual frozen checkpoint, ONNX parity and 18 real replay images",
+      "status": "pass",
+      "tests": 4,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-junit.xml"
+      ],
+      "limitations": "The tracked image test is mandatory even without the raw research dataset."
+    },
+    {
+      "area": "Frozen bundle consistency, poisoned checkpoints and safe model-byte loading",
+      "status": "pass",
+      "tests": 31,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-junit.xml"
+      ],
+      "limitations": ""
+    },
+    {
+      "area": "CLI real inference, JSON/image evidence and friendly invalid-input handling",
+      "status": "pass",
+      "tests": 12,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-junit.xml"
+      ],
+      "limitations": ""
+    },
+    {
+      "area": "Poisoned resume rejection and exact interrupted miniature training continuity",
+      "status": "pass",
+      "tests": 12,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-junit.xml"
+      ],
+      "limitations": "The recovery test runs the real trainer with a tiny network; the published model is not retrained."
+    },
+    {
+      "area": "Actual app.js upload, replay, camera, session, storage and cancellation lifecycle",
+      "status": "pass",
+      "tests": 38,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-node-junit.xml"
+      ],
+      "limitations": "Browser DOM, decoder, camera and ORT APIs are controlled doubles; these tests do not validate camera hardware or native image decoding."
+    },
+    {
+      "area": "Still-image container guards and actual WebCrypto/noble hash fallback",
+      "status": "pass",
+      "tests": 18,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-node-junit.xml"
+      ],
+      "limitations": "Container inspection bounds decoding requests; the native decoder must still reject invalid compressed pixels."
+    },
+    {
+      "area": "Atomic build integrity, tampered fixtures and safe local HTTP server",
+      "status": "pass",
+      "tests": 17,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-node-junit.xml"
+      ],
+      "limitations": "The build fixture uses tiny runtime files; actual WASM execution is a separate check."
+    },
+    {
+      "area": "Browser numerical, threshold-tie and CSV export mathematics",
+      "status": "pass",
+      "tests": 12,
+      "failures": [],
+      "skipped": [],
+      "evidence": [
+        "verification-node-junit.xml"
+      ],
+      "limitations": ""
+    },
+    {
+      "area": "Actual ONNXRuntimeWeb WASM on all 78 official test tensors",
+      "status": "pass",
+      "evidence": [
+        "wasm-parity.json"
+      ],
+      "recorded_timestamp_utc": "2026-10-31T05:12:24.078632+00:00",
+      "limitations": "Canonical tensors are shared across runtimes; native browser decoding, layout and physical cameras are outside this parity test."
+    },
+    {
+      "area": "Recorded strict PyTorch upgrade diagnostic",
+      "status": "fail",
+      "evidence": [
+        "runtime-upgrade-validation.json"
+      ],
+      "recorded_timestamp_utc": "2026-10-30T22:49:20.512273+00:00",
+      "changed_decisions_by_split": {
+        "calibration": 1,
+        "test": 0
+      },
+      "limitations": "The preserved diagnostic has one calibration threshold-tie crossing and zero official-test changes. It is not relabeled as a strict pass; no threshold is retuned."
+    },
+    {
+      "area": "Fresh pinned dependency installation and raw-absent source checkout",
+      "status": "pass",
+      "evidence": [
+        "clean-installation.json",
+        "verification-clean-checkout.json"
+      ],
+      "python_summary": {
+        "tests": 145,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 1
+      },
+      "node_summary": {
+        "tests": 85,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "limitations": "Only the complete raw-data audit is skipped. Real bundled checkpoint/ONNX/18-image tests remain mandatory."
+    },
+    {
+      "area": "Named shipped/development/npm advisory scans",
+      "status": "pass",
+      "evidence": [
+        "security-audit-summary.json",
+        "npm-audit.json"
+      ],
+      "python_timestamp_utc": "2026-10-31T05:12:17.784357+00:00",
+      "npm_timestamp_utc": "2026-10-31T05:12:22.320926+00:00",
+      "limitations": "These scans cover the named locks and current known advisories. The historical training lock retains its separately documented findings; this is not a security certification."
+    },
+    {
+      "area": "Standalone factory acceptance or rejection qualification",
+      "status": "fail",
+      "evidence": [
+        "metrics.json"
+      ],
+      "true_positive": 11,
+      "false_negative": 46,
+      "recall": 0.19298245614035087,
+      "limitations": "The frozen research demo flags only 11 of 57 known benchmark defects and misses 46. It is unsuitable as a standalone production acceptance/rejection system."
+    },
+    {
+      "area": "Physical camera and target-line real-time performance",
+      "status": "not_verified",
+      "evidence": [],
+      "limitations": "Camera stubs verify lifecycle/cadence/single-flight logic, not camera drivers, reconnect behavior on every device, exposure, motion blur, sustained throughput or target hardware latency."
+    },
+    {
+      "area": "Cross-browser native decoding, layout and assistive technology",
+      "status": "not_verified",
+      "evidence": [],
+      "limitations": "The VM harness cannot replace a browser rendering/decoding engine or an assistive-technology review. Separate interactive browser evidence must state its own scope."
+    },
+    {
+      "area": "Unseen factory data, illumination/viewpoint/scale drift and operating threshold",
+      "status": "not_verified",
+      "evidence": [],
+      "limitations": "The benchmark split and synthetic brightness tests do not establish performance on new production lines. The operating threshold remains frozen."
+    },
+    {
+      "area": "Hosted CI and every unknown edge case",
+      "status": "not_verified",
+      "evidence": [],
+      "limitations": "Local CI-command installation and tests do not prove a future hosted workflow run. No finite regression suite proves all possible inputs, failures or environments."
+    }
+  ]
+}
