@@ -9,7 +9,7 @@ For Node application setup and the Linux/WSL Python workflow, first use the
 Set-Location "C:\path\to\MeshLens"
 Get-Item .\package.json
 git init -b main
-git config --local user.name "Kumar Waibhav Akshat"
+git config --local user.name "Kumar Waibhav AKshat"
 git config --local user.email "kwa.waibhav@gmail.com"
 git var GIT_AUTHOR_IDENT
 git var GIT_COMMITTER_IDENT
@@ -19,7 +19,7 @@ gh auth setup-git --hostname github.com
 gh api user --jq ".login"
 ```
 
-Both Git identities should begin `Kumar Waibhav Akshat <kwa.waibhav@gmail.com>`. Confirm the
+Both Git identities should begin `Kumar Waibhav AKshat <kwa.waibhav@gmail.com>`. Confirm the
 printed GitHub username is your intended account, and verify the email on that profile.
 
 ```powershell
@@ -44,3 +44,19 @@ git push -u origin main
 If origin already exists, inspect its destination and skip repository creation. Do not replace
 an unknown remote or force-push to resolve unexpected divergence. Watch the newest Actions
 run; quick checks must use tracked model/examples without assuming raw dataset files exist.
+
+## Frozen CSV checksums
+
+The frozen CSV artifacts use CRLF record endings from Python's CSV writer. Their
+SHA-256 digests cover exact bytes, including line endings. `.gitattributes` marks
+CSV files `-text` so Git preserves these bytes on Windows and Linux. Keep this rule
+when committing or exporting the project; do not normalize CSV line endings or
+replace recorded digests simply to make verification pass.
+
+Run `python scripts/verify_project.py --full-data`,
+`PYTHONPATH=src python scripts/verify_wasm.py --full-test`, and `npm run build`
+before publishing a complete audit. The full data audit downloads the pinned
+licensed archive when needed and verifies every image and mask.
+
+Pushes to `main` now run the full research-data audit after the source checks.
+Manual runs can also enable the `full_dataset` input.

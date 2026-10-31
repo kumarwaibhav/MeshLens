@@ -1,0 +1,62 @@
+{
+  "timestamp_utc": "2026-10-31T19:52:57.113042+00:00",
+  "owner": "Kumar Waibhav AKshat <kwa.waibhav@gmail.com>",
+  "base_commit": "16e8150fbf51069508366c51a2fd993b3fb1e207",
+  "status": "completed_with_limitations",
+  "python": {
+    "tests": 145,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "node": {
+    "tests": 85,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "dataset": {
+    "status": "complete",
+    "expected_images": 342,
+    "available_images": 342,
+    "expected_masks": 57,
+    "available_masks": 57
+  },
+  "wasm": {
+    "status": "passed",
+    "samples": 78,
+    "changed_decisions": 0
+  },
+  "dependency_scopes": {
+    "runtime": {
+      "status": "passed",
+      "audited_packages": 36,
+      "vulnerability_count": 0
+    },
+    "development": {
+      "status": "passed",
+      "audited_packages": 97,
+      "vulnerability_count": 0
+    },
+    "original_training": {
+      "status": "findings",
+      "audited_packages": 36,
+      "vulnerability_count": 5
+    }
+  },
+  "file_sha256": {
+    "data/manifest.csv": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+    "reports/calibration_scores.csv": "6d7f7b42fd7a8f3c92f635414b607cc09afff6414ce92a9bd278c0c8e919a365",
+    "artifacts/model.onnx": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+    "artifacts/checkpoint.pt": "b8d984eef4d4bfcd7a6b8906d13d913078a448f113b9d894504445bfa4208cc4",
+    "artifacts/metadata.json": "496d56e515279a3cca317e7293342b3b6bbfd5b597f68c0b50bb487feffdb158",
+    "reports/frozen_configuration.json": "807469e880678f55c693d6f8d88b03abb4979c64b4595902872a05f3b1f19710"
+  },
+  "limitations": [
+    "Physical camera and factory qualification not performed.",
+    "A fresh native-browser render could not be performed: Chromium download returned invalid ZIP content. Existing browser evidence is historical; app lifecycle tests use controlled doubles.",
+    "Original training environment retains five known torch advisories; recommended runtime and development locks have zero findings.",
+    "Prior cross-PyTorch strict decision comparison has one calibration tie crossing; it was not rerun or relabeled. Frozen ONNX graph and threshold unchanged.",
+    "Git CLI has no authenticated push credentials; GitHub connector cannot specify the required author/committer email. Remote publication and hosted CI are pending."
+  ]
+}

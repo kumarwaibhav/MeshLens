@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-10-31T05:12:17.784357+00:00",
+  "timestamp_utc": "2026-10-31T19:49:42.277654+00:00",
   "service": "pip-audit default PyPI vulnerability service",
   "version_normalization": "Official CPU torch local suffix +cpu removed for public upstream-version advisory matching; all other versions audited unchanged.",
   "ignored_vulnerability_ids": [],

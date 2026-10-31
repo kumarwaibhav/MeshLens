@@ -1,6 +1,6 @@
 # Model card: MeshLens convolutional autoencoder
 
-**Owner:** Kumar Waibhav Akshat <kwa.waibhav@gmail.com>
+**Owner:** Kumar Waibhav AKshat <kwa.waibhav@gmail.com>
 
 ## Intended use
 

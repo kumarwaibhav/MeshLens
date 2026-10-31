@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Inspect one still image using the frozen MeshLens ONNX model locally.
 
-Owner: Kumar Waibhav Akshat <kwa.waibhav@gmail.com>.
+Owner: Kumar Waibhav AKshat <kwa.waibhav@gmail.com>.
 """
 
 from __future__ import annotations

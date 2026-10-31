@@ -30,5 +30,5 @@
   "manifest_sha256": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
   "audit_scope": "Pinned mirror LFS SHA256 matched; all decoded images and duplicate hashes checked. Not independently byte-compared with an official download.",
   "selection_policy": "Fit160/tune52/calibration52 drawn only from official normal train images. All official test78 withheld from model and threshold selection.",
-  "project_owner": "Kumar Waibhav Akshat <kwa.waibhav@gmail.com>"
+  "project_owner": "Kumar Waibhav AKshat <kwa.waibhav@gmail.com>"
 }

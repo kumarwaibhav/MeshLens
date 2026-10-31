@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Acquire and verify the pinned MVTec AD grid research dataset.
 
-Owner: Kumar Waibhav Akshat <kwa.waibhav@gmail.com>.
+Owner: Kumar Waibhav AKshat <kwa.waibhav@gmail.com>.
 Dataset rights remain with MVTec Software GmbH and original authors.
 """
 
@@ -128,7 +128,7 @@ def audit_dataset(root: Path = ROOT, write_metadata: bool = True) -> dict:
             }
         )
     stream = io.StringIO(newline="")
-    writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+    writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\r\n")
     writer.writeheader()
     writer.writerows(rows)
     manifest_bytes = stream.getvalue().encode("utf-8")
@@ -172,7 +172,7 @@ def audit_dataset(root: Path = ROOT, write_metadata: bool = True) -> dict:
         "manifest_sha256": MANIFEST_SHA256,
         "audit_scope": "Pinned archive/canonical image and mask hashes checked; not independently byte-compared with a separate official download.",
         "selection_policy": "Fit160/tune52/calibration52 normal train images; official test78 excluded from model and threshold selection.",
-        "project_owner": "Kumar Waibhav Akshat <kwa.waibhav@gmail.com>",
+        "project_owner": "Kumar Waibhav AKshat <kwa.waibhav@gmail.com>",
     }
     provenance_path = root / "data/provenance.json"
     if provenance_path.is_file():

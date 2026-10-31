@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "timestamp_utc": "2026-10-31T05:19:10.593920+00:00",
+  "timestamp_utc": "2026-10-31T19:52:14.771073+00:00",
   "status": "completed_with_limitations",
   "software_verification_status": "passed",
   "source_matches_tested_snapshot": true,
@@ -147,7 +147,7 @@
       "evidence": [
         "wasm-parity.json"
       ],
-      "recorded_timestamp_utc": "2026-10-31T05:12:24.078632+00:00",
+      "recorded_timestamp_utc": "2026-10-31T19:49:50.881964+00:00",
       "limitations": "Canonical tensors are shared across runtimes; native browser decoding, layout and physical cameras are outside this parity test."
     },
     {
@@ -191,8 +191,8 @@
         "security-audit-summary.json",
         "npm-audit.json"
       ],
-      "python_timestamp_utc": "2026-10-31T05:12:17.784357+00:00",
-      "npm_timestamp_utc": "2026-10-31T05:12:22.320926+00:00",
+      "python_timestamp_utc": "2026-10-31T19:49:42.277654+00:00",
+      "npm_timestamp_utc": null,
       "limitations": "These scans cover the named locks and current known advisories. The historical training lock retains its separately documented findings; this is not a security certification."
     },
     {

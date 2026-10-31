@@ -43,7 +43,7 @@ def main() -> None:
     migration = read("reports/runtime-upgrade-validation.json")
     lines = [
         "# MeshLens project audit", "",
-        "**Owner:** Kumar Waibhav Akshat <kwa.waibhav@gmail.com>", "",
+        "**Owner:** Kumar Waibhav AKshat <kwa.waibhav@gmail.com>", "",
         f"Generated from recorded evidence at {datetime.now(timezone.utc).isoformat()}.", "",
     ]
     if args.draft:
@@ -157,7 +157,7 @@ def main() -> None:
         "Complete output includes342 images,57 masks, source license/readme and static dist. Git/hosting "
         "metadata, dependencies, venvs, caches and temporary files are excluded. Final archives receive "
         "CRC and critical embedded-file hash checks after packaging.", "",
-        "Original code/documentation: Kumar Waibhav Akshat, MIT. Dataset: MVTec Software GmbH and "
+        "Original code/documentation: Kumar Waibhav AKshat, MIT. Dataset: MVTec Software GmbH and "
         "original authors, CC BY-NC-SA4.0. Runtime notices remain intact. Advisory scans are dated "
         "named-scope checks, not security certification. The hosted preview remains owner-private.", "",
         "## Unknown coverage", "",

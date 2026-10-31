@@ -3,7 +3,7 @@
 
 The quick path uses committed model artifacts and sample images. Add --full-data
 for the complete licensed benchmark archive and per-file integrity audit.
-Project owner: Kumar Waibhav Akshat <kwa.waibhav@gmail.com>.
+Project owner: Kumar Waibhav AKshat <kwa.waibhav@gmail.com>.
 """
 from __future__ import annotations
 

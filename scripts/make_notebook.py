@@ -71,7 +71,7 @@ def main() -> None:
     md = nbformat.v4.new_markdown_cell
     cells = [
         md(
-            "# MeshLens: from normal patterns to residual evidence\n\n**Kumar Waibhav Akshat** - `kwa.waibhav@gmail.com`\n\nThis walkthrough executes the shipped trained autoencoder, verifies ONNX export agreement,\nand reads the recorded held-out evaluation. It neither retrains a model nor tunes against\ntest labels. The task is image-level anomaly review on industrial grid material.\nMVTec AD images and masks retain their CC BY-NC-SA 4.0 terms.\n"
+            "# MeshLens: from normal patterns to residual evidence\n\n**Kumar Waibhav AKshat** - `kwa.waibhav@gmail.com`\n\nThis walkthrough executes the shipped trained autoencoder, verifies ONNX export agreement,\nand reads the recorded held-out evaluation. It neither retrains a model nor tunes against\ntest labels. The task is image-level anomaly review on industrial grid material.\nMVTec AD images and masks retain their CC BY-NC-SA 4.0 terms.\n"
         ),
         code(
             "from pathlib import Path\nimport csv\nimport hashlib\nimport json\nimport sys\nimport time\nfrom collections import Counter\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom PIL import Image\nimport onnxruntime as ort\n\nROOT = Path.cwd()\nif not (ROOT / 'artifacts/model.onnx').is_file():\n    ROOT = ROOT.parent\nassert (ROOT / 'artifacts/model.onnx').is_file(), 'Run from the project root or notebooks directory'\nsys.path.insert(0, str(ROOT / 'src'))\nfrom meshlens.core import preprocess_image, residual_score\n\nmetadata = json.loads((ROOT / 'artifacts/metadata.json').read_text())\nevaluation = json.loads((ROOT / 'reports/metrics.json').read_text())\nprovenance = json.loads((ROOT / 'data/provenance.json').read_text())\nselection = json.loads((ROOT / 'reports/selection.json').read_text())\nprint('Model:', metadata['model_version'])\nprint('Selected candidate:', selection['selected']['name'])\nprint('Current acquisition:', provenance['image_count'], 'images;', provenance['mask_count'], 'masks')\nprint('Roles:', provenance['split_counts'])\n"
@@ -120,7 +120,7 @@ def main() -> None:
             },
             "language_info": {"name": "python", "version": sys.version.split()[0]},
             "authors": [
-                {"name": "Kumar Waibhav Akshat", "email": "kwa.waibhav@gmail.com"}
+                {"name": "Kumar Waibhav AKshat", "email": "kwa.waibhav@gmail.com"}
             ],
             "artifact_lineage": {
                 "model_sha256": hashlib.sha256(

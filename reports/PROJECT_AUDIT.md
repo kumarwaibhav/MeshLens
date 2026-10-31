@@ -1,8 +1,8 @@
 # MeshLens project audit
 
-**Owner:** Kumar Waibhav Akshat <kwa.waibhav@gmail.com>
+**Owner:** Kumar Waibhav AKshat <kwa.waibhav@gmail.com>
 
-Generated from recorded evidence at 2026-10-31T05:16:25.328328+00:00.
+Generated from recorded evidence at 2026-10-31T19:52:14.809362+00:00.
 
 ## Conclusion
 
@@ -102,7 +102,7 @@ At 130% brightness, 20/21 normal images triggered false alarms. Optics, motion, 
 
 Both archives contain one MeshLens root with source, locks, scripts, trained assets, 18 real examples, reports, tests and executed notebook. GitHub output excludes raw data/dist. Complete output includes 342 images, 57 masks, source license/readme and static dist. Git/hosting metadata, dependencies, venvs, caches and temporary files are excluded. Final archives receive CRC and critical embedded-file hash checks after packaging.
 
-Original code/documentation: Kumar Waibhav Akshat, MIT. Dataset: MVTec Software GmbH and original authors, CC BY-NC-SA 4.0. Runtime notices remain intact. Advisory scans are dated named-scope checks, not security certification. The hosted preview remains owner-private.
+Original code/documentation: Kumar Waibhav AKshat, MIT. Dataset: MVTec Software GmbH and original authors, CC BY-NC-SA 4.0. Runtime notices remain intact. Advisory scans are dated named-scope checks, not security certification. The hosted preview remains owner-private.
 
 ## Unknown coverage
 

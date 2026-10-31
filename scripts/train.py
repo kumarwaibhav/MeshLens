@@ -447,7 +447,7 @@ def main() -> None:
     }
     (reports / "selection.json").write_text(json.dumps(selection, indent=2) + "\n")
     with (reports / "training_history.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(history[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(history[0]), lineterminator="\r\n")
         writer.writeheader()
         writer.writerows(history)
     fig, ax = plt.subplots(1, 2, figsize=(11, 4), constrained_layout=True)

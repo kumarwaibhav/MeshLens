@@ -196,7 +196,7 @@ proves that every possible edge case is covered.
 
 ## License and authorship
 
-Original code and documentation: **Kumar Waibhav Akshat** · **kwa.waibhav@gmail.com** · [MIT](LICENSE).
+Original code and documentation: **Kumar Waibhav AKshat** · **kwa.waibhav@gmail.com** · [MIT](LICENSE).
 
 MVTec AD images, masks, bundled examples and dataset-derived material retain CC BY-NC-SA 4.0
 terms. The code license does not grant commercial data rights. See the
@@ -204,3 +204,5 @@ terms. The code license does not grant commercial data rights. See the
 
 Use the [Windows PowerShell GitHub guide](docs/github-windows.md) to verify commit identity
 and authenticated GitHub account before publishing the extracted source.
+
+Latest checksum repair and full audit: [reports/REPAIR_AUDIT.md](reports/REPAIR_AUDIT.md).

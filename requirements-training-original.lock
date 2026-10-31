@@ -1,6 +1,6 @@
 # Exact observed dependency closure; CPython 3.12 Linux x86_64.
 # Historical training record only; use requirements.lock for the recommended patched environment.
-# Owner: Kumar Waibhav Akshat <kwa.waibhav@gmail.com>.
+# Owner: Kumar Waibhav AKshat <kwa.waibhav@gmail.com>.
 --extra-index-url https://download.pytorch.org/whl/cpu
 cloudpickle==3.1.2
 coloredlogs==15.0.1

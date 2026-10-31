@@ -184,7 +184,7 @@ def evaluate() -> None:
     ]
     threshold = calibrate_threshold(calibration_scores, alpha=0.05)
     with (reports / "calibration_scores.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=["path", "split", "label", "score"])
+        writer = csv.DictWriter(stream, fieldnames=["path", "split", "label", "score"], lineterminator="\r\n")
         writer.writeheader()
         writer.writerows(
             {"path": row["path"], "split": "calibration", "label": 0, "score": score}
@@ -222,7 +222,7 @@ def evaluate() -> None:
     ]
     pca_threshold = calibrate_threshold(pca_cal_scores, 0.05)
     with (reports / "baseline_calibration_scores.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=["path", "split", "label", "score"])
+        writer = csv.DictWriter(stream, fieldnames=["path", "split", "label", "score"], lineterminator="\r\n")
         writer.writeheader()
         writer.writerows(
             {"path": row["path"], "split": "calibration", "label": 0, "score": score}
@@ -264,7 +264,7 @@ def evaluate() -> None:
             }
         )
     with (reports / "test_scores.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(test_records[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(test_records[0]), lineterminator="\r\n")
         writer.writeheader()
         writer.writerows(test_records)
     defects = {}
@@ -532,7 +532,7 @@ def evaluate() -> None:
         "schema_version": 1,
         "name": "MeshLens convolutional autoencoder",
         "model_version": "meshlens-ae-" + freeze["checkpoint_sha256"][:12],
-        "owner": {"name": "Kumar Waibhav Akshat", "email": "kwa.waibhav@gmail.com"},
+        "owner": {"name": "Kumar Waibhav AKshat", "email": "kwa.waibhav@gmail.com"},
         "image_size": 256,
         "input_name": "image",
         "output_name": "reconstruction",

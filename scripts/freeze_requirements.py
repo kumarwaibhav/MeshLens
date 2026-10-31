@@ -60,7 +60,7 @@ def closure(seeds: list[str], packages: dict) -> dict:
 
 def write_lock(filename: str, versions: dict, include: str | None = None, cpu=False) -> None:
     lines = ['# Exact observed dependency closure; CPython 3.12 Linux x86_64.',
-             '# Owner: Kumar Waibhav Akshat <kwa.waibhav@gmail.com>.']
+             '# Owner: Kumar Waibhav AKshat <kwa.waibhav@gmail.com>.']
     if cpu:
         lines.append('--extra-index-url https://download.pytorch.org/whl/cpu')
     if filename == 'requirements-training-original.lock':

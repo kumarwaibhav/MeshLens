@@ -69,7 +69,7 @@ jobs:
 
   dataset-audit:
     name: Full research-data audit
-    if: github.event_name == 'workflow_dispatch' && inputs.full_dataset
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.full_dataset)
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 20

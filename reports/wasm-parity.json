@@ -17,7 +17,7 @@
       "score_abs_error": 1.1641532182693481e-10,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 49.263814000000025
+      "inference_ms": 84.76745699999998
     },
     {
       "id": "data/raw/grid/test/bent/001.png",
@@ -27,7 +27,7 @@
       "score_abs_error": 3.0069225824547186e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.48870700000003
+      "inference_ms": 42.66884300000004
     },
     {
       "id": "data/raw/grid/test/bent/002.png",
@@ -37,7 +37,7 @@
       "score_abs_error": 4.202309160372675e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 38.99809699999997
+      "inference_ms": 38.61042299999997
     },
     {
       "id": "data/raw/grid/test/bent/003.png",
@@ -47,7 +47,7 @@
       "score_abs_error": 7.368238068294897e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.99215699999996
+      "inference_ms": 50.91599599999995
     },
     {
       "id": "data/raw/grid/test/bent/004.png",
@@ -57,7 +57,7 @@
       "score_abs_error": 3.0949439192018424e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.438857999999982
+      "inference_ms": 45.40514100000007
     },
     {
       "id": "data/raw/grid/test/bent/005.png",
@@ -67,7 +67,7 @@
       "score_abs_error": 2.0443666204350563e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 34.713997000000006
+      "inference_ms": 41.60751300000004
     },
     {
       "id": "data/raw/grid/test/bent/006.png",
@@ -77,7 +77,7 @@
       "score_abs_error": 2.9245800226007646e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.146678000000065
+      "inference_ms": 46.02698899999996
     },
     {
       "id": "data/raw/grid/test/bent/007.png",
@@ -87,7 +87,7 @@
       "score_abs_error": 2.8677920801967183e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.190425000000005
+      "inference_ms": 42.844198000000006
     },
     {
       "id": "data/raw/grid/test/bent/008.png",
@@ -97,7 +97,7 @@
       "score_abs_error": 4.954749666108427e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.619798999999944
+      "inference_ms": 39.82628599999998
     },
     {
       "id": "data/raw/grid/test/bent/009.png",
@@ -107,7 +107,7 @@
       "score_abs_error": 9.68234749321173e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 36.594221999999945
+      "inference_ms": 38.01429899999994
     },
     {
       "id": "data/raw/grid/test/bent/010.png",
@@ -117,7 +117,7 @@
       "score_abs_error": 1.3075428205444606e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.00030700000002
+      "inference_ms": 40.22335999999996
     },
     {
       "id": "data/raw/grid/test/bent/011.png",
@@ -127,7 +127,7 @@
       "score_abs_error": 8.092284481397982e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.09680000000003
+      "inference_ms": 42.58315500000003
     },
     {
       "id": "data/raw/grid/test/broken/000.png",
@@ -137,7 +137,7 @@
       "score_abs_error": 1.2436563653905885e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 35.61131
+      "inference_ms": 42.278524999999945
     },
     {
       "id": "data/raw/grid/test/broken/001.png",
@@ -147,7 +147,7 @@
       "score_abs_error": 7.013313298165347e-10,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 33.05933900000002
+      "inference_ms": 45.23592600000006
     },
     {
       "id": "data/raw/grid/test/broken/002.png",
@@ -157,7 +157,7 @@
       "score_abs_error": 7.041707286714605e-10,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 32.76405599999998
+      "inference_ms": 42.8110979999999
     },
     {
       "id": "data/raw/grid/test/broken/003.png",
@@ -167,7 +167,7 @@
       "score_abs_error": 2.2005335227615053e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 34.85502599999995
+      "inference_ms": 42.604074999999966
     },
     {
       "id": "data/raw/grid/test/broken/004.png",
@@ -177,7 +177,7 @@
       "score_abs_error": 9.82431740126355e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 37.602532
+      "inference_ms": 43.081265999999914
     },
     {
       "id": "data/raw/grid/test/broken/005.png",
@@ -187,7 +187,7 @@
       "score_abs_error": 9.185452849724829e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.395284000000174
+      "inference_ms": 37.80453800000009
     },
     {
       "id": "data/raw/grid/test/broken/006.png",
@@ -197,7 +197,7 @@
       "score_abs_error": 1.9307907044019412e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.923127999999906
+      "inference_ms": 46.45362300000011
     },
     {
       "id": "data/raw/grid/test/broken/007.png",
@@ -207,7 +207,7 @@
       "score_abs_error": 9.54037758515991e-10,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 31.014599999999973
+      "inference_ms": 42.34954300000004
     },
     {
       "id": "data/raw/grid/test/broken/008.png",
@@ -217,7 +217,7 @@
       "score_abs_error": 2.4276853444193947e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.434942999999976
+      "inference_ms": 50.24847599999998
     },
     {
       "id": "data/raw/grid/test/broken/009.png",
@@ -227,7 +227,7 @@
       "score_abs_error": 1.0094060240439795e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.464743
+      "inference_ms": 43.156289000000015
     },
     {
       "id": "data/raw/grid/test/broken/010.png",
@@ -237,7 +237,7 @@
       "score_abs_error": 8.092284550786921e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 29.838462000000163
+      "inference_ms": 44.23320399999989
     },
     {
       "id": "data/raw/grid/test/broken/011.png",
@@ -247,7 +247,7 @@
       "score_abs_error": 5.139310539636899e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.907080999999835
+      "inference_ms": 43.0430980000001
     },
     {
       "id": "data/raw/grid/test/glue/000.png",
@@ -257,7 +257,7 @@
       "score_abs_error": 7.893526700331055e-10,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 30.073351000000002
+      "inference_ms": 42.04893900000002
     },
     {
       "id": "data/raw/grid/test/glue/001.png",
@@ -267,7 +267,7 @@
       "score_abs_error": 1.8683239469408086e-09,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 29.7455930000001
+      "inference_ms": 45.33425999999986
     },
     {
       "id": "data/raw/grid/test/glue/002.png",
@@ -277,7 +277,7 @@
       "score_abs_error": 4.3442790684244947e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.82782300000008
+      "inference_ms": 44.62502499999982
     },
     {
       "id": "data/raw/grid/test/glue/003.png",
@@ -287,7 +287,7 @@
       "score_abs_error": 6.331857746455505e-10,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 30.758331
+      "inference_ms": 42.98711400000002
     },
     {
       "id": "data/raw/grid/test/glue/004.png",
@@ -297,7 +297,7 @@
       "score_abs_error": 1.8881997319863952e-09,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 32.08488299999999
+      "inference_ms": 43.08206700000028
     },
     {
       "id": "data/raw/grid/test/glue/005.png",
@@ -307,7 +307,7 @@
       "score_abs_error": 5.508432321388312e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.686083000000053
+      "inference_ms": 41.583246000000145
     },
     {
       "id": "data/raw/grid/test/glue/006.png",
@@ -317,7 +317,7 @@
       "score_abs_error": 1.5701871435014336e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.927753000000166
+      "inference_ms": 42.52627799999982
     },
     {
       "id": "data/raw/grid/test/glue/007.png",
@@ -327,7 +327,7 @@
       "score_abs_error": 5.309674436237977e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.585710000000063
+      "inference_ms": 37.30694700000004
     },
     {
       "id": "data/raw/grid/test/glue/008.png",
@@ -337,7 +337,7 @@
       "score_abs_error": 7.723162821077212e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.63892499999997
+      "inference_ms": 36.97792100000015
     },
     {
       "id": "data/raw/grid/test/glue/009.png",
@@ -347,7 +347,7 @@
       "score_abs_error": 1.0590954918621165e-09,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 36.63240700000006
+      "inference_ms": 36.76227599999993
     },
     {
       "id": "data/raw/grid/test/glue/010.png",
@@ -357,7 +357,7 @@
       "score_abs_error": 9.412604688729953e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.7808
+      "inference_ms": 36.670938000000206
     },
     {
       "id": "data/raw/grid/test/good/000.png",
@@ -367,7 +367,7 @@
       "score_abs_error": 7.950314365179345e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.396594999999934
+      "inference_ms": 35.29749700000002
     },
     {
       "id": "data/raw/grid/test/good/001.png",
@@ -377,7 +377,7 @@
       "score_abs_error": 5.678796148600451e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.29963500000008
+      "inference_ms": 41.701544999999896
     },
     {
       "id": "data/raw/grid/test/good/002.png",
@@ -387,7 +387,7 @@
       "score_abs_error": 1.121562252792696e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 29.863229000000047
+      "inference_ms": 42.24595599999975
     },
     {
       "id": "data/raw/grid/test/good/003.png",
@@ -397,7 +397,7 @@
       "score_abs_error": 4.0177483041914375e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.368007000000034
+      "inference_ms": 42.6784889999999
     },
     {
       "id": "data/raw/grid/test/good/004.png",
@@ -407,7 +407,7 @@
       "score_abs_error": 3.5208536433573023e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 29.978819999999814
+      "inference_ms": 42.279907000000094
     },
     {
       "id": "data/raw/grid/test/good/005.png",
@@ -417,7 +417,7 @@
       "score_abs_error": 1.590062942424808e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.682166000000052
+      "inference_ms": 32.09920199999988
     },
     {
       "id": "data/raw/grid/test/good/006.png",
@@ -427,7 +427,7 @@
       "score_abs_error": 1.1130440527584717e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.944588000000067
+      "inference_ms": 33.35444499999994
     },
     {
       "id": "data/raw/grid/test/good/007.png",
@@ -437,7 +437,7 @@
       "score_abs_error": 3.4072777238547403e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.240398999999798
+      "inference_ms": 30.807694999999967
     },
     {
       "id": "data/raw/grid/test/good/008.png",
@@ -447,7 +447,7 @@
       "score_abs_error": 4.926355694906404e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.85516400000006
+      "inference_ms": 43.26659100000006
     },
     {
       "id": "data/raw/grid/test/good/009.png",
@@ -457,7 +457,7 @@
       "score_abs_error": 7.24046517186494e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.456629000000248
+      "inference_ms": 42.33635299999969
     },
     {
       "id": "data/raw/grid/test/good/010.png",
@@ -467,7 +467,7 @@
       "score_abs_error": 3.69121753995838e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.114112000000205
+      "inference_ms": 40.71624800000018
     },
     {
       "id": "data/raw/grid/test/good/011.png",
@@ -477,7 +477,7 @@
       "score_abs_error": 1.9634437790905235e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 34.129277999999886
+      "inference_ms": 43.83786800000007
     },
     {
       "id": "data/raw/grid/test/good/012.png",
@@ -487,7 +487,7 @@
       "score_abs_error": 7.339844045051169e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.451700999999957
+      "inference_ms": 70.11481000000003
     },
     {
       "id": "data/raw/grid/test/good/013.png",
@@ -497,7 +497,7 @@
       "score_abs_error": 6.133099878652404e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.506602999999814
+      "inference_ms": 48.23350100000016
     },
     {
       "id": "data/raw/grid/test/good/014.png",
@@ -507,7 +507,7 @@
       "score_abs_error": 2.839397120202314e-12,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.982343000000128
+      "inference_ms": 45.15664599999991
     },
     {
       "id": "data/raw/grid/test/good/015.png",
@@ -517,7 +517,7 @@
       "score_abs_error": 8.376224366890561e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.059044000000085
+      "inference_ms": 42.361529999999675
     },
     {
       "id": "data/raw/grid/test/good/016.png",
@@ -527,7 +527,7 @@
       "score_abs_error": 2.7826101145489446e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.21772099999998
+      "inference_ms": 47.68008099999997
     },
     {
       "id": "data/raw/grid/test/good/017.png",
@@ -537,7 +537,7 @@
       "score_abs_error": 1.13859863551391e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.85838899999999
+      "inference_ms": 48.116153999999824
     },
     {
       "id": "data/raw/grid/test/good/018.png",
@@ -547,7 +547,7 @@
       "score_abs_error": 7.723162838424447e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.83366100000012
+      "inference_ms": 39.287448999999924
     },
     {
       "id": "data/raw/grid/test/good/019.png",
@@ -557,7 +557,7 @@
       "score_abs_error": 2.1579425399376184e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.9611960000002
+      "inference_ms": 49.010757999999896
     },
     {
       "id": "data/raw/grid/test/good/020.png",
@@ -567,7 +567,7 @@
       "score_abs_error": 2.4134881593251833e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.151702000000114
+      "inference_ms": 42.170020999999906
     },
     {
       "id": "data/raw/grid/test/metal_contamination/000.png",
@@ -577,7 +577,7 @@
       "score_abs_error": 1.7320328157821585e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.30714799999987
+      "inference_ms": 43.523583000000144
     },
     {
       "id": "data/raw/grid/test/metal_contamination/001.png",
@@ -587,7 +587,7 @@
       "score_abs_error": 1.2493351631004401e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.201610000000073
+      "inference_ms": 54.546918000000005
     },
     {
       "id": "data/raw/grid/test/metal_contamination/002.png",
@@ -597,7 +597,7 @@
       "score_abs_error": 7.041707286714605e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 29.71731099999988
+      "inference_ms": 49.146850000000086
     },
     {
       "id": "data/raw/grid/test/metal_contamination/003.png",
@@ -607,7 +607,7 @@
       "score_abs_error": 7.524404953274111e-10,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 29.532606999999643
+      "inference_ms": 45.95471899999984
     },
     {
       "id": "data/raw/grid/test/metal_contamination/004.png",
@@ -617,7 +617,7 @@
       "score_abs_error": 1.9591846894817522e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.511121999999887
+      "inference_ms": 46.45293100000026
     },
     {
       "id": "data/raw/grid/test/metal_contamination/005.png",
@@ -627,7 +627,7 @@
       "score_abs_error": 6.417039677408809e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.99672499999997
+      "inference_ms": 60.42965099999992
     },
     {
       "id": "data/raw/grid/test/metal_contamination/006.png",
@@ -637,7 +637,7 @@
       "score_abs_error": 1.678084272233038e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 29.245339000000058
+      "inference_ms": 46.138936999999714
     },
     {
       "id": "data/raw/grid/test/metal_contamination/007.png",
@@ -647,7 +647,7 @@
       "score_abs_error": 2.1011545975335721e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.194601000000148
+      "inference_ms": 40.023785000000316
     },
     {
       "id": "data/raw/grid/test/metal_contamination/008.png",
@@ -657,7 +657,7 @@
       "score_abs_error": 1.1357591950256207e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 28.83561899999995
+      "inference_ms": 45.92964200000006
     },
     {
       "id": "data/raw/grid/test/metal_contamination/009.png",
@@ -667,7 +667,7 @@
       "score_abs_error": 1.195386595265191e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.73840999999993
+      "inference_ms": 46.943341000000146
     },
     {
       "id": "data/raw/grid/test/metal_contamination/010.png",
@@ -677,7 +677,7 @@
       "score_abs_error": 8.503997298014987e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 28.83036200000015
+      "inference_ms": 45.105608999999276
     },
     {
       "id": "data/raw/grid/test/thread/000.png",
@@ -687,7 +687,7 @@
       "score_abs_error": 1.067613681488e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 28.40161399999988
+      "inference_ms": 44.676832000000104
     },
     {
       "id": "data/raw/grid/test/thread/001.png",
@@ -697,7 +697,7 @@
       "score_abs_error": 2.333985230779101e-09,
       "expected_anomaly": true,
       "wasm_anomaly": true,
-      "inference_ms": 29.436423999999988
+      "inference_ms": 45.45140999999967
     },
     {
       "id": "data/raw/grid/test/thread/002.png",
@@ -707,7 +707,7 @@
       "score_abs_error": 1.2819882395237459e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 30.19139700000005
+      "inference_ms": 45.64843699999983
     },
     {
       "id": "data/raw/grid/test/thread/003.png",
@@ -717,7 +717,7 @@
       "score_abs_error": 1.6312342032698268e-09,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.887665000000197
+      "inference_ms": 46.14373400000022
     },
     {
       "id": "data/raw/grid/test/thread/004.png",
@@ -727,7 +727,7 @@
       "score_abs_error": 4.4720519995489205e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.54540799999995
+      "inference_ms": 44.75516999999945
     },
     {
       "id": "data/raw/grid/test/thread/005.png",
@@ -737,7 +737,7 @@
       "score_abs_error": 3.4924596548080444e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.76938800000016
+      "inference_ms": 47.44984399999976
     },
     {
       "id": "data/raw/grid/test/thread/006.png",
@@ -747,7 +747,7 @@
       "score_abs_error": 2.0727606089843142e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 32.20715500000006
+      "inference_ms": 47.57637599999998
     },
     {
       "id": "data/raw/grid/test/thread/007.png",
@@ -757,7 +757,7 @@
       "score_abs_error": 9.355816711631437e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 33.86496099999977
+      "inference_ms": 44.00796300000002
     },
     {
       "id": "data/raw/grid/test/thread/008.png",
@@ -767,7 +767,7 @@
       "score_abs_error": 4.968946643035821e-10,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 34.92827299999999
+      "inference_ms": 45.960297999999966
     },
     {
       "id": "data/raw/grid/test/thread/009.png",
@@ -777,7 +777,7 @@
       "score_abs_error": 9.228044023368298e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.0362640000003
+      "inference_ms": 46.97051099999953
     },
     {
       "id": "data/raw/grid/test/thread/010.png",
@@ -787,10 +787,10 @@
       "score_abs_error": 3.1233380465289784e-11,
       "expected_anomaly": false,
       "wasm_anomaly": false,
-      "inference_ms": 31.886929000000237
+      "inference_ms": 48.09941400000025
     }
   ],
-  "timestamp_utc": "2026-10-31T05:12:24.078632+00:00",
+  "timestamp_utc": "2026-10-31T19:49:50.881964+00:00",
   "python_onnxruntime_version": "1.23.2",
   "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
   "threshold": 0.02402208368407517,

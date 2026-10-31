@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "author": "Kumar Waibhav Akshat <kwa.waibhav@gmail.com>",
+  "author": "Kumar Waibhav AKshat <kwa.waibhav@gmail.com>",
   "scripts": {
     "build": "node scripts/build_web.mjs",
     "test": "node --test tests/*.test.mjs",
