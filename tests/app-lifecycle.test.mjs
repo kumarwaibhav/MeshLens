@@ -174,3 +174,41 @@ test('pending reinspection clears old decision and cancelled work preserves only
   assert.equal(h.app.state.result, null); assert.equal(h.app.state.history.length, 1); assert.equal(h.app.state.busy, false);
   assert.equal(h.byId('anomaly-score').textContent, '—'); assert.doesNotMatch(h.byId('decision-title').textContent, /Within learned range|Review recommended/);
 });
+
+test('own-image upload is unavailable during initialization and inference', async () => {
+  const h = await browserHarness(); h.ready();
+  h.app.state.initializing = true; h.app.updateControls();
+  assert.equal(h.byId('upload-own-image').disabled, true);
+  await h.byId('upload-own-image').dispatch('click'); assert.equal(h.byId('file-input').clicked, undefined);
+  h.app.state.initializing = false; h.app.updateControls();
+  await h.byId('upload-own-image').dispatch('click'); assert.equal(h.byId('file-input').clicked, true);
+});
+
+test('known defective sample within range explicitly explains the missed defect', async () => {
+  const h = await browserHarness(); h.ready();
+  h.app.setInput(h.makeBitmap(), 'known-defect.png', { kind: 'sample', sample: { label: 1, defect_type: 'bent', index: 2 } });
+  await h.app.inspect();
+  assert.match(h.byId('ground-truth').textContent, /Missed defect/);
+  assert.match(h.byId('ground-truth').textContent, /not passed to the model/);
+  assert.equal(h.byId('jump-to-result').hidden, false);
+  h.app.setInput(h.makeBitmap(), 'new-image.png'); assert.equal(h.byId('jump-to-result').hidden, true);
+});
+
+test('a chosen local file leads to its evidence and a rejected file leads to the error', async () => {
+  const h = await browserHarness(); h.ready();
+  await h.byId('file-input').dispatch('change', { target: { files: [await h.sampleFile('upload.png')], value: 'upload.png' } });
+  assert.equal(h.byId('evidence-title').focused, true);
+  await h.byId('file-input').dispatch('change', { target: { files: [new File(['invalid'], 'bad.png', { type: 'image/png' })], value: 'bad.png' } });
+  assert.equal(h.byId('notice').focused, true); assert.equal(h.byId('notice').getAttribute('role'), 'alert');
+});
+
+test('history clear can be undone without losing later inspection records', async () => {
+  const h = await browserHarness(); h.ready(); h.app.setInput(h.makeBitmap(), 'first.png'); await h.app.inspect();
+  const saved = h.app.state.history[0];
+  await h.byId('clear-history').dispatch('click'); assert.equal(h.app.state.history.length, 0);
+  const undo = h.byId('history-feedback').querySelectorAll('button')[0];
+  h.app.state.history.unshift({ ...saved, id: 'later', filename: 'later.png' });
+  await undo.dispatch('click');
+  assert.equal(h.app.state.history.length, 2); assert.equal(h.app.state.history[0].filename, 'later.png');
+  assert.equal(h.app.state.history[1].filename, 'first.png');
+});

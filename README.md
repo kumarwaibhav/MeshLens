@@ -13,9 +13,33 @@ A repeated grid pattern makes small defects easy to overlook. MeshLens learns th
 pattern from defect-free material, reconstructs a new image, and exposes where the
 reconstruction disagrees with it. The result is a review signal with visible evidence.
 
-[Private live preview](https://meshlens-inspection.vs8953.chatgpt.site) · [Run or deploy](docs/deployment.md) · [Technical report](reports/technical_report.pdf) ·
+[Public demo](https://mesh-lens.vercel.app) · [Run or deploy](docs/deployment.md) · [Technical report](reports/technical_report.pdf) ·
 [Executed walkthrough](notebooks/01_meshlens_walkthrough.ipynb) · [Model card](docs/MODEL_CARD.md)
 · [Workflow guide](docs/RUNBOOK.md) · [Project audit](reports/PROJECT_AUDIT.md)
+
+## Start here: a three-image walkthrough
+
+1. **Example 1:** a normal mesh image. Compare Original, Reconstruction and Error map.
+2. **Example 2:** a known bent defect that triggers review.
+3. **Example 3:** a known defect that the model misses. Read the explanation below the score.
+
+Known labels appear after inference and never enter the model. All 18 gallery images are
+already-measured benchmark examples. Use the in-app **Download 18 examples** button for
+labeled PNGs, expected results, source paths and data terms. The image kit is also tracked at
+[web/downloads/MeshLens-18-Benchmark-Examples.zip](web/downloads/MeshLens-18-Benchmark-Examples.zip).
+
+For a new image, capture a close-up of similar woven mesh with comparable scale, focus,
+viewpoint and steady lighting. Upload a still PNG/JPEG/WebP up to 12 MiB, 32–4096 pixels
+per side and 16 megapixels. The whole image is resized to 256×256. Uploads run inference;
+they do not train the model. Separately captured, reliably labeled material is needed for
+independent validation; benchmark crops and edits remain replay data.
+
+The revised interface provides named mobile navigation, adaptive layouts, readable contrast,
+keyboard tabs, enlarged-text support and local history recovery. See the
+[UI revision and executed checks](reports/UI_REDESIGN.md),
+[accessibility review](docs/design/ACCESSIBILITY_REVIEW.md) and
+[developer handoff](docs/design/DESIGN_HANDOFF.md). These checks do not certify every device
+or replace physical-device and screen-reader testing.
 
 ## What you can try
 

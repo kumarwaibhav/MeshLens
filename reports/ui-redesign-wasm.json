@@ -1,0 +1,801 @@
+{
+  "status": "passed",
+  "backend": "onnxruntime-web WebAssembly (single thread)",
+  "samples": 78,
+  "onnxruntime_web_version": "1.23.2",
+  "reconstruction_tolerance": 3e-05,
+  "score_tolerance": 2e-06,
+  "max_reconstruction_abs_error": 4.76837158203125e-07,
+  "max_score_abs_error": 3.0069225824547186e-09,
+  "changed_decisions": 0,
+  "records": [
+    {
+      "id": "data/raw/grid/test/bent/000.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.025862006785734217,
+      "wasm_score": 0.02586200690214954,
+      "score_abs_error": 1.1641532182693481e-10,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 117.11573699999997
+    },
+    {
+      "id": "data/raw/grid/test/bent/001.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.01760860269735908,
+      "wasm_score": 0.0176085996904365,
+      "score_abs_error": 3.0069225824547186e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.280845
+    },
+    {
+      "id": "data/raw/grid/test/bent/002.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.017113245178934006,
+      "wasm_score": 0.01711324559916492,
+      "score_abs_error": 4.202309160372675e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.35672699999998
+    },
+    {
+      "id": "data/raw/grid/test/bent/003.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.019541163342471076,
+      "wasm_score": 0.01954116260564727,
+      "score_abs_error": 7.368238068294897e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 49.44941799999992
+    },
+    {
+      "id": "data/raw/grid/test/bent/004.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.014740869258076134,
+      "wasm_score": 0.014740868948581742,
+      "score_abs_error": 3.0949439192018424e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.149539000000004
+    },
+    {
+      "id": "data/raw/grid/test/bent/005.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.015644945579058513,
+      "wasm_score": 0.01564494537462185,
+      "score_abs_error": 2.0443666204350563e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.59365700000001
+    },
+    {
+      "id": "data/raw/grid/test/bent/006.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.019601000687277808,
+      "wasm_score": 0.019601000394819806,
+      "score_abs_error": 2.9245800226007646e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.51202699999999
+    },
+    {
+      "id": "data/raw/grid/test/bent/007.png",
+      "max_reconstruction_abs_error": 4.172325134277344e-07,
+      "python_ort_score": 0.01797215153872058,
+      "wasm_score": 0.01797215182549979,
+      "score_abs_error": 2.8677920801967183e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 37.92005000000006
+    },
+    {
+      "id": "data/raw/grid/test/bent/008.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.018879179692282002,
+      "wasm_score": 0.01887918018775697,
+      "score_abs_error": 4.954749666108427e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 40.516051999999945
+    },
+    {
+      "id": "data/raw/grid/test/bent/009.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.016167647192515885,
+      "wasm_score": 0.016167646224281136,
+      "score_abs_error": 9.68234749321173e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 38.30973700000004
+    },
+    {
+      "id": "data/raw/grid/test/bent/010.png",
+      "max_reconstruction_abs_error": 3.8743019104003906e-07,
+      "python_ort_score": 0.015442465525688377,
+      "wasm_score": 0.015442466833231198,
+      "score_abs_error": 1.3075428205444606e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.32698299999993
+    },
+    {
+      "id": "data/raw/grid/test/bent/011.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.017431670389558392,
+      "wasm_score": 0.017431670470481237,
+      "score_abs_error": 8.092284481397982e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.9121990000001
+    },
+    {
+      "id": "data/raw/grid/test/broken/000.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.022615601572707842,
+      "wasm_score": 0.022615600329051477,
+      "score_abs_error": 1.2436563653905885e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.31292200000007
+    },
+    {
+      "id": "data/raw/grid/test/broken/001.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.024283894360428902,
+      "wasm_score": 0.024283895061760232,
+      "score_abs_error": 7.013313298165347e-10,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 32.25538699999993
+    },
+    {
+      "id": "data/raw/grid/test/broken/002.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.02462586525134833,
+      "wasm_score": 0.024625864547177603,
+      "score_abs_error": 7.041707286714605e-10,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 35.48599799999988
+    },
+    {
+      "id": "data/raw/grid/test/broken/003.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.014602460248236795,
+      "wasm_score": 0.014602458047703272,
+      "score_abs_error": 2.2005335227615053e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.225482000000056
+    },
+    {
+      "id": "data/raw/grid/test/broken/004.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.02146734973620169,
+      "wasm_score": 0.02146735071863343,
+      "score_abs_error": 9.82431740126355e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 39.306471999999985
+    },
+    {
+      "id": "data/raw/grid/test/broken/005.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.020083722324826095,
+      "wasm_score": 0.02008372324337138,
+      "score_abs_error": 9.185452849724829e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.30592200000001
+    },
+    {
+      "id": "data/raw/grid/test/broken/006.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.0215131911681965,
+      "wasm_score": 0.021513193098987204,
+      "score_abs_error": 1.9307907044019412e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 36.512778000000026
+    },
+    {
+      "id": "data/raw/grid/test/broken/007.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.024204982728583783,
+      "wasm_score": 0.024204983682621542,
+      "score_abs_error": 9.54037758515991e-10,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 36.3831459999999
+    },
+    {
+      "id": "data/raw/grid/test/broken/008.png",
+      "max_reconstruction_abs_error": 3.8743019104003906e-07,
+      "python_ort_score": 0.020033379924404095,
+      "wasm_score": 0.02003338016717263,
+      "score_abs_error": 2.4276853444193947e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.36923500000012
+    },
+    {
+      "id": "data/raw/grid/test/broken/009.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.019681993852051476,
+      "wasm_score": 0.019681992842645452,
+      "score_abs_error": 1.0094060240439795e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.974341000000095
+    },
+    {
+      "id": "data/raw/grid/test/broken/010.png",
+      "max_reconstruction_abs_error": 4.76837158203125e-07,
+      "python_ort_score": 0.022054687792594296,
+      "wasm_score": 0.02205468860182275,
+      "score_abs_error": 8.092284550786921e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 37.87646599999994
+    },
+    {
+      "id": "data/raw/grid/test/broken/011.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.023474020449013065,
+      "wasm_score": 0.02347402096294412,
+      "score_abs_error": 5.139310539636899e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.52219100000002
+    },
+    {
+      "id": "data/raw/grid/test/glue/000.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.026293512200936675,
+      "wasm_score": 0.026293512990289345,
+      "score_abs_error": 7.893526700331055e-10,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 35.04328200000009
+    },
+    {
+      "id": "data/raw/grid/test/glue/001.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.03615500805218045,
+      "wasm_score": 0.0361550099205044,
+      "score_abs_error": 1.8683239469408086e-09,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 35.00353300000006
+    },
+    {
+      "id": "data/raw/grid/test/glue/002.png",
+      "max_reconstruction_abs_error": 3.8743019104003906e-07,
+      "python_ort_score": 0.019091487378052368,
+      "wasm_score": 0.019091487812480275,
+      "score_abs_error": 4.3442790684244947e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.12600499999985
+    },
+    {
+      "id": "data/raw/grid/test/glue/003.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.02564973875357792,
+      "wasm_score": 0.025649739386763695,
+      "score_abs_error": 6.331857746455505e-10,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 35.28790499999991
+    },
+    {
+      "id": "data/raw/grid/test/glue/004.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.024442498648834483,
+      "wasm_score": 0.024442500537034215,
+      "score_abs_error": 1.8881997319863952e-09,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 33.7921510000001
+    },
+    {
+      "id": "data/raw/grid/test/glue/005.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.023625523805981728,
+      "wasm_score": 0.02362552435682496,
+      "score_abs_error": 5.508432321388312e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.17234399999984
+    },
+    {
+      "id": "data/raw/grid/test/glue/006.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.021267104729237717,
+      "wasm_score": 0.02126710629942486,
+      "score_abs_error": 1.5701871435014336e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 36.758772000000135
+    },
+    {
+      "id": "data/raw/grid/test/glue/007.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.018772483126135407,
+      "wasm_score": 0.018772482595167964,
+      "score_abs_error": 5.309674436237977e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.57442899999978
+    },
+    {
+      "id": "data/raw/grid/test/glue/008.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.010506749310723802,
+      "wasm_score": 0.01050674853840752,
+      "score_abs_error": 7.723162821077212e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.30663300000015
+    },
+    {
+      "id": "data/raw/grid/test/glue/009.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.041403188659786816,
+      "wasm_score": 0.041403187600691324,
+      "score_abs_error": 1.0590954918621165e-09,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 33.089096000000154
+    },
+    {
+      "id": "data/raw/grid/test/glue/010.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.01932335894259556,
+      "wasm_score": 0.01932335988385603,
+      "score_abs_error": 9.412604688729953e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.05430899999965
+    },
+    {
+      "id": "data/raw/grid/test/good/000.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.015665512530576076,
+      "wasm_score": 0.01566551261007922,
+      "score_abs_error": 7.950314365179345e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.448213000000123
+    },
+    {
+      "id": "data/raw/grid/test/good/001.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.013139994576482511,
+      "wasm_score": 0.013139994633270473,
+      "score_abs_error": 5.678796148600451e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.53173599999991
+    },
+    {
+      "id": "data/raw/grid/test/good/002.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.011565945497373255,
+      "wasm_score": 0.01156594560952948,
+      "score_abs_error": 1.121562252792696e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.436165000000074
+    },
+    {
+      "id": "data/raw/grid/test/good/003.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.015179911780273316,
+      "wasm_score": 0.015179911378498485,
+      "score_abs_error": 4.0177483041914375e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.40254499999992
+    },
+    {
+      "id": "data/raw/grid/test/good/004.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.01758700727184144,
+      "wasm_score": 0.017587007623926804,
+      "score_abs_error": 3.5208536433573023e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.697631
+    },
+    {
+      "id": "data/raw/grid/test/good/005.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.018615818028792558,
+      "wasm_score": 0.018615817869786264,
+      "score_abs_error": 1.590062942424808e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.37386200000037
+    },
+    {
+      "id": "data/raw/grid/test/good/006.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.018343662505219804,
+      "wasm_score": 0.018343663618263856,
+      "score_abs_error": 1.1130440527584717e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.239884000000075
+    },
+    {
+      "id": "data/raw/grid/test/good/007.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.013726271555486431,
+      "wasm_score": 0.013726271214758659,
+      "score_abs_error": 3.4072777238547403e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.40938600000027
+    },
+    {
+      "id": "data/raw/grid/test/good/008.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.013150734815564825,
+      "wasm_score": 0.013150734322929255,
+      "score_abs_error": 4.926355694906404e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.234476000000086
+    },
+    {
+      "id": "data/raw/grid/test/good/009.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.014575998544431768,
+      "wasm_score": 0.01457599861683642,
+      "score_abs_error": 7.24046517186494e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.964146000000255
+    },
+    {
+      "id": "data/raw/grid/test/good/010.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.01768351310193993,
+      "wasm_score": 0.017683512732818176,
+      "score_abs_error": 3.69121753995838e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.545718000000306
+    },
+    {
+      "id": "data/raw/grid/test/good/011.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.019272108051199013,
+      "wasm_score": 0.019272110014642792,
+      "score_abs_error": 1.9634437790905235e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.750590999999986
+    },
+    {
+      "id": "data/raw/grid/test/good/012.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.01851596177850918,
+      "wasm_score": 0.018515962512493586,
+      "score_abs_error": 7.339844045051169e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.68490299999985
+    },
+    {
+      "id": "data/raw/grid/test/good/013.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.014505072021232237,
+      "wasm_score": 0.014505072634542225,
+      "score_abs_error": 6.133099878652404e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.99401100000023
+    },
+    {
+      "id": "data/raw/grid/test/good/014.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.015022598615870244,
+      "wasm_score": 0.01502259861870964,
+      "score_abs_error": 2.839397120202314e-12,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.576252999999724
+    },
+    {
+      "id": "data/raw/grid/test/good/015.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.015432058864772865,
+      "wasm_score": 0.015432058027150428,
+      "score_abs_error": 8.376224366890561e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.429515000000265
+    },
+    {
+      "id": "data/raw/grid/test/good/016.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.0205416442945645,
+      "wasm_score": 0.02054164457282551,
+      "score_abs_error": 2.7826101145489446e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.386289999999917
+    },
+    {
+      "id": "data/raw/grid/test/good/017.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.02337114732405852,
+      "wasm_score": 0.023371148462657157,
+      "score_abs_error": 1.13859863551391e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.58944100000008
+    },
+    {
+      "id": "data/raw/grid/test/good/018.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.021184472557407144,
+      "wasm_score": 0.021184473329723428,
+      "score_abs_error": 7.723162838424447e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.430966999999782
+    },
+    {
+      "id": "data/raw/grid/test/good/019.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.019343744889583167,
+      "wasm_score": 0.01934374510537742,
+      "score_abs_error": 2.1579425399376184e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.438767999999982
+    },
+    {
+      "id": "data/raw/grid/test/good/020.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.017004793763967095,
+      "wasm_score": 0.017004793788101977,
+      "score_abs_error": 2.4134881593251833e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.44379500000014
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/000.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.022221529458808464,
+      "wasm_score": 0.022221529632011745,
+      "score_abs_error": 1.7320328157821585e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.55770399999983
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/001.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.019827034429465307,
+      "wasm_score": 0.019827033180130144,
+      "score_abs_error": 1.2493351631004401e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.45018500000015
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/002.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.020833592245741408,
+      "wasm_score": 0.02083359154157068,
+      "score_abs_error": 7.041707286714605e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.00150100000019
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/003.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.026129226694337843,
+      "wasm_score": 0.026129227446778338,
+      "score_abs_error": 7.524404953274111e-10,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 30.537464
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/004.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.023246457862735884,
+      "wasm_score": 0.023246457666817415,
+      "score_abs_error": 1.9591846894817522e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 30.542551999999887
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/005.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.02388638123676817,
+      "wasm_score": 0.023886381878472137,
+      "score_abs_error": 6.417039677408809e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.7412260000001
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/006.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.023074972238845942,
+      "wasm_score": 0.02307497056076167,
+      "score_abs_error": 1.678084272233038e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.148989000000256
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/007.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.02042165336414899,
+      "wasm_score": 0.02042165357426445,
+      "score_abs_error": 2.1011545975335721e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.22364100000004
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/008.png",
+      "max_reconstruction_abs_error": 4.76837158203125e-07,
+      "python_ort_score": 0.020234365376825558,
+      "wasm_score": 0.020234365365467966,
+      "score_abs_error": 1.1357591950256207e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 38.30817699999989
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/009.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.019778310508671695,
+      "wasm_score": 0.01977831170405829,
+      "score_abs_error": 1.195386595265191e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.60011799999984
+    },
+    {
+      "id": "data/raw/grid/test/metal_contamination/010.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.017220333844661803,
+      "wasm_score": 0.017220334695061533,
+      "score_abs_error": 8.503997298014987e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 38.21374800000012
+    },
+    {
+      "id": "data/raw/grid/test/thread/000.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.019550293476729676,
+      "wasm_score": 0.019550294544343358,
+      "score_abs_error": 1.067613681488e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.381444999999985
+    },
+    {
+      "id": "data/raw/grid/test/thread/001.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.02881140047797888,
+      "wasm_score": 0.02881140281196411,
+      "score_abs_error": 2.333985230779101e-09,
+      "expected_anomaly": true,
+      "wasm_anomaly": true,
+      "inference_ms": 36.02689899999996
+    },
+    {
+      "id": "data/raw/grid/test/thread/002.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.015233676826649504,
+      "wasm_score": 0.015233678108637743,
+      "score_abs_error": 1.2819882395237459e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 36.46409700000004
+    },
+    {
+      "id": "data/raw/grid/test/thread/003.png",
+      "max_reconstruction_abs_error": 3.2782554626464844e-07,
+      "python_ort_score": 0.014804319340860607,
+      "wasm_score": 0.014804317709626404,
+      "score_abs_error": 1.6312342032698268e-09,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 34.659016000000065
+    },
+    {
+      "id": "data/raw/grid/test/thread/004.png",
+      "max_reconstruction_abs_error": 3.5762786865234375e-07,
+      "python_ort_score": 0.014467990274325286,
+      "wasm_score": 0.014467989827120087,
+      "score_abs_error": 4.4720519995489205e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.67628000000013
+    },
+    {
+      "id": "data/raw/grid/test/thread/005.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.015287984354228417,
+      "wasm_score": 0.015287984004982451,
+      "score_abs_error": 3.4924596548080444e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.19157300000006
+    },
+    {
+      "id": "data/raw/grid/test/thread/006.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.01919914103715067,
+      "wasm_score": 0.019199141244426732,
+      "score_abs_error": 2.0727606089843142e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 35.31120099999998
+    },
+    {
+      "id": "data/raw/grid/test/thread/007.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.017437944475493235,
+      "wasm_score": 0.017437945411074907,
+      "score_abs_error": 9.355816711631437e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 33.43108700000039
+    },
+    {
+      "id": "data/raw/grid/test/thread/008.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.016902644066537572,
+      "wasm_score": 0.016902644563432236,
+      "score_abs_error": 4.968946643035821e-10,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.971958000000086
+    },
+    {
+      "id": "data/raw/grid/test/thread/009.png",
+      "max_reconstruction_abs_error": 2.980232238769531e-07,
+      "python_ort_score": 0.017501510456829083,
+      "wasm_score": 0.017501510364548643,
+      "score_abs_error": 9.228044023368298e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 31.882634999999937
+    },
+    {
+      "id": "data/raw/grid/test/thread/010.png",
+      "max_reconstruction_abs_error": 2.682209014892578e-07,
+      "python_ort_score": 0.0207894620508319,
+      "wasm_score": 0.02078946208206528,
+      "score_abs_error": 3.1233380465289784e-11,
+      "expected_anomaly": false,
+      "wasm_anomaly": false,
+      "inference_ms": 32.65922500000033
+    }
+  ],
+  "timestamp_utc": "2026-11-03T17:01:59.446210+00:00",
+  "python_onnxruntime_version": "1.23.2",
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "threshold": 0.02402208368407517,
+  "top_fraction": 0.01,
+  "input_mode": "canonical RGB Float32 NCHW tensors shared byte-for-byte across both runtimes",
+  "sample_source": "all official test images",
+  "scope": "Actual ONNXRuntimeWeb WASM and deployed browser residual/score functions versus Python ORT. Browser decoding, image resizing, DOM interactions and physical cameras are outside this check."
+}

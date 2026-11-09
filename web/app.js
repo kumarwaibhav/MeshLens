@@ -45,15 +45,16 @@ function persistHistory() {
   catch { showNotice('Browser storage is unavailable. This session still works; export records before closing the page.'); }
 }
 
-function showNotice(message, type = 'info', actionLabel, action) {
-  elements.notice.classList.toggle('error', type === 'error');
-  elements.notice.replaceChildren(document.createTextNode(message));
+function showNotice(message, type = 'info', actionLabel, action, target = elements.notice) {
+  target.classList.toggle('error', type === 'error');
+  target.setAttribute('role', type === 'error' ? 'alert' : 'status');
+  target.replaceChildren(document.createTextNode(message));
   if (actionLabel && action) {
     const button = document.createElement('button'); button.className = 'text-button notice-action';
     button.textContent = actionLabel; button.addEventListener('click', action, { once: true });
-    elements.notice.append(' ', button);
+    target.append(' ', button);
   }
-  elements.notice.hidden = false;
+  target.hidden = false;
 }
 function clearNotice() { elements.notice.hidden = true; }
 function engineStatus(message, status = 'ready') {
@@ -71,7 +72,14 @@ function updateControls() {
   elements['sample-select'].disabled = unavailable || state.samples.length === 0 || state.replayActive;
   elements['load-sample'].disabled = unavailable || state.samples.length === 0 || state.replayActive;
   elements['replay-button'].disabled = !state.replayActive && (unavailable || state.samples.length === 0);
-  for (const button of elements['quick-samples'].querySelectorAll('button')) button.disabled = unavailable || state.replayActive;
+  for (const button of elements['quick-samples'].querySelectorAll('button')) {
+    button.disabled = unavailable || state.replayActive;
+    const selected = state.source?.sample?.index === Number(button.dataset.sampleIndex);
+    button.setAttribute('aria-pressed', String(selected)); button.classList.toggle('selected', selected);
+  }
+  byId('jump-to-result').hidden = !state.result;
+  byId('upload-own-image').disabled = state.busy || state.initializing;
+  byId('visualization-panel').setAttribute('aria-busy', String(state.busy));
   for (const tab of document.querySelectorAll('.view-tab')) tab.disabled = tab.dataset.view !== 'input' && !state.reconstruction;
   elements.dropzone.setAttribute('aria-disabled', String(state.busy || state.initializing));
   elements.dropzone.disabled = state.busy || state.initializing;
@@ -128,12 +136,14 @@ function renderSamples() {
   });
   const normal = state.samples.find((sample) => sample.label === 0 || sample.label === 'normal' || sample.label === 'good');
   const defect = state.samples.find((sample) => sample.label === 1 || sample.label === 'anomaly' || sample.label === 'defective');
-  const examples = [...new Set([normal, defect, ...state.samples].filter(Boolean))].slice(0, 2);
-  for (const sample of examples) {
+  const missed = state.samples.find((sample) => sample.label === 1 && sample.expected_anomaly === false);
+  const examples = [...new Set([normal, defect, missed, ...state.samples].filter(Boolean))].slice(0, 3);
+  for (const [position, sample] of examples.entries()) {
     const button = document.createElement('button'); button.className = 'quick-sample'; button.type = 'button'; button.disabled = !state.ready;
-    button.setAttribute('aria-label', `Inspect mesh sample ${sample.index + 1}`);
-    const image = document.createElement('img'); image.src = sample.url; image.alt = `Industrial mesh sample ${sample.index + 1}`; image.loading = 'eager';
-    const label = document.createElement('span'); label.textContent = `SAMPLE ${String(sample.index + 1).padStart(2, '0')} ↗`;
+    button.dataset.sampleIndex = String(sample.index);
+    const image = document.createElement('img'); image.src = sample.url; image.alt = ''; image.width = 52; image.height = 52; image.loading = 'eager';
+    const label = document.createElement('span'); label.textContent = `Example ${sample.index + 1} `;
+    const hint = document.createElement('small'); hint.textContent = ['Start here', 'Compare another', 'Look a little closer'][position]; label.append(hint);
     button.append(image, label); button.addEventListener('click', () => manualSample(sample.index));
     elements['quick-samples'].append(button);
   }
@@ -334,7 +344,9 @@ async function inspect() {
     elements['anomaly-score'].textContent = formatScore(score); elements['inference-time'].textContent = elapsed < 1000 ? `${Math.round(elapsed)} ms` : `${(elapsed / 1000).toFixed(2)} s`;
     if (source.sample && source.sample.label !== undefined) {
       const defect = source.sample.label === 0 || source.sample.label === 'normal' || source.sample.label === 'good' ? 'normal mesh' : `defective mesh${source.sample.defect_type ? ` · ${String(source.sample.defect_type).replaceAll('_', ' ')}` : ''}`;
-      elements['ground-truth'].textContent = `Benchmark ground truth: ${defect}. This label is revealed after inference and is not passed to the model.`; elements['ground-truth'].hidden = false;
+      const knownDefect = source.sample.label === 1 || source.sample.label === 'anomaly' || source.sample.label === 'defective';
+      const comparison = knownDefect ? (isAnomaly ? 'The model flagged this known defect.' : 'Missed defect: the model kept this defective image within range.') : (isAnomaly ? 'False alarm: the model flagged this normal image.' : 'The model kept this normal image within range.');
+      elements['ground-truth'].textContent = `Benchmark ground truth: ${defect}. ${comparison} The known label is revealed after inference and is not passed to the model.`; elements['ground-truth'].hidden = false;
     }
     if (!state.cameraActive && !state.replayActive) switchView('heatmap'); else drawView();
     return true;
@@ -401,7 +413,7 @@ function renderHistory() {
     const time = document.createElement('td'); const timestamp = new Date(record.timestamp);
     time.textContent = Number.isNaN(timestamp.getTime()) ? '—' : timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); time.title = Number.isNaN(timestamp.getTime()) ? '' : timestamp.toLocaleString();
     const score = document.createElement('td'); score.textContent = formatScore(record.score);
-    const decision = document.createElement('td'); const tag = document.createElement('span'); tag.className = `decision-tag ${record.is_anomaly ? 'review' : ''}`; tag.textContent = record.is_anomaly ? 'Review' : 'Within range'; decision.append(tag);
+    const decision = document.createElement('td'); const tag = document.createElement('span'); tag.className = `history-pill ${record.is_anomaly ? 'review' : ''}`; tag.textContent = record.is_anomaly ? 'Review' : 'Within range'; decision.append(tag);
     const runtime = document.createElement('td'); runtime.textContent = `${Math.round(record.inference_ms)} ms`; row.append(image, time, score, decision, runtime); body.append(row);
   }
 }
@@ -485,12 +497,18 @@ async function toggleCamera() {
   }
 }
 
-elements.dropzone.addEventListener('click', () => { if (!state.busy) elements['file-input'].click(); });
-elements.dropzone.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); if (!state.busy) elements['file-input'].click(); } });
+function chooseFile() { if (!state.busy && !state.initializing) elements['file-input'].click(); }
+// Native buttons provide Enter/Space activation without a duplicate key handler.
+elements.dropzone.addEventListener('click', chooseFile);
+byId('upload-own-image').addEventListener('click', chooseFile);
 for (const eventName of ['dragenter', 'dragover']) elements.dropzone.addEventListener(eventName, (event) => { event.preventDefault(); elements.dropzone.classList.add('dragover'); });
 for (const eventName of ['dragleave', 'drop']) elements.dropzone.addEventListener(eventName, (event) => { event.preventDefault(); elements.dropzone.classList.remove('dragover'); });
 elements.dropzone.addEventListener('drop', (event) => loadFile(event.dataTransfer.files[0]));
-elements['file-input'].addEventListener('change', (event) => { loadFile(event.target.files[0]); event.target.value = ''; });
+elements['file-input'].addEventListener('change', async (event) => {
+  const file = event.target.files[0]; event.target.value = ''; if (!file) return;
+  const loaded = await loadFile(file); const target = loaded ? byId('evidence-title') : elements.notice;
+  if (!target.hidden) { target.focus(); target.scrollIntoView?.({ block: 'start', behavior: 'auto' }); }
+});
 elements['load-sample'].addEventListener('click', () => manualSample(Number(elements['sample-select'].value)));
 elements['sample-select'].addEventListener('change', () => manualSample(Number(elements['sample-select'].value)));
 elements['inspect-button'].addEventListener('click', inspect); elements['replay-button'].addEventListener('click', toggleReplay); elements['camera-button'].addEventListener('click', toggleCamera); elements['overlay-toggle'].addEventListener('change', drawView);
@@ -503,7 +521,14 @@ for (const tab of document.querySelectorAll('.view-tab')) {
     switchView(tabs[next].dataset.view); tabs[next].focus();
   });
 }
-elements['clear-history'].addEventListener('click', () => { state.history = []; persistHistory(); renderHistory(); });
+elements['clear-history'].addEventListener('click', () => {
+  const cleared = state.history; state.history = []; persistHistory(); renderHistory();
+  showNotice('Inspection history cleared. The current result is still available.', 'info', 'Undo clear', () => {
+    const current = new Set(state.history.map((record) => record.id || `${record.timestamp}:${record.filename}`));
+    state.history = [...state.history, ...cleared.filter((record) => !current.has(record.id || `${record.timestamp}:${record.filename}`))].slice(0, 100);
+    persistHistory(); renderHistory(); showNotice('Inspection history restored.', 'info', undefined, undefined, byId('history-feedback'));
+  }, byId('history-feedback'));
+});
 elements['export-csv'].addEventListener('click', () => {
   const fields = ['timestamp', 'source_timestamp', 'filename', 'source', 'score', 'threshold', 'is_anomaly', 'inference_ms', 'processing_ms', 'model_version'];
   const lines = [fields.map(csvEscape).join(','), ...state.history.map((record) => fields.map((field) => csvEscape(record[field])).join(','))];
@@ -515,6 +540,6 @@ window.addEventListener('pagehide', () => { stopReplay(); stopCamera(); });
 document.addEventListener('visibilitychange', () => { if (document.hidden) { stopReplay(); stopCamera(); } });
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => { for (const entry of entries) if (entry.isIntersecting) for (const link of document.querySelectorAll('.nav-link')) link.classList.toggle('active', link.hash === `#${entry.target.id}`); }, { rootMargin: '-5% 0px -65% 0px', threshold: 0 });
-  for (const id of ['inspect', 'results', 'method']) observer.observe(byId(id));
+  for (const id of ['inspect', 'dataset', 'results', 'method']) observer.observe(byId(id));
 }
 renderHistory(); updateControls(); initialize();

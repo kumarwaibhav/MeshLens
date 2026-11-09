@@ -1,0 +1,146 @@
+[
+  {
+    "element": "Light body",
+    "foreground": "#183b33",
+    "background": "#f7f8f2",
+    "ratio": 11.484,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Light secondary",
+    "foreground": "#52665a",
+    "background": "#ffffff",
+    "ratio": 6.164,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Light secondary on soft",
+    "foreground": "#52665a",
+    "background": "#eef2e7",
+    "ratio": 5.427,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Primary action",
+    "foreground": "#ffffff",
+    "background": "#245c48",
+    "ratio": 7.779,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Light warning",
+    "foreground": "#855017",
+    "background": "#fff4df",
+    "ratio": 6.1,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Light focus",
+    "foreground": "#126c68",
+    "background": "#ffffff",
+    "ratio": 6.23,
+    "required": 3,
+    "passed": true
+  },
+  {
+    "element": "Light focus on soft",
+    "foreground": "#126c68",
+    "background": "#eef2e7",
+    "ratio": 5.486,
+    "required": 3,
+    "passed": true
+  },
+  {
+    "element": "Control boundary on soft",
+    "foreground": "#7b8b78",
+    "background": "#eef2e7",
+    "ratio": 3.184,
+    "required": 3,
+    "passed": true
+  },
+  {
+    "element": "Control boundary on white",
+    "foreground": "#7b8b78",
+    "background": "#ffffff",
+    "ratio": 3.617,
+    "required": 3,
+    "passed": true
+  },
+  {
+    "element": "Dark body",
+    "foreground": "#e6eee3",
+    "background": "#101f1a",
+    "ratio": 14.359,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Dark secondary",
+    "foreground": "#b6c8b8",
+    "background": "#182b24",
+    "ratio": 8.471,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Dark secondary on soft",
+    "foreground": "#b6c8b8",
+    "background": "#20362c",
+    "ratio": 7.347,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Dark action",
+    "foreground": "#142b21",
+    "background": "#b5d9aa",
+    "ratio": 9.641,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Dark warning",
+    "foreground": "#f2cf91",
+    "background": "#352a1a",
+    "ratio": 9.422,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Dark focus",
+    "foreground": "#8ce5df",
+    "background": "#182b24",
+    "ratio": 10.205,
+    "required": 3,
+    "passed": true
+  },
+  {
+    "element": "Dark control boundary",
+    "foreground": "#8ba58d",
+    "background": "#20362c",
+    "ratio": 4.838,
+    "required": 3,
+    "passed": true
+  },
+  {
+    "element": "Hero caption",
+    "foreground": "#c6d6bd",
+    "background": "#173c34",
+    "ratio": 7.94,
+    "required": 4.5,
+    "passed": true
+  },
+  {
+    "element": "Hero chip",
+    "foreground": "#57330d",
+    "background": "#f4dca8",
+    "ratio": 8.304,
+    "required": 4.5,
+    "passed": true
+  }
+]

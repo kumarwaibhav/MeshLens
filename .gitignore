@@ -11,5 +11,6 @@ __pycache__/
 .ruff_cache/
 .env
 *.zip
+!web/downloads/*.zip
 tmp/
 .build-stage-*/

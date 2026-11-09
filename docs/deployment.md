@@ -14,6 +14,14 @@ npm run serve
 The Node-native server binds to loopback on port 4173 by default. No Python installation is
 needed for this local application path. Any compatible static HTTP server can serve `dist/`.
 
+If port 4173 is occupied, choose another available port without stopping an unknown process:
+
+```bash
+node --input-type=module -e "import {startServer} from './scripts/serve_web.mjs'; await startServer({port:4174})"
+```
+
+Open the URL printed by the server. On Windows use `npm.cmd` if PowerShell blocks npm's script shim.
+
 Open http://127.0.0.1:4173. Wait for model ready, inspect a bundled sample and check the score,
 threshold, reconstruction and residual evidence. Serve through HTTP rather than opening a
 `file://` page, because local model/WebAssembly fetches can otherwise fail.
@@ -59,3 +67,17 @@ camera operation and production throughput require their own verification.
 See the [workflow guide](RUNBOOK.md) for exact environment setup, Windows commands,
 fresh-versus-reused training, input bounds, camera cadence and latency definitions. Camera
 software/mock-stream checks do not verify physical camera hardware or production line timing.
+
+## UI revision deployment checks
+
+Use the repository's existing Vercel integration. `vercel.json` retains `npm ci`, `npm run build`
+and output `dist`; no Python or retraining is needed. On the deployed HTTPS domain verify the
+real three-image walkthrough, input/reconstruction/error-map tabs, known-label explanations,
+file validation, JSON/CSV/metadata downloads and the 18-example ZIP. Confirm that the guided
+third example explains a missed defect and that recall remains 19.3%.
+
+Run a clean build before deployment. `scripts/prepare_ui_review.mjs` is a local-only test fixture;
+never upload a dist directory after preparing that fixture. Standard `npm run build` removes it.
+
+For the design decisions, responsive widths and limits of verification, see
+[the handoff](design/DESIGN_HANDOFF.md) and [accessibility audit](design/ACCESSIBILITY_REVIEW.md).

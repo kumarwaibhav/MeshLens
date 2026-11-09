@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "model_version": "meshlens-ae-b8d984eef4d4",
+  "model_sha256": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4",
+  "source_sample": {
+    "id": "bent-000",
+    "filename": "bent-000.png",
+    "label": 1,
+    "defect_type": "bent",
+    "expected_score": 0.025862005533559655,
+    "expected_anomaly": true,
+    "source_path": "data/raw/grid/test/bent/000.png",
+    "sha256": "9131bb8b38abaaaf581ab2a5cecf68105e367246fd79c59191895555b480ff62"
+  },
+  "runtime": "onnxruntime 1.23.2 CPU",
+  "observed_score": 0.025862006760179634,
+  "visualization": "Actual reconstruction and browser-equivalent relative residual overlay; not probability or validated segmentation.",
+  "license": "CC BY-NC-SA 4.0; MVTec Software GmbH and original authors",
+  "files": {
+    "original.png": "9131bb8b38abaaaf581ab2a5cecf68105e367246fd79c59191895555b480ff62",
+    "reconstruction.png": "cbf99855b8b91f3f61dcf58384abc4e2a026d03d0648ada678c4553a4e9a202b",
+    "residual.png": "4d371c614a435688570f5c99224b045ea7b7dc722cd54b41950a5271f6002616"
+  }
+}
