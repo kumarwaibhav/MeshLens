@@ -1,0 +1,22 @@
+{
+  "kind": "normal-lattice-v1",
+  "image_size": 256,
+  "variant": "joint",
+  "tail_fraction": 0.005,
+  "fit_scale": 0.47045176621031776,
+  "tune_cutoff": 1.0576706589594864,
+  "tune_clean_count": 52,
+  "tune_clean_alerts": 2,
+  "synthetic_recall_by_family": {
+    "bend": 0.9615384615384616,
+    "contamination": 0.8269230769230769,
+    "fibre": 0.6153846153846154,
+    "gap": 0.9807692307692307,
+    "glue": 0.23076923076923078
+  },
+  "synthetic_macro_recall": 0.7230769230769231,
+  "data_manifest_sha256": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+  "development_manifest_sha256": "b10c8822b36f2cf2daca2c459e347e82d7d6c17a876e5249717e4c925e89249a",
+  "fit_count": 160,
+  "selection_rule": "Maximum synthetic-family macro recall at no more than two tune-clean alerts"
+}

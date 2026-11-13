@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "MeshLens repeat-based mesh inspection detector",
+  "model_version": "meshlens-inspect-7665cb57f023",
+  "runtime": "texture-js",
+  "image_size": 256,
+  "preprocessing": "area-rgb8-v1",
+  "threshold": 1.01049636,
+  "decision": "strict-greater-than",
+  "decision_rule": "score > threshold",
+  "score_decimals": 8,
+  "score_is_probability": false,
+  "variant": "joint",
+  "tail_fraction": 0.005,
+  "export": {
+    "model_file": "detector-model.json",
+    "model_sha256": "7665cb57f02315c29a51209686a34b8a2e872f447ff31dac359c81d5c3fae5c1",
+    "model_bytes": 1261
+  },
+  "outputs": {
+    "score_name": "score",
+    "map_name": "anomaly_map",
+    "map_size": 256
+  },
+  "input_quality": {
+    "min_side": 256,
+    "max_aspect_ratio": 1.5,
+    "min_repeat_directions": 2
+  },
+  "calibration": {
+    "count": 52,
+    "alpha": 0.05,
+    "order_statistic_rank": 51,
+    "strict_greater_than": true,
+    "scores_sha256": "bc2612f2f01bbc525cdc80d2280a7c22ee5beb342338482f9c9677758eba103e"
+  },
+  "dataset": {
+    "name": "MVTec AD",
+    "category": "grid",
+    "fit": 160,
+    "tune": 52,
+    "calibration": 52,
+    "test": 78,
+    "manifest_sha256": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+    "development_manifest_sha256": "b10c8822b36f2cf2daca2c459e347e82d7d6c17a876e5249717e4c925e89249a",
+    "license": "CC-BY-NC-SA-4.0"
+  },
+  "qualification": {
+    "status": "benchmark_only",
+    "automated_line_inspection_qualified": false,
+    "independent_target_line_qualified": false
+  },
+  "owner": {
+    "name": "Kumar Waibhav AKshat",
+    "email": "kwa.waibhav@gmail.com"
+  }
+}

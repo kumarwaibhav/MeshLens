@@ -1,5 +1,7 @@
 # Design System: MeshLens
 
+**Document scope:** the original dated UI record is retained below. The inspection-detector revision at the end updates behavior and review criteria. Current accuracy evidence is in the [active model card](../MODEL_CARD.md); earlier UI checks retain their original scope.
+
 **Revision:** 2026-11-03 · **Implementation:** plain HTML, CSS and ES modules
 
 ## Principles
@@ -65,3 +67,19 @@ Semantic colors, common spacing, radii, type families, target size and motion ar
 - Treat 44px as the project's usability target. WCAG 2.1 SC 2.5.5 is AAA, not AA.
 
 Glass is a restrained CSS navigation treatment with opaque and reduced-transparency fallbacks. The project does not call native SwiftUI/UIKit Liquid Glass APIs.
+
+## Inspection detector revision (2026-11-13)
+
+Reuse the existing semantic tokens and interaction patterns. Review means a request for
+human inspection; Within calibrated range is not a certified pass. Input needs review is an
+inconclusive state with its own explanation, not a normal score. Readiness, loading, disabled,
+retry and error states must remain explicit and readable.
+
+Use the same tab component for Original, Detector map, Reconstruction and AE error map.
+Keep the active detector's numerical provenance separate from AE visualization labels.
+The numerical heatmap palette remains separate from semantic warning/success colors.
+
+This implementation is HTML/CSS/JavaScript. Optional glass-like navigation effects require
+an opaque fallback, readable contrast and reduced-motion support. Avoid stacking blur across
+inspection evidence or making transparency necessary to read text. Native iOS APIs are not
+part of this web implementation.

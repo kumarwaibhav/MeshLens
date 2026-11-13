@@ -1,0 +1,314 @@
+[
+  {
+    "path": "data/raw/grid/train/good/001.png",
+    "sha256": "578683b92f8c10abfdc9e70157f313b285f072f8205ebc07cdd5aca0c835e398",
+    "score": 0.80863877,
+    "periodicity": 0.8968737958124534
+  },
+  {
+    "path": "data/raw/grid/train/good/006.png",
+    "sha256": "f0b458d5cb38bb22d4bcbbbaf6168d6c4f0c3293b3b986b23ff0975a7b2f92fd",
+    "score": 0.76668493,
+    "periodicity": 0.8762488032066333
+  },
+  {
+    "path": "data/raw/grid/train/good/007.png",
+    "sha256": "127d9b602bc3bc733b7d0b784326b0c5ba7aba96029b52a122a59b4aa9955dea",
+    "score": 0.83342372,
+    "periodicity": 0.8452203761403342
+  },
+  {
+    "path": "data/raw/grid/train/good/008.png",
+    "sha256": "d871252e5ff9202cf60dd276deb2a856d96e2073ee21eedaaa8b1689bd5279cc",
+    "score": 0.76530429,
+    "periodicity": 0.9490153593271252
+  },
+  {
+    "path": "data/raw/grid/train/good/012.png",
+    "sha256": "59753aa0704ada104748e66ac5c0e2b0cf7a4281afabb097465d590f2ecc436d",
+    "score": 0.63203931,
+    "periodicity": 0.8467062334753916
+  },
+  {
+    "path": "data/raw/grid/train/good/023.png",
+    "sha256": "c7095617fe38b98b4b3f11cf315f4bb5541dc3358b4d6322dc0a7359a6389112",
+    "score": 0.56344192,
+    "periodicity": 0.8756827366050792
+  },
+  {
+    "path": "data/raw/grid/train/good/024.png",
+    "sha256": "cf12c239b7787a6d52e45b1b278e5d0e260c547991c66b0021c41bcb83ec6920",
+    "score": 0.57111265,
+    "periodicity": 0.9502235324878606
+  },
+  {
+    "path": "data/raw/grid/train/good/026.png",
+    "sha256": "29e6f7e201ac17b6b8986f7209a2e57de39f1a59f7836e5a4d46d347f737be32",
+    "score": 0.48859495,
+    "periodicity": 0.9590717555555398
+  },
+  {
+    "path": "data/raw/grid/train/good/039.png",
+    "sha256": "4733fadc99a89c861bdec9ce050139c39e6862d71c323fb12e97b16507dd1a32",
+    "score": 0.6767448,
+    "periodicity": 0.9514337748686313
+  },
+  {
+    "path": "data/raw/grid/train/good/040.png",
+    "sha256": "160447f6d37b8a14d594a94f9dc467d65ce96a9e34196797f616e9f400a06d05",
+    "score": 0.86921472,
+    "periodicity": 0.8857887585468711
+  },
+  {
+    "path": "data/raw/grid/train/good/044.png",
+    "sha256": "a31ef176bdee2fdab7f3a5d1ea5eb13a4fdadb6e57307118b4fd729602a1b6e0",
+    "score": 0.71206092,
+    "periodicity": 0.8920811780399762
+  },
+  {
+    "path": "data/raw/grid/train/good/050.png",
+    "sha256": "ed87d6d8e7cd81a5623abc4cc10520cfda05bba9577ba141bf753c874174caf3",
+    "score": 1.09020586,
+    "periodicity": 0.8789922329159604
+  },
+  {
+    "path": "data/raw/grid/train/good/052.png",
+    "sha256": "a42e0caf5e3d429a0b3e899ebf239d800ed74547643469e307fea57c9233da46",
+    "score": 0.7268536,
+    "periodicity": 0.9583702217718494
+  },
+  {
+    "path": "data/raw/grid/train/good/055.png",
+    "sha256": "4bb8492596da71a1f9b19c8e5ebbc9eab5e95939e59338d3111a81d6c4a22528",
+    "score": 0.7842476,
+    "periodicity": 0.9126997871433076
+  },
+  {
+    "path": "data/raw/grid/train/good/056.png",
+    "sha256": "58526433065b5fd1a204a0b5512502b1889687299ca7297ace21b9a2ffa54bdc",
+    "score": 0.6968813,
+    "periodicity": 0.8829798274818893
+  },
+  {
+    "path": "data/raw/grid/train/good/057.png",
+    "sha256": "2ba4eea003a91135fff4a2c7b0e427164aa5961524e2601ad77b492e6c320e6b",
+    "score": 0.73684993,
+    "periodicity": 0.9141731534336066
+  },
+  {
+    "path": "data/raw/grid/train/good/059.png",
+    "sha256": "a18939ceeec5f016764602001a5bee6a942c38e9103c137538fda234e6a205c9",
+    "score": 0.66767097,
+    "periodicity": 0.8906324933261185
+  },
+  {
+    "path": "data/raw/grid/train/good/067.png",
+    "sha256": "e3c4e8473d4cdd28c1ad5bdbaf5eb7a8a4c6c15a2a21109a6be3ff815d2b223e",
+    "score": 0.67567416,
+    "periodicity": 0.9229437374728139
+  },
+  {
+    "path": "data/raw/grid/train/good/071.png",
+    "sha256": "1ca9f300d5fdc67dfc8b2ac93c7924cb03e53fc7cd44c8afae7e7113a5572012",
+    "score": 0.69500934,
+    "periodicity": 0.847237887100465
+  },
+  {
+    "path": "data/raw/grid/train/good/086.png",
+    "sha256": "f139d69e49871ec8f93103f0aa4f0831a1be4f7d867159273fd7b6914b2585af",
+    "score": 0.65563811,
+    "periodicity": 0.9618540035149614
+  },
+  {
+    "path": "data/raw/grid/train/good/087.png",
+    "sha256": "0abed348949e18491dd5ae68ae1010f70d8505eebb13c09e0f1586def3de727d",
+    "score": 0.59057374,
+    "periodicity": 0.8452001771009552
+  },
+  {
+    "path": "data/raw/grid/train/good/088.png",
+    "sha256": "04e163aacc145a15680ec0d27673ddfdcef1820ee76cea2af618a700f3850bfb",
+    "score": 0.86836316,
+    "periodicity": 0.8464319792501678
+  },
+  {
+    "path": "data/raw/grid/train/good/091.png",
+    "sha256": "5c3a70d1f8fea8fbd692e16051e37e342c33b9cba23e017c8445fb797433c9ef",
+    "score": 0.69487265,
+    "periodicity": 0.9100966583379829
+  },
+  {
+    "path": "data/raw/grid/train/good/097.png",
+    "sha256": "0a48ab1d5dbaf8ba6600c98834e185b5571aed9b3da0c0b53fcb0fbf30a7a9a5",
+    "score": 0.77035848,
+    "periodicity": 0.8917313357261815
+  },
+  {
+    "path": "data/raw/grid/train/good/107.png",
+    "sha256": "029f292fd09501198d87a9c8bc6e00cb22204e588dc92ded2c4bdd427b91e286",
+    "score": 0.77125658,
+    "periodicity": 0.9616107825714477
+  },
+  {
+    "path": "data/raw/grid/train/good/108.png",
+    "sha256": "31e3e2da94b27761a2f069ecf32c223d027efd967a08ce960b7294553a5d1d32",
+    "score": 0.7147022,
+    "periodicity": 0.9014131258200974
+  },
+  {
+    "path": "data/raw/grid/train/good/114.png",
+    "sha256": "8f4b61d49dc32acfb141057055c6ccf8779a66e7e9908952ee723fab97d4a7d1",
+    "score": 0.87533278,
+    "periodicity": 0.8881949458598545
+  },
+  {
+    "path": "data/raw/grid/train/good/125.png",
+    "sha256": "fb4987a6301c663c3c31772b61cbc141439d6f9dff1e84f9fd7d3b7e2a6ddc58",
+    "score": 0.55544369,
+    "periodicity": 0.8833214345111527
+  },
+  {
+    "path": "data/raw/grid/train/good/129.png",
+    "sha256": "db9aa9eeaafe82776c91490a04bf316eb23c5b169f604e7bfbf76949f382ec32",
+    "score": 0.75389714,
+    "periodicity": 0.9113850199807232
+  },
+  {
+    "path": "data/raw/grid/train/good/139.png",
+    "sha256": "ec297ec6451165f715197cc1c6c55e1b15652ede5679387310437b40c4396ed6",
+    "score": 0.54866876,
+    "periodicity": 0.9253104995857728
+  },
+  {
+    "path": "data/raw/grid/train/good/140.png",
+    "sha256": "2eda3ac86d8687718e23adeb1140b1f1766aad7a34c676638154f4bb0c0f4fee",
+    "score": 0.8770302,
+    "periodicity": 0.8993418251434904
+  },
+  {
+    "path": "data/raw/grid/train/good/143.png",
+    "sha256": "7742f5643c12650dae06481fed094e58d7a9302652ce79c8b6a4aec6392d06bd",
+    "score": 0.85044648,
+    "periodicity": 0.8627688009458111
+  },
+  {
+    "path": "data/raw/grid/train/good/150.png",
+    "sha256": "88ed0a960b404766c12c383d35ff6caaafc93484b55ba71325f0b76e5faf7313",
+    "score": 0.61370265,
+    "periodicity": 0.9733649163880246
+  },
+  {
+    "path": "data/raw/grid/train/good/154.png",
+    "sha256": "690a334b510aef799f190f2565e501f934f5bdc44da96a05230a4fc4d0615e9b",
+    "score": 0.57288667,
+    "periodicity": 0.8481945484571018
+  },
+  {
+    "path": "data/raw/grid/train/good/166.png",
+    "sha256": "652e3ac447f02323caa5787f67abbccd3a82a6b4d4b0d5f9b874766e544a2bf7",
+    "score": 0.80071394,
+    "periodicity": 0.9068670301294699
+  },
+  {
+    "path": "data/raw/grid/train/good/178.png",
+    "sha256": "f4efc01d6cf7c3536d7f8c8541c9dcc550c02cf9db790a0ebb1b1c76c21fa7cb",
+    "score": 0.7413944,
+    "periodicity": 0.904938049890927
+  },
+  {
+    "path": "data/raw/grid/train/good/179.png",
+    "sha256": "cc0dc81c693ab8bb91e3464b940dd5de6beeb4b08292bac72416409c283e6e7d",
+    "score": 0.78451074,
+    "periodicity": 0.8568754831888241
+  },
+  {
+    "path": "data/raw/grid/train/good/183.png",
+    "sha256": "5aea3ae90756965989959a89153a68a95458135d120452fc06853918fcc5e59b",
+    "score": 0.8073873,
+    "periodicity": 0.86955193889976
+  },
+  {
+    "path": "data/raw/grid/train/good/194.png",
+    "sha256": "b205dc4fd0ad2ef18f6d92367045597c04822e6d38f54bb9383e88d3d6fada81",
+    "score": 0.63886899,
+    "periodicity": 0.8305272658099789
+  },
+  {
+    "path": "data/raw/grid/train/good/195.png",
+    "sha256": "cfc5ef3b07155d0f98cf05bbaa8c09ecb8a0e2544000122a4373f01c7e61d68e",
+    "score": 0.60346933,
+    "periodicity": 0.8424159951860329
+  },
+  {
+    "path": "data/raw/grid/train/good/206.png",
+    "sha256": "62057d7d6b68802012c8470043e1745da692f5b418a091e4c9a323a46113f331",
+    "score": 0.43895642,
+    "periodicity": 0.9215098943310297
+  },
+  {
+    "path": "data/raw/grid/train/good/207.png",
+    "sha256": "adbab5221220744ecf7595a470b0d0d42d79aceb485cb8a8cfd62ecd0da9f8fe",
+    "score": 0.48898705,
+    "periodicity": 0.9224959946193857
+  },
+  {
+    "path": "data/raw/grid/train/good/216.png",
+    "sha256": "bb399436ee2ac212ce1ad445deab0c5f38f38b6a7ca0b41176e961b7009034ab",
+    "score": 0.78117912,
+    "periodicity": 0.9727246430293452
+  },
+  {
+    "path": "data/raw/grid/train/good/222.png",
+    "sha256": "26db610dbc3cac5d311a310d77907a1f70139e668b4cd610d22c9ac0d0527bd4",
+    "score": 0.726784,
+    "periodicity": 0.8583217042547314
+  },
+  {
+    "path": "data/raw/grid/train/good/231.png",
+    "sha256": "cf8d2d40e305bbe535ba1c5c170292735919dfafc1b9015716523c52bd62fd1c",
+    "score": 0.72612415,
+    "periodicity": 0.9317776488235211
+  },
+  {
+    "path": "data/raw/grid/train/good/236.png",
+    "sha256": "fb016f88b9f949dba240fb97f6b60cc8860d9bc2c347528311c2e28e8bd1d2ab",
+    "score": 0.72631425,
+    "periodicity": 0.9245963464743351
+  },
+  {
+    "path": "data/raw/grid/train/good/248.png",
+    "sha256": "a74ab8b47d3af0a3dd2d0720519d2bb1df41fa5eb29b61d3491ba41cbbfba764",
+    "score": 0.7683577,
+    "periodicity": 0.8630496220527049
+  },
+  {
+    "path": "data/raw/grid/train/good/251.png",
+    "sha256": "aea530f904b84aa3f8e7966bb6a4f809891513475c0eb55ce9c39e329447eb15",
+    "score": 0.69869994,
+    "periodicity": 0.8849065152158473
+  },
+  {
+    "path": "data/raw/grid/train/good/252.png",
+    "sha256": "2b56a4a72404092330365c555c21b585bb24ee659db97f529f27809a97f27e4e",
+    "score": 0.45654765,
+    "periodicity": 0.8514349270987409
+  },
+  {
+    "path": "data/raw/grid/train/good/255.png",
+    "sha256": "c2e0065ef49d63b2a6a1e95819d6d64ebc8bf8338d0cb5ef78b78917e856d203",
+    "score": 0.60098091,
+    "periodicity": 0.8730492393519672
+  },
+  {
+    "path": "data/raw/grid/train/good/258.png",
+    "sha256": "8fc6310b1a7878b6995ac0a51fa71ed1f0edbfe47bf2f58bc7be00a18ff65046",
+    "score": 0.8484317,
+    "periodicity": 0.8951471990852082
+  },
+  {
+    "path": "data/raw/grid/train/good/259.png",
+    "sha256": "d801815bbb3e7716901654e3543a2d9c4f083afdd7bf9099de7145c0c7b2821b",
+    "score": 1.01049636,
+    "periodicity": 0.9438177006785727
+  }
+]

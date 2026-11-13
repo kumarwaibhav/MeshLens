@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-11-13T03:04:08.037385+00:00",
+  "model_version": "meshlens-inspect-7665cb57f023",
+  "model_sha256": "7665cb57f02315c29a51209686a34b8a2e872f447ff31dac359c81d5c3fae5c1",
+  "threshold": 1.01049636,
+  "decision_rule": "score > threshold",
+  "score_decimals": 8,
+  "calibration": {
+    "count": 52,
+    "alpha": 0.05,
+    "order_statistic_rank": 51,
+    "strict_greater_than": true,
+    "scores_sha256": "bc2612f2f01bbc525cdc80d2280a7c22ee5beb342338482f9c9677758eba103e"
+  },
+  "selection_used_test": false,
+  "files": {
+    "artifacts/inspection/detector-model.json": {
+      "sha256": "7665cb57f02315c29a51209686a34b8a2e872f447ff31dac359c81d5c3fae5c1",
+      "bytes": 1261
+    },
+    "artifacts/inspection/detector.json": {
+      "sha256": "c7be9a68180cd8df04fd28142dd5db45538b5e0489e12dca45b9c4bf0e52b1fb",
+      "bytes": 1631
+    },
+    "artifacts/inspection/calibration.json": {
+      "sha256": "bc2612f2f01bbc525cdc80d2280a7c22ee5beb342338482f9c9677758eba103e",
+      "bytes": 10491
+    },
+    "reports/inspection/selection.json": {
+      "sha256": "df5df74bb4137bbee6d8c802866a65a13ddd329fc26820503d0699b051c3f572",
+      "bytes": 798
+    },
+    "reports/inspection/protocol.json": {
+      "sha256": "16f136262b6688293cadbfc2e58f5ea295e61bf86d7b19f53efe4b53fec75412",
+      "bytes": 1675
+    },
+    "data/manifest.csv": {
+      "sha256": "178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f",
+      "bytes": 41618
+    },
+    "src/meshlens/texture_detector.py": {
+      "sha256": "6b18be429ec1db3bb41fbb07dbe83289754f8f719f8009e8b080cac03e600ce2",
+      "bytes": 10818
+    },
+    "src/meshlens/inspection_input.py": {
+      "sha256": "8e199c996218356ddaed96b11342bff9a880639e432026b9afaf002adcea8bf5",
+      "bytes": 2725
+    },
+    "web/texture_detector.js": {
+      "sha256": "bbdd49980352f65005d5ef5fa9e959693aea0f165f5f8a5a36bf4e8cdc108c24",
+      "bytes": 11687
+    },
+    "web/inspection_input.js": {
+      "sha256": "a46b59aa729fc0121c621b00f99ca72c6039c6a25384fed16cf7e0e5ca18ac97",
+      "bytes": 2968
+    }
+  },
+  "qualification": {
+    "status": "benchmark_only",
+    "automated_line_inspection_qualified": false
+  }
+}

@@ -3,6 +3,7 @@ import { cp, mkdir, readFile, writeFile, lstat, readdir, mkdtemp, rename, rm } f
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { verifyInspectionRelease } from './inspection_release.mjs';
 import { validateMetadata, validateImageBytes } from '../web/validation.js';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const hash = (value) => createHash('sha256').update(value).digest('hex');
@@ -51,16 +52,19 @@ export async function buildWeb({ root = ROOT, destination = path.join(root, 'dis
     if (size.width !== 256 || size.height !== 256) throw new Error('Benchmark samples must use the frozen 256px preprocessing.');
     sampleAssets.set(sample.filename, bytes);
   }
+  const inspection = await verifyInspectionRelease({ read, manifest });
   const runtime = JSON.parse(await read('node_modules/onnxruntime-web/package.json')); const noble = JSON.parse(await read('node_modules/@noble/hashes/package.json'));
   if (runtime.version !== '1.23.2' || noble.version !== '2.4.0') throw new Error('Installed browser dependencies differ from the pinned release. Run npm ci.');
   const stage = await mkdtemp(path.join(root, '.build-stage-')); let backup;
   try {
     await safeCopyTree(path.join(root, 'web'), stage); await mkdir(path.join(stage, 'assets/samples'), { recursive: true });
-    const assets = { 'model.onnx': model, 'metadata.json': metadataBytes, 'samples.json': samplesBytes, 'evaluation.json': evaluationBytes };
-    const release = { schema_version: 1, model_version: metadata.model_version, assets: {}, samples: {} };
+    const assets = { 'model.onnx': model, 'metadata.json': metadataBytes, 'samples.json': inspection.samplesBytes, 'evaluation.json': evaluationBytes, 'autoencoder-samples.json': samplesBytes, 'detector.json': inspection.metadataBytes, 'detector-model.json': inspection.modelBytes, 'detector-evaluation.json': inspection.evaluationBytes };
+    const release = { schema_version: 2, model_version: metadata.model_version, detector_version: inspection.metadata.model_version, assets: {}, samples: {}, inspection_provenance: { freeze_sha256: inspection.freezeHash, raw_report_sha256: inspection.rawHash } };
     for (const [name, bytes] of Object.entries(assets)) { await writeFile(path.join(stage, 'assets', name), bytes); release.assets[name] = { sha256: hash(bytes), bytes: bytes.length }; }
     await writeFile(path.join(stage, 'assets/metrics.json'), evaluationBytes); await writeFile(path.join(stage, 'assets/technical_report.pdf'), pdf);
-    for (const [name, bytes] of sampleAssets) { await writeFile(path.join(stage, 'assets/samples', name), bytes); release.samples[name] = { sha256: hash(bytes), bytes: bytes.length }; }
+    for (const [name, bytes] of inspection.sampleAssets) { await writeFile(path.join(stage, 'assets/samples', name), bytes); release.samples[name] = { sha256: hash(bytes), bytes: bytes.length }; }
+    await mkdir(path.join(stage, 'assets/autoencoder-samples'), { recursive: true });
+    for (const [name, bytes] of sampleAssets) await writeFile(path.join(stage, 'assets/autoencoder-samples', name), bytes);
     await writeFile(path.join(stage, 'assets/release.json'), `${JSON.stringify(release, null, 2)}\n`);
     await mkdir(path.join(stage, 'vendor/noble'), { recursive: true });
     for (const name of ['ort.wasm.min.mjs', 'ort-wasm-simd-threaded.mjs', 'ort-wasm-simd-threaded.wasm']) await writeFile(path.join(stage, 'vendor', name), await read(`node_modules/onnxruntime-web/dist/${name}`));
@@ -68,7 +72,7 @@ export async function buildWeb({ root = ROOT, destination = path.join(root, 'dis
     for (const name of ['LICENSE', 'ThirdPartyNotices.txt']) await writeFile(path.join(stage, 'vendor', name), await read(`third_party/onnxruntime/${name}`));
     for (const name of await readdir(path.join(root, 'node_modules/@noble/hashes'))) if (name.endsWith('.js') || name === 'LICENSE') await writeFile(path.join(stage, 'vendor/noble', name), await read(`node_modules/@noble/hashes/${name}`));
     for (const name of ['LICENSE', 'THIRD_PARTY_NOTICES.md']) await writeFile(path.join(stage, name), await read(name));
-    await writeFile(path.join(stage, 'build-info.json'), `${JSON.stringify({ model_version: metadata.model_version, model_sha256: metadata.export.model_sha256 }, null, 2)}\n`);
+    await writeFile(path.join(stage, 'build-info.json'), `${JSON.stringify({ model_version: metadata.model_version, model_sha256: metadata.export.model_sha256, detector_version: inspection.metadata.model_version, detector_sha256: inspection.metadata.export.model_sha256, freeze_sha256: inspection.freezeHash }, null, 2)}\n`);
     try {
       const existing = await lstat(destination);
       if (!existing.isDirectory() || existing.isSymbolicLink()) throw new Error('Existing build destination is not a real directory.');
@@ -77,7 +81,7 @@ export async function buildWeb({ root = ROOT, destination = path.join(root, 'dis
     try { await rename(stage, destination); }
     catch (error) { if (backup) { await rename(backup, destination); backup = null; } throw error; }
     if (backup) await rm(backup, { recursive: true, force: true });
-    return { destination, model_version: metadata.model_version, samples: sampleAssets.size };
+    return { destination, model_version: metadata.model_version, detector_version: inspection.metadata.model_version, samples: inspection.sampleAssets.size };
   } finally { await rm(stage, { recursive: true, force: true }); }
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

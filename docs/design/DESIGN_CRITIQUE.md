@@ -1,5 +1,7 @@
 # Design Critique: MeshLens web experience
 
+**Document scope:** the original dated UI record is retained below. The inspection-detector revision at the end updates behavior and review criteria. Current accuracy evidence is in the [active model card](../MODEL_CARD.md); earlier UI checks retain their original scope.
+
 **Revision:** 2026-11-03 · **Baseline:** `2bc82316c83ef686f6975eec7b0ae0ee74e47c47` · **Stage:** implemented refinement
 
 ## Overall impression
@@ -53,3 +55,19 @@ The baseline had measured contrast failures in navigation, labels, normal decisi
 3. **Validate accessibility beyond layout.** Automated and browser interaction checks are recorded; physical-device and assistive-technology testing remain necessary.
 
 No conversion improvement, user-study result or production-readiness claim is inferred from this redesign.
+
+## Inspection detector revision (2026-11-13)
+
+The active score now comes from texture repetition comparison, while the AE remains a visual
+baseline. The highest-priority comprehension risk is confusing those two outputs. Give the
+detector map a distinct name, label AE views explicitly and keep the decision's score source
+visible beside its threshold/version.
+
+The reproduced known benchmark detected 56/57 defects but flagged 4/21 normal images. This failed
+the declared 5% false-alarm goal. Keep recall, normal false alarms, support counts and view-shift
+failures together. The recovery repeats known outcomes with the previously selected algorithm and cutoff.
+A positive-looking summary must not imply factory qualification.
+
+Usability priorities are a clear input-review state, actionable new-photo guidance, a known
+failure replay, and four-tab navigation that wraps on small screens. Treat older review
+observations as historical evidence, and recheck changed states in the restored interface.

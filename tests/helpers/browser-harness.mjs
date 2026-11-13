@@ -14,7 +14,7 @@ export function deferred() {
 class Element {
   constructor(tag = 'div', id = '') {
     Object.assign(this, { tagName: tag.toUpperCase(), id, children: [], listeners: new Map(), attributes: new Map(), dataset: {},
-      hidden: false, disabled: false, checked: true, value: '', _text: '', _classes: new Set(), isConnected: true });
+      hidden: false, disabled: false, checked: true, value: '', _text: '', _classes: new Set(), isConnected: true, style: {} });
     this.parentElement = { classList: { add() {}, remove() {} } };
     this.classList = {
       add: (...names) => names.forEach((name) => this._classes.add(name)),
@@ -84,6 +84,15 @@ export async function browserHarness(options = {}) {
   const entry = (value) => ({ sha256: createHash('sha256').update(value).digest('hex'), bytes: value.length });
   const release = { schema_version: 1, model_version: metadata.model_version,
     assets: { 'metadata.json': entry(metadataBytes), 'samples.json': entry(samplesBytes), 'evaluation.json': entry(evaluationBytes), 'model.onnx': entry(model) }, samples: {} };
+  const inspectionAssets = new Map();
+  if (options.inspection) {
+    const detector = options.inspection;
+    inspectionAssets.set('detector.json', Buffer.from(JSON.stringify(detector.metadata)));
+    inspectionAssets.set(detector.metadata.export.model_file, Buffer.from(detector.model));
+    inspectionAssets.set('detector-evaluation.json', Buffer.from(JSON.stringify(detector.evaluation)));
+    release.schema_version = 2; release.detector_version = detector.metadata.model_version;
+    for (const [name, bytes] of inspectionAssets) release.assets[name] = entry(bytes);
+  }
   for (const item of samples.samples) release.samples[item.filename] = entry(await readFile(new URL(`artifacts/samples/${item.filename}`, root)));
   let currentSession;
   const makeSession = () => {
@@ -99,12 +108,12 @@ export async function browserHarness(options = {}) {
     InferenceSession: { async create(...args) { return options.createSession ? options.createSession(args, makeSession) : makeSession(); } } };
   const response = (data, status = 200) => {
     const bytes = typeof data === 'object' && !(data instanceof Uint8Array) ? Buffer.from(JSON.stringify(data)) : Buffer.from(data);
-    return { ok: status >= 200 && status < 300, status, headers: new Headers(), json: async () => JSON.parse(bytes.toString()), blob: async () => new Blob([bytes]),
-      arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) };
+    return new Response(bytes, { status });
   };
   const defaultFetch = async (url) => {
     const pathname = String(url).split('?')[0];
     if (pathname.endsWith('/release.json')) return response(release);
+    for (const [name, bytes] of inspectionAssets) if (pathname === `/assets/${name}`) return response(bytes);
     if (pathname.endsWith('/metadata.json')) return response(metadataBytes);
     if (pathname.endsWith('/samples.json')) return response(samplesBytes);
     if (pathname.endsWith('/evaluation.json')) return response(evaluationBytes);
@@ -125,7 +134,11 @@ export async function browserHarness(options = {}) {
   let source = await readFile(new URL('web/app.js', root), 'utf8');
   for (const match of [...source.matchAll(/import\s*\{([^}]+)\}\s*from\s*['"](\.[^'"]+)['"];?/g)]) {
     const namespace = await import(new URL(match[2], new URL('web/app.js', root)));
-    for (const binding of match[1].split(',').map((value) => value.trim()).filter(Boolean)) { const [exported, local = exported] = binding.split(/\s+as\s+/); context[local] = namespace[exported]; }
+    for (const binding of match[1].split(',').map((value) => value.trim()).filter(Boolean)) {
+      const [exported, local = exported] = binding.split(/\s+as\s+/);
+      context[local] = exported === 'createDetector' && options.createWorker
+        ? (...args) => namespace[exported](...args, { createWorker: options.createWorker }) : namespace[exported];
+    }
     source = source.replace(match[0], '');
   }
   source = source.replace(/await import\(['"]\/vendor\/ort\.wasm\.min\.mjs['"]\)/g, 'await __loadOrt()');

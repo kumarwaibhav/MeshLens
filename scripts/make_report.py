@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Generate documentation and PDF from this run's measured MeshLens artifacts."""
+"""Generate the historical autoencoder report from its measured artifacts.
+
+This command does not build the active inspection-detector release or overwrite
+its README/model card. The autoencoder remains a separate visual-evidence model.
+"""
 
 from __future__ import annotations
 import argparse
@@ -199,15 +203,12 @@ def release_docs(meta: dict, metrics: dict, selection: dict) -> None:
     verification = "\n\n".join(verification_records())
     if not verification:
         verification = "Verification evidence is not yet available for this release."
-    readme = ROOT / "README.md"
-    content = marked(
-        readme.read_text(),
-        "MEASURED_RESULTS",
-        result.replace("bootstrap 95%", "bootstrap 95%").replace(
-            "Wilson 95%", "Wilson 95%"
-        ),
+    (ROOT / "reports/autoencoder-summary.md").write_text(
+        "# Historical autoencoder benchmark\n\n"
+        "These measurements describe the frozen reconstruction model. See "
+        "[the active model card](../docs/MODEL_CARD.md) for the inspection detector.\n\n"
+        + result + "\n## Historical verification evidence\n\n" + verification + "\n"
     )
-    readme.write_text(marked(content, "VERIFICATION", verification))
     groups = "\n".join(
         (
             f"| {name.replace('_', ' ').title()} | {row['count']} | {row['flagged']} | {percent(row['flag_rate'])} |"
@@ -259,7 +260,14 @@ def release_docs(meta: dict, metrics: dict, selection: dict) -> None:
                           ("default1000ms", "default 1000 ms")]:
         operations = operations.replace(before, after)
     card = card.replace("## Frozen configuration", operations + "## Frozen configuration")
-    (ROOT / "docs/MODEL_CARD.md").write_text(card)
+    card = card.replace(
+        "**Owner:**",
+        "**Historical reconstruction model.** The active inspection decision is documented "
+        "in [MODEL_CARD.md](MODEL_CARD.md). The figures below describe this autoencoder only.\n\n"
+        "**Owner:**",
+        1,
+    )
+    (ROOT / "docs/AUTOENCODER_MODEL_CARD.md").write_text(card)
 
 
 def main() -> None:
@@ -420,7 +428,7 @@ def main() -> None:
         )
 
     story.append(Spacer(1, 35))
-    p("MeshLens", "title")
+    p("MeshLens autoencoder", "title")
     p("Learn the pattern.<br/>Reveal the exception.", "subtitle")
     p(
         "Industrial mesh anomaly detection with a trained convolutional autoencoder, held-out evaluation and real model inference in the browser."
@@ -469,7 +477,7 @@ def main() -> None:
     )
     story.append(Spacer(1, 15))
     p("Kumar Waibhav AKshat<br/>kwa.waibhav@gmail.com")
-    p("Technical report / reproducible portfolio release / 2026", "small")
+    p("Historical autoencoder technical report / 2026", "small")
     page()
     heading("01", "Problem and system design")
     p(
@@ -810,7 +818,7 @@ def main() -> None:
         rightMargin=50,
         topMargin=46,
         bottomMargin=52,
-        title="MeshLens Technical Report",
+        title="MeshLens Historical Autoencoder Technical Report",
         author="Kumar Waibhav AKshat",
         subject="Original autoencoder anomaly detection: measured release",
     )

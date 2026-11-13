@@ -1,16 +1,101 @@
 {
   "status": "passed",
-  "timestamp_utc": "2026-10-31T19:51:57.240433+00:00",
+  "completed": true,
+  "timestamp_utc": "2026-11-13T03:17:04.943986+00:00",
   "python_version": "3.12.14",
-  "full_data_requested": true,
+  "full_data_requested": false,
+  "python_test_summary": {
+    "status": "passed",
+    "tests": 211,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "node_test_summary": {
+    "status": "passed",
+    "tests": 143,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "checks": [
+    {
+      "name": "Python source, model parity and data contracts",
+      "command": [
+        "/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/../experiments/qa/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=reports/verification-junit.xml"
+      ],
+      "exit_code": 0,
+      "seconds": 12.626,
+      "output": "........................................................................ [ 34%]\n........................................................................ [ 68%]\n..................................... [ 85%]\n..............................                                           [100%]\n211 passed, 35 subtests passed in 11.12s\n",
+      "timed_out": false
+    },
+    {
+      "name": "Python JUnit evidence is complete",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "name": "Browser lifecycle, input integrity, numerical, build and server contracts",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-concurrency=1",
+        "--test-reporter=spec",
+        "--test-reporter-destination=stdout",
+        "--test-reporter=junit",
+        "--test-reporter-destination=reports/verification-node-junit.xml",
+        "tests/app-detector.test.mjs",
+        "tests/app-lifecycle.test.mjs",
+        "tests/build-server.test.mjs",
+        "tests/detector-adapter.test.mjs",
+        "tests/inference.test.mjs",
+        "tests/inspection-input.test.mjs",
+        "tests/texture-detector.test.mjs",
+        "tests/validation.test.mjs"
+      ],
+      "exit_code": 0,
+      "seconds": 7.399,
+      "output": "\u2714 v2 decision, evidence and stored record use the detector while AE stays separate (238.152473ms)\n\u2714 raw detector distances survive history reload and exact cutoff ties stay within range (197.535477ms)\n\u2714 v2 missing detector.json fails closed without falling back to the AE (15.592978ms)\n\u2714 v2 missing detector-model.json fails closed without falling back to the AE (12.374292ms)\n\u2714 v2 missing detector-evaluation.json fails closed without falling back to the AE (14.125323ms)\n\u2714 detector tampering or a mismatched evaluation cannot start the worker (28.982175ms)\n\u2714 unsupported input geometry clears the prior result and produces no acceptance record (174.887975ms)\n\u2714 an unreadable mesh pattern is inconclusive and a later supported image recovers (174.839711ms)\n\u2714 a pending worker result cannot replace a newer image (250.988108ms)\n\u2714 camera quality failure stops sampling and preserves capture instructions (169.661291ms)\n\u2714 a worker failure disables new inspections and a fresh model load recovers (344.297468ms)\n\u2714 all capture stresses expose false alarms and inconclusive inputs beside the main result (163.978454ms)\n\u2714 missing or invalid stress counts stay unavailable instead of becoming zero (164.257556ms)\n\u2714 corrupt or non-array local history cannot prevent startup (85.791265ms)\n\u2714 history filters malformed records and treats hostile filenames as text (35.355976ms)\n\u2714 storage quota failure retains the completed result and export (24.445694ms)\n\u2714 pending inference is single-flight and disposes every tensor (21.497129ms)\n\u2714 failed inference releases input and records no decision (15.98401ms)\n\u2714 newer input invalidates an older in-flight result (14.517362ms)\n\u2714 asynchronous file decodes retain the newest input and close stale bitmaps (17.295215ms)\n\u2714 stopping replay before fetch resolves prevents stale inspection (16.438328ms)\n\u2714 failed replay fetch stops replay without a timer or decision (8.293592ms)\n\u2714 replay visits every sample once and finishes without a recurring timer (16.069134ms)\n\u2714 camera denial restores controls and records no result (10.004842ms)\n\u2714 missing camera API offers upload fallback (11.139907ms)\n\u2714 permission grant after cancellation stops every stale track (13.344756ms)\n\u2714 video playback failure releases stream and restores controls (12.786571ms)\n\u2714 stop during pending video.play cannot reactivate camera controls (8.208122ms)\n\u2714 stale permission denial cannot stop a newer stream (12.467913ms)\n\u2714 empty media stream cannot be sampled (9.316388ms)\n\u2714 ended video track stops sampling and clears recurring work (9.522797ms)\n\u2714 page hiding releases tracks and cancels timers (9.474655ms)\n\u2714 model fetch failure remains retryable without a usable session (185.366278ms)\n\u2714 a stalled model download times out and the retry starts a fresh load (180.410972ms)\n\u2714 oversized streamed model data is cancelled before ONNX session creation (11.996996ms)\n\u2714 tampered model bytes are rejected before runtime creation (22.914708ms)\n\u2714 session tensor-name mismatch is rejected before inference (10.413496ms)\n\u2714 tampered sample bytes cannot produce an inspection (8.180582ms)\n\u2714 measured misses and low-recall limitation stay visible (12.345429ms)\n\u2714 history rejects negative scores invalid dates giant filenames and contradictory decisions (10.645926ms)\n\u2714 invalid runtime output type records no decision and disposes tensors (10.492124ms)\n\u2714 invalid runtime output shape records no decision and disposes tensors (9.740024ms)\n\u2714 invalid runtime output length records no decision and disposes tensors (11.762844ms)\n\u2714 invalid runtime output nan records no decision and disposes tensors (7.674731ms)\n\u2714 invalid runtime output range records no decision and disposes tensors (8.971239ms)\n\u2714 file byte limits and dimensions reject before native image decode (14.574958ms)\n\u2714 native decode failure is recoverable and records no result (15.55452ms)\n\u2714 stale decode rejection cannot cover a newer successful result with an error (11.681331ms)\n\u2714 replacing the session during inference discards stale results (8.931269ms)\n\u2714 camera inference failure stops tracks and cancels recurring work (11.749324ms)\n\u2714 camera sampling never queues frames and applies the selected post-inference delay (9.230429ms)\n\u2714 benchmark labels stay hidden until inference and never enter model feeds (12.001121ms)\n\u2714 pending reinspection clears old decision and cancelled work preserves only completed history (16.399069ms)\n\u2714 own-image upload is unavailable during initialization and inference (7.63388ms)\n\u2714 known defective sample within range explicitly explains the missed defect (11.614561ms)\n\u2714 a chosen local file leads to its evidence and a rejected file leads to the error (14.3433ms)\n\u2714 a superseded file picker decode does not refocus a newer error (66.61678ms)\n\u2714 history clear can be undone without losing later inspection records (26.083108ms)\n\u2714 build creates an internally consistent release manifest and all 18 sample digests (178.433442ms)\n\u2714 successful replacement removes stale assets without changing source inputs (175.010835ms)\n\u2714 tampered artifacts/model.onnx cannot replace the previous build (67.503603ms)\n\u2714 tampered artifacts/checkpoint.pt cannot replace the previous build (63.047718ms)\n\u2714 tampered reports/calibration_scores.csv cannot replace the previous build (69.879482ms)\n\u2714 tampered data/manifest.csv cannot replace the previous build (59.60178ms)\n\u2714 tampered artifacts/samples/good-000.png cannot replace the previous build (60.730447ms)\n\u2714 mismatched evaluation metrics or frozen thresholds cannot be packaged (116.090674ms)\n\u2714 sample traversal and duplicate gallery entries fail before publication (108.122462ms)\n\u2714 late runtime-copy failure cleans staging and retains the previous build (105.371218ms)\n\u2714 build refuses source directories and paths outside the project (54.604553ms)\n\u2714 symlinked public input cannot leak a private file into a release (83.184863ms)\n\u2714 active detector tampering in artifacts/inspection/detector-model.json preserves the previous release (67.625076ms)\n\u2714 active detector tampering in artifacts/inspection/calibration.json preserves the previous release (71.167171ms)\n\u2714 active detector tampering in reports/inspection/independent_evaluation.json preserves the previous release (54.373325ms)\n\u2714 active detector tampering in src/meshlens/texture_detector.py preserves the previous release (56.611638ms)\n\u2714 active detector tampering in web/inspection_input.js preserves the previous release (73.254199ms)\n\u2714 active detector tampering in artifacts/inspection/samples/glue-008.png preserves the previous release (78.674562ms)\n\u2714 active detector tampering in web/downloads/MeshLens-18-Benchmark-Examples.zip preserves the previous release (67.775611ms)\n\u2714 schema2 never falls back to the historical autoencoder when an inspection artifact is missing (52.543105ms)\n\u2714 reserved normal calibration membership and rank51 remain enforced after all digests are rebound (118.766764ms)\n\u2714 raw strict-threshold decisions,78x6coverage and pre-evaluation freeze are independently checked (271.466082ms)\n\u2714 all six public summaries, Wilson intervals and qualification claims must agree with raw records (161.619535ms)\n\u2714 raw cached aggregate metrics are ignored in favor of recomputation from per-image records (97.050687ms)\n\u2714 server serves GET and HEAD with exact bytes MIME and no-sniff headers (24.4865ms)\n\u2714 server returns real 404 and refuses non-read-only methods (5.213645ms)\n\u2714 server blocks encoded traversal dotfiles backslashes NUL and malformed escapes (6.451203ms)\n\u2714 server rejects symlinks outside the served root and ignores query strings (3.836544ms)\n\u2714 server startup reports missing roots and occupied ports (2.659205ms)\n\u2714 detector metadata accepts nonprobability scores and rejects changed contracts (1.786705ms)\n\u2714 detector evaluation binds score limit, artifact, provenance and all test outcomes (0.389986ms)\n\u2714 unsupported capture geometry is an explicit quality review (0.437026ms)\n\u2714 texture worker copies input, preserves unbounded score and releases resources (5.980816ms)\n\u2714 worker start failure has no main-thread fallback (0.295093ms)\n\u2714 texture artifact cutoff and preprocessing must match metadata before worker creation (0.283255ms)\n\u2714 quality rejection is recoverable while invalid worker result never becomes a score (1.110869ms)\n\u2714 releasing pending inference rejects it and rejects overlapping score requests (0.660573ms)\n\u2714 a mismatched worker response terminates the detector (0.617467ms)\n\u2714 worker initialization and stalled scoring have bounded, fatal timeouts (20.361002ms)\n\u2714 ONNX adapter uses canonical RGB channels and validates both independent outputs (4.381703ms)\n\u2714 ONNX invalid type cannot return a score and tensors are disposed (1.687785ms)\n\u2714 ONNX invalid score cannot return a score and tensors are disposed (1.526143ms)\n\u2714 ONNX invalid shape cannot return a score and tensors are disposed (1.547305ms)\n\u2714 ONNX invalid map cannot return a score and tensors are disposed (2.040275ms)\n\u2714 ONNX shape mismatch releases the created session before exposing an adapter (0.588414ms)\n\u2714 actual module worker loads the texture runtime, transfers maps and reports unreadable patterns (402.943084ms)\n\u2714 RGBA decoding produces RGB channel-major float32 values and ignores alpha (1.462377ms)\n\u2714 invalid image dimensions and incomplete pixel buffers are rejected (0.390677ms)\n\u2714 RGB residual means square error across channels, then averages the largest ceiling tail (0.429105ms)\n\u2714 RGB channels are averaged rather than summed (0.140431ms)\n\u2714 score calculation preserves the input heatmap and uses numeric ordering (0.156946ms)\n\u2714 nonfinite tensors and mismatched model output shapes fail explicitly (0.215143ms)\n\u2714 invalid score tails and heatmap values cannot produce a decision (0.328533ms)\n\u2714 the frozen threshold uses strict greater-than, including exact ties (0.183706ms)\n\u2714 reconstruction display clamps pixel bytes without changing floating point model output (0.284007ms)\n\u2714 display smoothing has replicated boundaries and leaves a no-op map unaliased (0.416686ms)\n\u2714 CSV cell escaping preserves delimiters, quotes and line breaks (0.194052ms)\n\u2714 CSV exports neutralize spreadsheet formulas in untrusted filenames (0.109434ms)\n\u2714 canonical input declares area-rgb8-v1 (0.715686ms)\n\u2714 constant colors survive fractional and extreme-aspect area resizing (188.050622ms)\n\u2714 independent two by two block oracle rounds half upwards (1.438531ms)\n\u2714 identity alpha composites white without modifying source pixels (0.999892ms)\n\u2714 integer enlargement repeats source pixels exactly (4.022544ms)\n\u2714 incomplete buffers and unsupported bounds fail before resizing (0.714373ms)\n\u2714 flat frames require an identifiable quality review (87.292535ms)\n\u2714 invalid artifacts and buffers fail before producing a score (0.322295ms)\n\u2714 local texture damage increases and localizes the anomaly signal (513.067293ms)\n\u2714 real png container dimensions are bounded before native decoding (1.580815ms)\n\u2714 real pngAlpha container dimensions are bounded before native decoding (0.131708ms)\n\u2714 real jpeg container dimensions are bounded before native decoding (0.127462ms)\n\u2714 real webp container dimensions are bounded before native decoding (0.11969ms)\n\u2714 animated PNG and WebP are rejected before bitmap allocation (0.529326ms)\n\u2714 empty unsupported oversized and truncated containers are rejected (0.308193ms)\n\u2714 PNG dimensions are checked before native decoder allocation (0.345409ms)\n\u2714 forged PNG lengths and appended trailing bytes are rejected (0.184367ms)\n\u2714 forged WebP RIFF length is rejected (0.203486ms)\n\u2714 metadata rejects changed scoring and tensor contracts (2.237682ms)\n\u2714 singleton acTL animation chunk is rejected before bitmap allocation (0.250867ms)\n\u2714 singleton fcTL animation chunk is rejected before bitmap allocation (0.150557ms)\n\u2714 singleton fdAT animation chunk is rejected before bitmap allocation (0.143465ms)\n\u2714 singleton ANIM animation chunk is rejected before bitmap allocation (0.104147ms)\n\u2714 singleton ANMF animation chunk is rejected before bitmap allocation (0.182364ms)\n\u2714 WebCrypto SHA256 passes the abc known-answer vector (7.684836ms)\n\u2714 actual local noble fallback works without WebCrypto (4.907964ms)\n\u2714 asset verification rejects altered bytes or missing/mismatched digests (1.546574ms)\n\u2139 tests 143\n\u2139 suites 0\n\u2139 pass 143\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 7324.361296\n",
+      "timed_out": false
+    },
+    {
+      "name": "Node JUnit evidence is complete",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "name": "Compile source and scripts",
+      "command": [
+        "/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/../experiments/qa/.venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "scripts"
+      ],
+      "exit_code": 0,
+      "seconds": 0.034,
+      "output": "",
+      "timed_out": false
+    },
+    {
+      "name": "Source remained unchanged during verification",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
   "package_versions": {
-    "torch": "2.14.1+cpu",
+    "torch": "2.9.0+cpu",
     "numpy": "2.3.5",
     "Pillow": "13.0.0",
-    "onnx": "1.22.0",
+    "onnx": "1.20.1",
     "onnxruntime": "1.23.2",
     "scikit-learn": "1.8.0",
-    "pytest": "9.1.1"
+    "pytest": "9.2.0"
   },
   "raw_dataset_inventory": {
     "status": "complete",
@@ -19,134 +104,99 @@
     "expected_masks": 57,
     "available_masks": 57
   },
-  "tracked_real_images": 18,
-  "artifact_sha256": {
-    "artifacts/checkpoint.pt": "b8d984eef4d4bfcd7a6b8906d13d913078a448f113b9d894504445bfa4208cc4",
-    "artifacts/model.onnx": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4"
-  },
-  "python_test_summary": {
-    "tests": 145,
-    "failures": 0,
-    "errors": 0,
-    "skipped": 0
-  },
-  "node_test_summary": {
-    "tests": 85,
-    "failures": 0,
-    "errors": 0,
-    "skipped": 0
-  },
   "source_sha256": {
-    ".github/workflows/ci.yml": "e6b3fad86fc2645ef9dc841a7846e85218d3b271d612e2ef1eab6cddb6becea2",
-    "package-lock.json": "54c6622b3caf7260f87b84bbc096577126e25c3e5bea4f7bca1140cfa0eb8712",
-    "package.json": "27a35d90241697b8abf03ca2a48d8d31f189b58e485a2c05b64f724a3bb73595",
+    ".github/workflows/ci.yml": "6afee9b77eb23357067d583af78a1ab4dfbfa1d5551e625e2c44ec36a52ed01f",
+    "package-lock.json": "b7aded34026eb74938f0a25af940d86ec1ea95e52f1c172673e70b43df8b85ea",
+    "package.json": "e12f5c8b28844e6c1d0a7aac1640d37452c68f29a16ad14f896ff4a97eaa4b4b",
     "pyproject.toml": "9d811b6aa70851b4112bedd29c165a8152824730a166abe35ee1ae5b13a7e4f7",
     "requirements-dev.lock": "b73731a176110023f519657dec8edd6e8012f514776d42444cad90b927d5b4db",
     "requirements-inference.lock": "5b130f3a3bd5b054ca826d22e247e01a6033dcd6533017f6392598cce3c49172",
     "requirements-training-original.lock": "3f0e9a89775f4e740a863ca3a4a38bbe39b88d248df8773d17de7321d0a86ed4",
     "requirements.lock": "234534f4a479456a765e1deb6425f1069d110ff0e5450d4273bae4fd37761baa",
     "scripts/audit_dependencies.py": "eed9229453a29a801884a1d585abd11e88a308e1826256d2f5868943c76a8e28",
-    "scripts/build_web.mjs": "8ed6de4073d24dc06618143799bb64e53ebf165fe331564507e11d2163fde220",
+    "scripts/build_web.mjs": "299e4f4d887cae16f6877e83db6eded5581aa92d5706fea58ca452c5ad0b7858",
     "scripts/build_web.py": "8b3d2dbb73363ed4d16f91b8561d9fb46aa16f74207fc1ff11c45baa95e8deee",
     "scripts/download_data.py": "004684c86592df9cf2d0b0168fb722e3d5b1db4596fc19f51bf263ee2b7c81d8",
     "scripts/evaluate.py": "c257475477de7de3ebcad99ea3cd3a00bd2bd5ff6efd26453adaed2d46270791",
+    "scripts/evaluate_inspection.py": "fec03ad629a45aa42d9c37612a66b0adb8bd5d3e944a92268e85656078db7333",
+    "scripts/export_inspection_release.py": "35518146ae2e4de39bbcdf78e8623f801f6a48fbcea08b629d10bf795c79f111",
     "scripts/export_model.py": "85af141392dbd28382244fd46becdbaa4aa827b9207f1c8a77f457e833bec4fc",
+    "scripts/fit_texture_detector.py": "e95030bf34342c9a5038c4eb85e74d2fdd6b1b3e5bbe4095806f1b5a86851704",
+    "scripts/freeze_inspection.py": "c5bfc4e64d160bed997e6357abec557f279269761a7f26d5674ddf275d21ee85",
     "scripts/freeze_requirements.py": "099bb186469a3880e40931d785b2eb6ff7ea15e4fef1090e03290ef6b79d6259",
+    "scripts/inspect_image.py": "d717be0d5e0d4a3eb2404e2b6beb2ac03a5ced863c90c93ba62487ce950366a5",
+    "scripts/inspection_release.mjs": "bc88b7ed2ab35e51820e860e60582e95f4795fc954ffb3e795e105da58ea98af",
     "scripts/make_audit_report.py": "a2b865c190f3d86052415a543144b38fd4cf62c8311702481de3fd3a32bac8a5",
+    "scripts/make_development_suite.py": "22430abe581bd05b9ba135e4121ecd3bff35d5642595498e056e2ea95279b069",
     "scripts/make_notebook.py": "78a1e7ef90d64387cb83d453840ba75d7247f7a181352f1e9c303e8ecff8c1da",
-    "scripts/make_report.py": "a622203887be421ba59a22c9c3668b5980fd7821204664265058dc338a2ca74d",
+    "scripts/make_report.py": "ebd732047babd59d10dfef66b426c59ced86f616a4e455db024e245d106d8adc",
+    "scripts/make_walkthrough.py": "9ffb290b02f984ad9231a13098556721f38c184d87bd1873cd86dfb1b9b9b901",
     "scripts/predict.py": "1e35c2aab98998e8e20d6dee1224e6dd7a277a0fd24148e01b42c8c309e9901a",
+    "scripts/prepare_ui_review.mjs": "ed8789d05b4334ec1bc208d83af99f58b68de9e10895ab5edbe3d14d75510321",
+    "scripts/qualify_field.py": "164a55391b3228f10477bd56fcde5c8eff68e033eba01440491a8145f228c54d",
     "scripts/serve_web.mjs": "337c6a307b5caa47a734c1317df9930bf6d2e168e6b682e44c194c5188bf3297",
     "scripts/train.py": "9d7f79a87ce514648bbb40ff22d29ffbd000dc9248ec89da9d31c170f026466f",
+    "scripts/train_patch_memory.py": "5c3932872fca59106903d1eb4fec8bc3cf9e31b8b8cd88db5256a6a64e35d89d",
     "scripts/verify_audit.py": "5503498e5cb3180267603fbf3f048683a47af7a8c794c00bfc7ca0b607669b19",
-    "scripts/verify_project.py": "9ec6a8d802ac0321badb57afd875ea4036102e1955355e7449e8dd02b071a10d",
+    "scripts/verify_inspection_runtime.mjs": "b59e6b984d1562456a06ad4c59f89edcd6409df9227e0bad39cfeecbd33b6d13",
+    "scripts/verify_inspection_runtime.py": "4e1cc86e3831243c591040af9a08bca7647d762d7125add374d67129f6c87d08",
+    "scripts/verify_project.py": "13dbf0d3914c3e2eab16ecb82a1d8220a79e40d99cece8145765f419be9470f2",
     "scripts/verify_runtime_upgrade.py": "8305fec696e68778c9041adbf70b865271ef634b8dc3e6e315c6f2df80f557c1",
+    "scripts/verify_texture_runtime.mjs": "0164e1653f5d707b0abef7c440ccce5fe5ebe280f7b2bed4c8b980f7c09fa61a",
+    "scripts/verify_texture_runtime.py": "444ec6a4c6c2846c4590fe5f01a223fc2a2a95419ae42ae7e691a241de2422bb",
     "scripts/verify_wasm.mjs": "983144337b9a38d6c475bb91c4120667fe00121cefdf13735a63e22776a48c30",
     "scripts/verify_wasm.py": "6be8de029e323d74994056b10a7aa7b8812fc2a9def03983408a335ea10e2fb1",
     "src/meshlens/__init__.py": "478801665fae9f5a5d445b2e2d81384304bd21203be8182db4f4d72dd7064f90",
     "src/meshlens/artifacts.py": "01bb044268e91628e7e903636bf705c39d100c785902d897a0003d769d08b0e0",
     "src/meshlens/core.py": "12e5b5ab42e2f5e59cb442a113bda114d7961ce597ef8cf46980b7ed76b01c38",
+    "src/meshlens/field_qualification.py": "c3bd27919f3eb0f709d7c431546b459a7c3a9f9283113d1f2de63169dced8c5b",
+    "src/meshlens/inspection.py": "f550d9e38bd569a2ace66f1636352872f488a9a9bb0293d1b5765c869047c53d",
+    "src/meshlens/inspection_evaluation.py": "b6f9c716f538ba77cdc899048364049aa8118e2ff417046557badc5e6c87dbfc",
+    "src/meshlens/inspection_input.py": "8e199c996218356ddaed96b11342bff9a880639e432026b9afaf002adcea8bf5",
     "src/meshlens/model.py": "2696097dac3f9fcf4b95ebc9e0ad7a5ace658a34619eddee18f7fe1ea704b488",
-    "tests/app-lifecycle.test.mjs": "076bdeedb2bd35469d9aa4b7e6c2bdd345d20381d7014815706dd20a56d7f444",
-    "tests/build-server.test.mjs": "4c10794e1a4f1ff0c8678861105bc525bc0f803533191af1dc5a3274cab2d25b",
+    "src/meshlens/texture_detector.py": "6b18be429ec1db3bb41fbb07dbe83289754f8f719f8009e8b080cac03e600ce2",
+    "tests/app-detector.test.mjs": "9f1f1d0a0310ccb2eca20b6f56d0196030551445d7b695de4b4e2b8704197060",
+    "tests/app-lifecycle.test.mjs": "22ae3c5955ac921bdfb1ac0aa964b020f73b4ff0c98f418a38bd240cf2ac9daf",
+    "tests/build-server.test.mjs": "24476bcbddf87ebbf489c11e5c3191cc4768e33a92231450491453e778f90e3b",
     "tests/conftest.py": "4341e3a7f18b4289e01ea7a4cb3e0a2f102a502df4010ada7a19555c79c1db1c",
+    "tests/detector-adapter.test.mjs": "913f2dbb34939f3cdddc7f6592886e35de9c7f184e71a09a7a0cff3b25657043",
     "tests/fixtures/image-containers.json": "89ea7d988d85172ca587954568450e1fbdc92b5716ce02aec1b897821e69cdd5",
-    "tests/helpers/browser-harness.mjs": "f669285c6a0591e10f187c368cab31dca4394a8adfda2224979dbc36ad37ae1c",
+    "tests/helpers/browser-harness.mjs": "2d58c6ff14b6de27d920e71859fc697d7bbcdd9bfdd442fec3d79d8721cec5ff",
+    "tests/helpers/detector-fixture.mjs": "28e70bbd4684cf92ddb8ff86514290a4610e92a07023db7592322489eaea6ca9",
     "tests/inference.test.mjs": "49652b62d6c4dcb228e1c6a2a079eb128d5693c14b8d7d520262e8d55f4cee01",
+    "tests/inspection-input.test.mjs": "d3f989208abcdf3a2285be9a7fa66de42dc279557c24c06b94f98fdc9a0596f7",
     "tests/test_adversarial.py": "de094e97410e57672477403e248d849fdacef5e4a62e427d2814638c3c2da5ab",
     "tests/test_core.py": "e6686b6285d197762908ca93177746b58599f50488f858b7677ef4d39f64202b",
     "tests/test_data.py": "bfcf2f92127ced67d2534eccfa9bc8676b20dc115e597eb6a1f6f5e1fb8d149b",
+    "tests/test_development_suite.py": "3c89425169f166d4180bb5c6e6ea5acab9dc4135023871aa38eefe97901c9222",
+    "tests/test_field_qualification.py": "8922b43ad62f83f2e6d28760a9f4ac8729fb006626da9a2a56eb605c66af4336",
+    "tests/test_inspection.py": "ed384a3594fefe1d8d1be20a59077eff6b193c54eb05462ee1b1c3fbb317b6f0",
+    "tests/test_inspection_evaluation.py": "2b09af2206514e8dda320a23fd8c8bd68a3374abb3a21ff9bed1437374e187e9",
+    "tests/test_inspection_input.py": "eaae9702025ae488ad82c10398c48d6bcfd759a2181b06fb81e8c19a75be178c",
     "tests/test_model.py": "b09c0cd5d4bab112b6acc7ccae8cc100a5a33e78f228daa4a31a2dd97119e73f",
     "tests/test_reports.py": "54ec416fa356d4d00e4fdcc8adf0552353d8f04e91e0ae21ca643cadc9d84371",
+    "tests/test_texture_detector.py": "36f48d010d54621cacd5e16033b7a4be4d7e76b7616ea6f5598e8525baee1ff2",
+    "tests/test_verification_runner.py": "85371d6db86d95cbe1ec7986a0f002381687c9fec5a361d0d63928d113b103df",
+    "tests/test_walkthrough_assets.py": "1c40fac4a7e74252dabaccdcdc3df1a4b874ebcc1f1a9e6abbed8a3c7b731931",
     "tests/test_workflow.py": "082633e27d02cfe4ab52d60ba8b3d860e231f84233e724cf0fa090c80d71730a",
+    "tests/texture-detector.test.mjs": "f5243a5213c1f8f6653106d044fd2005e12302e051dc157e3788c63eaf5fb5a2",
     "tests/validation.test.mjs": "759caf81dea606891d69c9f1ab0cef86d0ad3df2747f03b3e84cff9fea856881",
-    "web/app.js": "479ecd9eedeaa71351faf1b06bc40e7a4279843e5887ec42da4a33a38a38f4ea",
-    "web/index.html": "6b31e4bccd9ec46112a49d4e1033b13a4b2d5ce4820951e3b4f1ffed7e61aa04",
+    "web/app.js": "01fffec0cf4892d5f64a4d7781d5ffd3d5f0505bd2b26aec362808b96e760bfe",
+    "web/detector.js": "9865ce43a0cdc7d4e9bfa655946e5c64c4e361700af6019799633e05a0128d65",
+    "web/index.html": "409b167cae3c25767a7875e159fb565075cc97d25de63b28993bfe154297ca78",
     "web/inference.js": "8362fd1d3c640c7ff57080fde11d0009b63961e1dbfd59955be0854244c7c03d",
-    "web/styles.css": "c6653c7d631952226a87cf6214f0c2203b3a46c0b78ba9c9c99750f45942a5ab",
-    "web/validation.js": "b5a0f0c9dd5c86e43aa18176c0acf76a71ec277566ffc83da7d402af9d0e3a70"
+    "web/inspection_input.js": "a46b59aa729fc0121c621b00f99ca72c6039c6a25384fed16cf7e0e5ca18ac97",
+    "web/styles.css": "009a3a864df0a41ffee78db5cb0d1fd66fc14a22803da3c044eb5036808dbf1e",
+    "web/texture_detector.js": "bbdd49980352f65005d5ef5fa9e959693aea0f165f5f8a5a36bf4e8cdc108c24",
+    "web/texture_worker.js": "2edc8d170c60577f1a5d7476615e163c870b3ad6ffdc99bf727dac3c4c7e73f8",
+    "web/validation.js": "b5a0f0c9dd5c86e43aa18176c0acf76a71ec277566ffc83da7d402af9d0e3a70",
+    "web/walkthrough/provenance.json": "6fab0266cdc7b9cf9bb1318cd3a86c19d72ddb99dd730d93bcaeb12576d6da60"
   },
-  "verification_scope": "Local source, frozen PyTorch/ONNX parity, real tracked-sample inference, adversarial data/CLI/recovery tests, actual app.js lifecycle with browser API doubles, still-image container guards, build integrity, local HTTP server and available raw-data hashes. Native browser decoding/layout, physical camera hardware and factory performance require separate validation.",
-  "checks": [
-    {
-      "name": "Download and audit pinned benchmark",
-      "command": [
-        "/workspace/scratch/54d9bc3b3ef6/MeshLens/.venv/bin/python",
-        "scripts/download_data.py"
-      ],
-      "exit_code": 0,
-      "seconds": 0.345,
-      "output": "{\n  \"dataset\": \"MVTec AD\",\n  \"category\": \"grid\",\n  \"image_count\": 342,\n  \"mask_count\": 57,\n  \"official_source\": \"https://www.mvtec.com/research-teaching/datasets/mvtec-ad\",\n  \"license\": \"CC-BY-NC-SA-4.0\",\n  \"license_url\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\",\n  \"copyright\": \"MVTec Software GmbH and original authors\",\n  \"mirror_url\": \"https://huggingface.co/datasets/XavierZXY/MvT-tar/resolve/dc1c313de9de1be8e41fe6818dc43caac8601efa/grid.tar.xz\",\n  \"mirror_revision\": \"dc1c313de9de1be8e41fe6818dc43caac8601efa\",\n  \"archive_sha256\": \"d94a9a651cbfaee22c94d06cf8fa8204a590c872362de0489eb34f1645328de8\",\n  \"source_counts\": {\n    \"train/good\": 264,\n    \"test/good\": 21,\n    \"test/bent\": 12,\n    \"test/broken\": 12,\n    \"test/glue\": 11,\n    \"test/metal_contamination\": 11,\n    \"test/thread\": 11\n  },\n  \"split_counts\": {\n    \"fit\": 160,\n    \"tune\": 52,\n    \"calibration\": 52,\n    \"test\": 78\n  },\n  \"split_seed\": 42,\n  \"duplicate_image_hashes\": 0,\n  \"manifest_sha256\": \"178b4090f2486c820f3be2df9580e60be643d7cf7817eb8cd1cb3024a950708f\",\n  \"audit_scope\": \"Pinned mirror LFS SHA256 matched; all decoded images and duplicate hashes checked. Not independently byte-compared with an official download.\",\n  \"selection_policy\": \"Fit160/tune52/calibration52 drawn only from official normal train images. All official test78 withheld from model and threshold selection.\",\n  \"project_owner\": \"Kumar Waibhav AKshat <kwa.waibhav@gmail.com>\"\n}\n"
-    },
-    {
-      "name": "Python source, model parity and data contracts",
-      "command": [
-        "/workspace/scratch/54d9bc3b3ef6/MeshLens/.venv/bin/python",
-        "-m",
-        "pytest",
-        "-q",
-        "--junitxml=reports/verification-junit.xml"
-      ],
-      "exit_code": 0,
-      "seconds": 8.192,
-      "output": "........................................................................ [ 49%]\n........................................................................ [ 99%]\n.                                                                        [100%]\n145 passed in 6.45s\n"
-    },
-    {
-      "name": "Browser lifecycle, input integrity, numerical, build and server contracts",
-      "command": [
-        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
-        "--test",
-        "--test-reporter=spec",
-        "--test-reporter-destination=stdout",
-        "--test-reporter=junit",
-        "--test-reporter-destination=reports/verification-node-junit.xml",
-        "tests/app-lifecycle.test.mjs",
-        "tests/build-server.test.mjs",
-        "tests/inference.test.mjs",
-        "tests/validation.test.mjs"
-      ],
-      "exit_code": 0,
-      "seconds": 1.351,
-      "output": "\u2714 corrupt or non-array local history cannot prevent startup (88.601651ms)\n\u2714 history filters malformed records and treats hostile filenames as text (35.573878ms)\n\u2714 storage quota failure retains the completed result and export (24.481098ms)\n\u2714 pending inference is single-flight and disposes every tensor (16.662741ms)\n\u2714 failed inference releases input and records no decision (18.516638ms)\n\u2714 newer input invalidates an older in-flight result (10.241376ms)\n\u2714 asynchronous file decodes retain the newest input and close stale bitmaps (21.487328ms)\n\u2714 stopping replay before fetch resolves prevents stale inspection (14.239307ms)\n\u2714 failed replay fetch stops replay without a timer or decision (10.828831ms)\n\u2714 replay visits every sample once and finishes without a recurring timer (17.622048ms)\n\u2714 camera denial restores controls and records no result (12.694715ms)\n\u2714 missing camera API offers upload fallback (11.756657ms)\n\u2714 permission grant after cancellation stops every stale track (11.314234ms)\n\u2714 video playback failure releases stream and restores controls (13.803579ms)\n\u2714 stop during pending video.play cannot reactivate camera controls (8.519029ms)\n\u2714 stale permission denial cannot stop a newer stream (11.402187ms)\n\u2714 empty media stream cannot be sampled (11.489389ms)\n\u2714 ended video track stops sampling and clears recurring work (15.909254ms)\n\u2714 page hiding releases tracks and cancels timers (9.32219ms)\n\u2714 model fetch failure remains retryable without a usable session (179.076676ms)\n\u2714 tampered model bytes are rejected before runtime creation (11.19795ms)\n\u2714 session tensor-name mismatch is rejected before inference (11.347814ms)\n\u2714 tampered sample bytes cannot produce an inspection (11.954431ms)\n\u2714 measured misses and low-recall limitation stay visible (18.8698ms)\n\u2714 history rejects negative scores invalid dates giant filenames and contradictory decisions (12.482667ms)\n\u2714 invalid runtime output type records no decision and disposes tensors (9.645597ms)\n\u2714 invalid runtime output shape records no decision and disposes tensors (12.879456ms)\n\u2714 invalid runtime output length records no decision and disposes tensors (8.379107ms)\n\u2714 invalid runtime output nan records no decision and disposes tensors (9.689684ms)\n\u2714 invalid runtime output range records no decision and disposes tensors (22.385682ms)\n\u2714 file byte limits and dimensions reject before native image decode (15.454524ms)\n\u2714 native decode failure is recoverable and records no result (10.192747ms)\n\u2714 stale decode rejection cannot cover a newer successful result with an error (14.555263ms)\n\u2714 replacing the session during inference discards stale results (11.545993ms)\n\u2714 camera inference failure stops tracks and cancels recurring work (10.810545ms)\n\u2714 camera sampling never queues frames and applies the selected post-inference delay (13.755356ms)\n\u2714 benchmark labels stay hidden until inference and never enter model feeds (16.344181ms)\n\u2714 pending reinspection clears old decision and cancelled work preserves only completed history (15.498795ms)\n\u2714 build creates an internally consistent release manifest and all 18 sample digests (198.09472ms)\n\u2714 successful replacement removes stale assets without changing source inputs (146.491656ms)\n\u2714 tampered artifacts/model.onnx cannot replace the previous build (60.933943ms)\n\u2714 tampered artifacts/checkpoint.pt cannot replace the previous build (66.371253ms)\n\u2714 tampered reports/calibration_scores.csv cannot replace the previous build (59.012664ms)\n\u2714 tampered data/manifest.csv cannot replace the previous build (60.022267ms)\n\u2714 tampered artifacts/samples/good-000.png cannot replace the previous build (67.983799ms)\n\u2714 mismatched evaluation metrics or frozen thresholds cannot be packaged (124.302361ms)\n\u2714 sample traversal and duplicate gallery entries fail before publication (117.717033ms)\n\u2714 late runtime-copy failure cleans staging and retains the previous build (79.524025ms)\n\u2714 build refuses source directories and paths outside the project (60.945269ms)\n\u2714 symlinked public input cannot leak a private file into a release (66.973236ms)\n\u2714 server serves GET and HEAD with exact bytes MIME and no-sniff headers (27.86709ms)\n\u2714 server returns real 404 and refuses non-read-only methods (6.09317ms)\n\u2714 server blocks encoded traversal dotfiles backslashes NUL and malformed escapes (12.393913ms)\n\u2714 server rejects symlinks outside the served root and ignores query strings (5.879617ms)\n\u2714 server startup reports missing roots and occupied ports (3.97183ms)\n\u2714 RGBA decoding produces RGB channel-major float32 values and ignores alpha (2.168561ms)\n\u2714 invalid image dimensions and incomplete pixel buffers are rejected (0.599464ms)\n\u2714 RGB residual means square error across channels, then averages the largest ceiling tail (0.576119ms)\n\u2714 RGB channels are averaged rather than summed (0.190908ms)\n\u2714 score calculation preserves the input heatmap and uses numeric ordering (0.236186ms)\n\u2714 nonfinite tensors and mismatched model output shapes fail explicitly (0.328596ms)\n\u2714 invalid score tails and heatmap values cannot produce a decision (0.340304ms)\n\u2714 the frozen threshold uses strict greater-than, including exact ties (0.294545ms)\n\u2714 reconstruction display clamps pixel bytes without changing floating point model output (0.426514ms)\n\u2714 display smoothing has replicated boundaries and leaves a no-op map unaliased (0.539534ms)\n\u2714 CSV cell escaping preserves delimiters, quotes and line breaks (0.297589ms)\n\u2714 CSV exports neutralize spreadsheet formulas in untrusted filenames (0.166ms)\n\u2714 real png container dimensions are bounded before native decoding (2.640432ms)\n\u2714 real pngAlpha container dimensions are bounded before native decoding (0.267063ms)\n\u2714 real jpeg container dimensions are bounded before native decoding (0.176686ms)\n\u2714 real webp container dimensions are bounded before native decoding (0.224799ms)\n\u2714 animated PNG and WebP are rejected before bitmap allocation (0.731403ms)\n\u2714 empty unsupported oversized and truncated containers are rejected (0.319051ms)\n\u2714 PNG dimensions are checked before native decoder allocation (1.593142ms)\n\u2714 forged PNG lengths and appended trailing bytes are rejected (0.395005ms)\n\u2714 forged WebP RIFF length is rejected (0.175906ms)\n\u2714 metadata rejects changed scoring and tensor contracts (4.928382ms)\n\u2714 singleton acTL animation chunk is rejected before bitmap allocation (0.273382ms)\n\u2714 singleton fcTL animation chunk is rejected before bitmap allocation (0.157478ms)\n\u2714 singleton fdAT animation chunk is rejected before bitmap allocation (0.102324ms)\n\u2714 singleton ANIM animation chunk is rejected before bitmap allocation (0.129946ms)\n\u2714 singleton ANMF animation chunk is rejected before bitmap allocation (0.134093ms)\n\u2714 WebCrypto SHA256 passes the abc known-answer vector (12.580364ms)\n\u2714 actual local noble fallback works without WebCrypto (5.40966ms)\n\u2714 asset verification rejects altered bytes or missing/mismatched digests (1.752052ms)\n\u2139 tests 85\n\u2139 suites 0\n\u2139 pass 85\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1281.3407\n"
-    },
-    {
-      "name": "Compile source and scripts",
-      "command": [
-        "/workspace/scratch/54d9bc3b3ef6/MeshLens/.venv/bin/python",
-        "-m",
-        "compileall",
-        "-q",
-        "src",
-        "scripts"
-      ],
-      "exit_code": 0,
-      "seconds": 0.035,
-      "output": ""
-    },
-    {
-      "name": "Source remained unchanged during verification",
-      "exit_code": 0,
-      "output": ""
-    }
-  ]
+  "tracked_real_images": 18,
+  "artifact_sha256": {
+    "artifacts/checkpoint.pt": "b8d984eef4d4bfcd7a6b8906d13d913078a448f113b9d894504445bfa4208cc4",
+    "artifacts/model.onnx": "8b846f0b029c3f6c11b15f47c2ebd10aa059296959bdbbb549e7cf15c7bccfd4"
+  },
+  "finished_at_utc": "2026-11-13T03:17:25.030429+00:00",
+  "verification_scope": "Source, frozen model parity, data/input contracts, CLI/recovery, browser doubles, build integrity and local server. Native browser/layout, camera hardware and factory performance require separate validation."
 }

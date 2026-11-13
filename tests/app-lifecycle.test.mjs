@@ -85,6 +85,53 @@ test('model fetch failure remains retryable without a usable session', async () 
   let failed = true; const h = await browserHarness({ fetch: async (url, _options, { defaultFetch, response }) => failed && String(url).includes('metadata') ? response('offline', 503) : defaultFetch(url) });
   await h.app.initialize(); assert.equal(h.app.state.ready, false); assert.equal(h.app.state.initializing, false); assert.match(h.byId('notice').textContent, /try again|load|connection/i); failed = false; await h.app.initialize(); assert.equal(h.app.state.ready, true);
 });
+test('a stalled model download times out and the retry starts a fresh load', async () => {
+  const request = deferred();
+  let stalled = true;
+  const h = await browserHarness({
+    fetch: async (url, options, { defaultFetch }) => {
+      if (!stalled || !String(url).endsWith('/model.onnx')) return defaultFetch(url);
+      return new Promise((_resolve, reject) => {
+        options.signal.addEventListener('abort', () => reject(options.signal.reason), { once: true });
+        request.resolve(options.signal);
+      });
+    },
+  });
+  const pending = h.app.initialize();
+  const signal = await request.promise;
+  await h.fireTimer();
+  await pending;
+  assert.equal(signal.aborted, true);
+  assert.equal(h.app.state.initializing, false);
+  assert.equal(h.app.state.ready, false);
+  assert.equal(h.timers.size, 0);
+  stalled = false;
+  const retry = h.byId('notice').querySelectorAll('button')[0];
+  await retry.dispatch('click');
+  assert.equal(h.app.state.ready, true);
+});
+test('oversized streamed model data is cancelled before ONNX session creation', async () => {
+  let cancelled = false;
+  let created = 0;
+  const h = await browserHarness({
+    fetch: async (url, _options, { defaultFetch }) => {
+      if (!String(url).endsWith('/model.onnx')) return defaultFetch(url);
+      const body = new ReadableStream({
+        start(controller) {
+          controller.enqueue(new Uint8Array(h.release.assets['model.onnx'].bytes + 1));
+        },
+        cancel() { cancelled = true; },
+      });
+      return new Response(body);
+    },
+    createSession: async (_args, factory) => { created += 1; return factory(); },
+  });
+  await h.app.initialize();
+  assert.equal(cancelled, true);
+  assert.equal(created, 0);
+  assert.equal(h.app.state.ready, false);
+  assert.equal(h.timers.size, 0);
+});
 test('tampered model bytes are rejected before runtime creation', async () => {
   let created = 0; const h = await browserHarness({ fetch: async (url, _options, { defaultFetch, response }) => String(url).endsWith('/model.onnx') ? response(new Uint8Array([1, 2, 3])) : defaultFetch(url), createSession: async (_args, factory) => { created += 1; return factory(); } });
   await h.app.initialize(); assert.equal(h.app.state.ready, false); assert.equal(created, 0);
@@ -200,6 +247,23 @@ test('a chosen local file leads to its evidence and a rejected file leads to the
   assert.equal(h.byId('evidence-title').focused, true);
   await h.byId('file-input').dispatch('change', { target: { files: [new File(['invalid'], 'bad.png', { type: 'image/png' })], value: 'bad.png' } });
   assert.equal(h.byId('notice').focused, true); assert.equal(h.byId('notice').getAttribute('role'), 'alert');
+});
+test('a superseded file picker decode does not refocus a newer error', async () => {
+  const oldDecode = deferred();
+  const h = await browserHarness({ createImageBitmap: async () => oldDecode.promise });
+  h.ready();
+  let errorFocusCount = 0;
+  h.byId('notice').focus = () => { errorFocusCount += 1; };
+  const oldFile = await h.sampleFile('old.png');
+  const picker = h.byId('file-input');
+  const pending = picker.dispatch('change', { target: { files: [oldFile], value: 'old.png' } });
+  await tick();
+  const invalid = new File(['invalid'], 'new.png', { type: 'image/png' });
+  await picker.dispatch('change', { target: { files: [invalid], value: 'new.png' } });
+  assert.equal(errorFocusCount, 1);
+  oldDecode.resolve(h.makeBitmap());
+  await pending;
+  assert.equal(errorFocusCount, 1);
 });
 
 test('history clear can be undone without losing later inspection records', async () => {

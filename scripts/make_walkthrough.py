@@ -63,7 +63,8 @@ def main() -> None:
                   'license': 'CC BY-NC-SA 4.0; MVTec Software GmbH and original authors',
                   'files': {name: digest((destination / name).read_bytes()) for name in ['original.png', 'reconstruction.png', 'residual.png']}}
     (destination / 'provenance.json').write_text(json.dumps(provenance, indent=2) + '\n')
-    kit = ROOT / 'web/downloads/MeshLens-18-Benchmark-Examples.zip'
+    # Reproducing historical AE evidence must preserve the active detector kit.
+    kit = ROOT / 'web/downloads/MeshLens-18-Autoencoder-Baseline.zip'
     kit.parent.mkdir(parents=True, exist_ok=True)
     readme = '''# MeshLens — 18 already-measured benchmark examples
 

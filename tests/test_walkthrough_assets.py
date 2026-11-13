@@ -30,7 +30,7 @@ class PageLinks(HTMLParser):
 
 class WalkthroughAssets(unittest.TestCase):
     def test_download_contains_the_exact_labeled_gallery_and_license(self):
-        gallery = json.loads((ROOT / 'artifacts/samples.json').read_text())['samples']
+        gallery = json.loads((ROOT / 'artifacts/inspection/samples.json').read_text())['samples']
         with zipfile.ZipFile(ROOT / 'web/downloads/MeshLens-18-Benchmark-Examples.zip') as archive:
             self.assertIsNone(archive.testzip())
             manifest = json.loads(archive.read('manifest.json'))
@@ -39,8 +39,9 @@ class WalkthroughAssets(unittest.TestCase):
             for sample in gallery:
                 content = archive.read('images/' + sample['filename'])
                 self.assertEqual(hashlib.sha256(content).hexdigest(), sample['sha256'])
-                self.assertEqual(content, (ROOT / 'artifacts/samples' / sample['filename']).read_bytes())
-            self.assertIn('NOT new independent validation', archive.read('README.md').decode())
+                self.assertEqual(content, (ROOT / 'artifacts/inspection/samples' / sample['filename']).read_bytes())
+            self.assertIn('not independent field validation', archive.read('README.md').decode().lower())
+            self.assertTrue(any(item['filename'] == 'glue-008.png' and not item['expected_anomaly'] for item in gallery))
             self.assertGreater(len(archive.read('DATASET-LICENSE.txt')), 100)
             self.assertGreater(len(archive.read('DATASET-README.txt')), 100)
 

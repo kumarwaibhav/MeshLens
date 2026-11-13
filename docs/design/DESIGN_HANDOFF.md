@@ -1,5 +1,7 @@
 # Handoff Spec: MeshLens guided inspection
 
+**Document scope:** the original dated UI record is retained below. The inspection-detector revision at the end updates behavior and review criteria. Current accuracy evidence is in the [active model card](../MODEL_CARD.md); earlier UI checks retain their original scope.
+
 ## Overview
 
 A first-time visitor should understand the wire-mesh experiment, run an example, interpret the three views and fixed-limit result, and know how to obtain or capture suitable images. The shipped ONNX checkpoint and numerical contracts remain frozen.
@@ -76,3 +78,27 @@ Controls use `--duration-fast` / `--ease-standard` for color transitions; proces
 Tab order follows reading order, with a skip link first. Disclosures remain native; the canvas has a dynamic accessible image name, and scores/decisions are text. Selected tabs and sample choices expose state. Normal notices are statuses; input failures are alerts. Upload-result focus occurs only after a user selects a file.
 
 Run `npm test`, `npm run build`, then `node scripts/prepare_ui_review.mjs` for a local-only review fixture at `/__review/index.html`. The regular build excludes that fixture and axe. See the [accessibility audit](ACCESSIBILITY_REVIEW.md) and [revision record](../../reports/UI_REDESIGN.md) for actual verification scope. VoiceOver, NVDA, Safari/iOS, Android hardware and production camera timing are separate acceptance work; do not claim they were tested.
+
+## Inspection detector revision (2026-11-13)
+
+The active texture detector supplies the score and review decision. The trained AE supplies
+separate reconstruction evidence. Preserve the earlier layout/token specifications where
+unchanged, and apply this interaction/content contract to the detector revision.
+
+| Component | Required behavior |
+|---|---|
+| Evidence tabs | Original, Detector map, Reconstruction, AE error map; one tab stop; Left/Right and Home/End; tab/panel names track the selected view. |
+| Detector result | Show score, frozen threshold and version; label a low score Within calibrated range rather than an acceptance guarantee. |
+| Detector map | Describe relative pattern disagreement in adjacent text and the canvas name; intensity is not probability or segmentation truth. |
+| Reconstruction views | Explicitly label the historical AE; switching views does not change the active detector decision. |
+| Inconclusive input | Show Input needs review with a specific reason; no numeric acceptance decision or successful inspection record. |
+| Load/integrity failure | Announce the problem and offer retry; block decisions without silently substituting the AE score. |
+| New-image guidance | Explain at least 256px per side, aspect ratio ≤ 1.5, supported formats and comparable mesh scale/focus/light; no hidden crop. |
+| Exports/history | Retain the actual version and threshold used for each result; preserve independent evidence and replay labels. |
+
+Wrap all four tab labels at narrow widths and enlarged text. Preserve DOM reading/focus order,
+visible focus and 44px core controls. Recheck 320px, landscape, 200% text and text-spacing cases;
+the earlier three-tab layout audit does not automatically verify the revised toolbar.
+Loading, retry, invalid file, poor pattern, camera denial and stale-request cancellation need
+keyboard and screen-reader checks. Physical devices and assistive technologies remain manual
+qualification work. The benchmark's known false alarms and missed glue case stay visible.

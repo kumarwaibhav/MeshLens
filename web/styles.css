@@ -232,7 +232,7 @@ td small { display:block; color:var(--color-muted); font-size:.75rem }
 .recall-story h3 { margin-bottom:var(--space-4); font-size:1.25rem }
 .recall-story p { font-size:var(--font-small); color:var(--color-muted) }
 .defect-strip { width:100%; height:10px; border-radius:99px; margin-top:var(--space-5); background:var(--color-border); overflow:hidden }
-.defect-strip span { width:19.298%; height:100%; display:block; background:var(--color-primary) }
+.defect-strip span { width:0; height:100%; display:block; background:var(--color-primary) }
 .strip-legend { display:flex; justify-content:space-between; font-size:.75rem; color:var(--color-muted); margin-top:var(--space-2) }
 .confusion-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-3) }
 .confusion-grid>div { background:var(--color-soft); border:1px solid var(--color-border); padding:var(--space-5); border-radius:var(--radius-sm) }
@@ -242,6 +242,14 @@ td small { display:block; color:var(--color-muted); font-size:.75rem }
 .confusion-grid small { display:block; margin-top:.35rem; color:var(--color-muted); font-size:.75rem }
 #evaluation-note { color:var(--color-muted); font-size:.75rem; margin-top:var(--space-4) }
 .results-limitation { font-size:var(--font-small); color:var(--color-warning); margin-top:var(--space-5) }
+.stress-card { margin-top:var(--space-6); min-width:0; max-width:100% }
+.stress-scroll { max-width:100%; overflow-x:auto; border:1px solid var(--color-border); border-radius:var(--radius-sm) }
+.stress-scroll table { min-width:610px; width:100%; font-size:.8125rem }
+.stress-scroll caption { text-align:left; padding:var(--space-4); color:var(--color-muted); white-space:normal; line-height:1.6 }
+.stress-scroll th,.stress-scroll td { padding:var(--space-3) var(--space-4); white-space:normal }
+.stress-scroll tbody th { font-weight:600 }
+.stress-scroll .stress-shift { background:var(--color-warning-bg) }
+.stress-note { margin-top:var(--space-4); padding:var(--space-4); border:1px solid var(--color-warning-border); border-radius:var(--radius-sm); background:var(--color-warning-bg); color:var(--color-warning); font-size:var(--font-small); overflow-wrap:anywhere }
 .technical-results { margin-top:var(--space-6); border-block:1px solid var(--color-border); padding:var(--space-3) 0 }
 .metrics-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-5); margin:var(--space-5) 0 }
 .metric-card { padding:var(--space-5); border:1px solid var(--color-border); border-radius:var(--radius-sm); background:var(--color-surface) }

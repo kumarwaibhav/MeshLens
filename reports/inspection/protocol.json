@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "dataset": "MVTec AD grid",
+  "test_images": 78,
+  "test_normal": 21,
+  "test_defect": 57,
+  "records_expected": 468,
+  "selection_used_test": false,
+  "calibration_used_test": false,
+  "decision_rule": "score > threshold",
+  "score_decimals": 8,
+  "conditions": [
+    "original",
+    "brightness_070",
+    "brightness_130",
+    "shift_8x4_ref256",
+    "blur_sigma_0p8_ref256",
+    "jpeg_quality_75"
+  ],
+  "transforms": {
+    "original": "Decoded source image; no transform",
+    "brightness_070": "Pillow ImageEnhance.Brightness factor0.70 before canonical preprocessing",
+    "brightness_130": "Pillow ImageEnhance.Brightness factor1.30 before canonical preprocessing",
+    "shift_8x4_ref256": "Reflect pad dx=round(width*8/256),dy=round(height*4/256), then take firstH x W pixels",
+    "blur_sigma_0p8_ref256": "Pillow GaussianBlur radius0.8*min(width,height)/256",
+    "jpeg_quality_75": "Pillow JPEG quality75,subsampling2,decodeRGB"
+  },
+  "unusable_policy": "Unusable defects count as misses; unusable clean images are not correct negatives and are reported separately.",
+  "interval_method": "two-sided Wilson95%",
+  "benchmark_reuse": true,
+  "prior_evaluation_known": true,
+  "new_blind_validation": false,
+  "algorithm_changed_after_prior_test": false,
+  "recovery_context": "Recovery/reproducibility run of the same previously frozen A256joint detector. Prior56/57 defect alerts and4/21 clean alerts were already known from lost evidence files. No architecture, score or threshold tuning is performed in this recovery run.",
+  "qualification": "Public benchmark re-evaluation, not an independent target-line or unseen field cohort."
+}

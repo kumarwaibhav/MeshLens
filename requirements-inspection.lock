@@ -1,0 +1,4 @@
+# Minimal active texture-detector runtime, tested with CPython 3.12.
+# The historical autoencoder training environment is in requirements.lock.
+numpy==2.3.5
+pillow==13.0.0

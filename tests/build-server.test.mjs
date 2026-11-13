@@ -16,6 +16,9 @@ async function fixture(t) {
   t.after(() => rm(root, { recursive: true, force: true }));
   for (const directory of ['web', 'artifacts', 'data', 'reports']) await mkdir(path.join(root, directory), { recursive: true });
   await cp(path.join(source, 'web'), path.join(root, 'web'), { recursive: true });
+  await cp(path.join(source, 'artifacts/inspection'), path.join(root, 'artifacts/inspection'), { recursive: true });
+  await cp(path.join(source, 'reports/inspection'), path.join(root, 'reports/inspection'), { recursive: true });
+  await cp(path.join(source, 'src'), path.join(root, 'src'), { recursive: true });
   await cp(path.join(source, 'artifacts/samples'), path.join(root, 'artifacts/samples'), { recursive: true });
   await cp(path.join(source, 'third_party'), path.join(root, 'third_party'), { recursive: true });
   for (const name of ['artifacts/model.onnx', 'artifacts/checkpoint.pt', 'artifacts/metadata.json', 'artifacts/samples.json', 'data/manifest.csv', 'data/provenance.json', 'reports/metrics.json', 'reports/frozen_configuration.json', 'reports/calibration_scores.csv', 'reports/selection.json', 'reports/technical_report.pdf', 'LICENSE', 'THIRD_PARTY_NOTICES.md']) await cp(path.join(source, name), path.join(root, name));
@@ -34,7 +37,7 @@ async function preserved(root) { assert.equal(await readFile(path.join(root, 'di
 
 test('build creates an internally consistent release manifest and all 18 sample digests', async (t) => {
   const root = await fixture(t); const result = await buildWeb({ root }); assert.equal(result.samples, 18);
-  const release = JSON.parse(await readFile(path.join(root, 'dist/assets/release.json'), 'utf8')); assert.equal(release.schema_version, 1);
+  const release = JSON.parse(await readFile(path.join(root, 'dist/assets/release.json'), 'utf8')); assert.equal(release.schema_version, 2); assert.match(release.detector_version, /^meshlens-inspect-/); for (const required of ['detector.json','detector-model.json','detector-evaluation.json']) assert.ok(release.assets[required]);
   for (const [name, expected] of Object.entries(release.assets)) { const content = await readFile(path.join(root, 'dist/assets', name)); assert.equal(hash(content), expected.sha256); assert.equal(content.length, expected.bytes); }
   assert.equal(Object.keys(release.samples).length, 18);
   for (const [name, expected] of Object.entries(release.samples)) { const content = await readFile(path.join(root, 'dist/assets/samples', name)); assert.equal(hash(content), expected.sha256); assert.equal(content.length, expected.bytes); }
@@ -66,6 +69,72 @@ test('build refuses source directories and paths outside the project', async (t)
 });
 test('symlinked public input cannot leak a private file into a release', async (t) => {
   const root = await fixture(t); await marker(root); await writeFile(path.join(root, 'private.txt'), 'private secret'); await symlink(path.join(root, 'private.txt'), path.join(root, 'web/leak.txt')); await assert.rejects(() => buildWeb({ root }), /[Ss]ymlink/); await preserved(root);
+});
+
+// Rebind digests to test semantic validation rather than only stale checksums.
+async function rebindInspection(root) {
+  const filename = (name) => path.join(root,name);
+  const metadata = JSON.parse(await readFile(filename('artifacts/inspection/detector.json')));
+  const model = await readFile(filename('artifacts/inspection/detector-model.json'));
+  metadata.export.model_sha256=hash(model); metadata.export.model_bytes=model.length;
+  metadata.calibration.scores_sha256=hash(await readFile(filename('artifacts/inspection/calibration.json')));
+  await writeFile(filename('artifacts/inspection/detector.json'),JSON.stringify(metadata));
+  const freeze=JSON.parse(await readFile(filename('reports/inspection/frozen_configuration.json')));
+  freeze.calibration=metadata.calibration; freeze.model_sha256=metadata.export.model_sha256;
+  for (const name of Object.keys(freeze.files)) { const bytes=await readFile(filename(name)); freeze.files[name]={sha256:hash(bytes),bytes:bytes.length}; }
+  await writeFile(filename('reports/inspection/frozen_configuration.json'),JSON.stringify(freeze));
+  const freezeHash=hash(await readFile(filename('reports/inspection/frozen_configuration.json')));
+  const raw=JSON.parse(await readFile(filename('reports/inspection/independent_evaluation.json')));
+  raw.freeze_sha256=freezeHash;
+  await writeFile(filename('reports/inspection/independent_evaluation.json'),JSON.stringify(raw));
+  const rawHash=hash(await readFile(filename('reports/inspection/independent_evaluation.json')));
+  await edit(root,'reports/inspection/evaluation.json',(report) => { report.freeze_sha256=freezeHash; report.raw_report_sha256=rawHash; report.protocol.freeze_sha256=freezeHash; report.protocol.raw_report_sha256=rawHash; });
+}
+for (const input of ['artifacts/inspection/detector-model.json','artifacts/inspection/calibration.json','reports/inspection/independent_evaluation.json','src/meshlens/texture_detector.py','web/inspection_input.js','artifacts/inspection/samples/glue-008.png','web/downloads/MeshLens-18-Benchmark-Examples.zip']) {
+  test(`active detector tampering in ${input} preserves the previous release`, async (t) => {
+    const root=await fixture(t); await marker(root); await writeFile(path.join(root,input),'tampered');
+    await assert.rejects(() => buildWeb({root})); await preserved(root);
+  });
+}
+test('schema2 never falls back to the historical autoencoder when an inspection artifact is missing', async (t) => {
+  const root=await fixture(t); await marker(root); await rm(path.join(root,'artifacts/inspection/detector-model.json'));
+  await assert.rejects(() => buildWeb({root}), /ENOENT/); await preserved(root);
+});
+test('reserved normal calibration membership and rank51 remain enforced after all digests are rebound', async (t) => {
+  for (const kind of ['membership','rank']) {
+    const root=await fixture(t); await marker(root);
+    await edit(root,'artifacts/inspection/calibration.json',(rows) => { if (kind==='membership') rows[0].path=rows[1].path; else { const index=rows.findIndex((row) => row.score===1.01049636); assert.ok(index>=0); rows[index].score=.1; } });
+    await rebindInspection(root); await assert.rejects(() => buildWeb({root}), /calibration|rank51/i); await preserved(root);
+  }
+});
+test('raw strict-threshold decisions,78x6coverage and pre-evaluation freeze are independently checked', async (t) => {
+  for (const kind of ['equality','duplicate','timestamp']) {
+    const root=await fixture(t); await marker(root);
+    await edit(root,'reports/inspection/independent_evaluation.json',(raw) => {
+      if (kind==='equality') { raw.evaluation.records[0].score=1.01049636; raw.evaluation.records[0].decision='review'; }
+      else if (kind==='duplicate') raw.evaluation.records[1]={...raw.evaluation.records[0]};
+      else raw.evaluated_at='2000-01-01T00:00:00Z';
+    });
+    await rebindInspection(root); await assert.rejects(() => buildWeb({root}), /decision|coverage|freeze/i); await preserved(root);
+  }
+});
+test('all six public summaries, Wilson intervals and qualification claims must agree with raw records', async (t) => {
+  for (const kind of ['condition','interval','qualification']) {
+    const root=await fixture(t); await marker(root);
+    await edit(root,'reports/inspection/evaluation.json',(report) => {
+      if (kind==='condition') report.conditions.shift_8x4_ref256.model.false_positive=0;
+      else if (kind==='interval') report.binomial_wilson_intervals_95.recall.lower=1;
+      else report.qualification.automated_line_inspection_qualified=true;
+    });
+    await assert.rejects(() => buildWeb({root}), /metric|interval|qualification|protocol/i); await preserved(root);
+  }
+});
+test('raw cached aggregate metrics are ignored in favor of recomputation from per-image records', async (t) => {
+  const root=await fixture(t);
+  await edit(root,'reports/inspection/independent_evaluation.json',(raw) => { raw.evaluation.metrics={invented:{defect_alerts:0}}; });
+  await rebindInspection(root); await buildWeb({root});
+  const report=JSON.parse(await readFile(path.join(root,'dist/assets/detector-evaluation.json')));
+  assert.equal(report.model.true_positive,56); assert.equal(report.model.false_positive,4);
 });
 
 function request(server, pathname, method = 'GET') {

@@ -13,4 +13,5 @@ __pycache__/
 *.zip
 !web/downloads/*.zip
 tmp/
+inspection-output/
 .build-stage-*/

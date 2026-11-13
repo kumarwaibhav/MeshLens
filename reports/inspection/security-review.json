@@ -1,0 +1,52 @@
+{
+  "date_utc": "2026-11-13",
+  "npm": {
+    "known_vulnerabilities": 0,
+    "audit_file": "npm-security-audit.json"
+  },
+  "active_python": {
+    "known_vulnerabilities": 0,
+    "dependencies": [
+      {
+        "name": "numpy",
+        "version": "2.3.5"
+      },
+      {
+        "name": "pillow",
+        "version": "13.0.0"
+      }
+    ],
+    "audit_file": "python-runtime-security-audit.json"
+  },
+  "scope": "Known dependency advisory queries at scan time. npm covers browser dependencies; the Python scopes cover active inference, development additions, and the historical training lock separately. No skipped component is claimed audited. This is not a penetration test or a guarantee of no vulnerabilities.",
+  "minimal_runtime_smoke": {
+    "passed": true,
+    "only_numpy_pillow": true,
+    "model_version": "meshlens-inspect-7665cb57f023",
+    "score": 0.75037397,
+    "threshold": 1.01049636
+  },
+  "notes": "Added and exercised the documented two-package inference lock; the frozen numerical sources and model were unchanged.",
+  "python_audit_scopes": {
+    "python-runtime-security-audit.json": {
+      "dependencies": 2,
+      "vulnerable": [],
+      "skipped": []
+    },
+    "python-development-security-audit.json": {
+      "dependencies": 61,
+      "vulnerable": [],
+      "skipped": []
+    },
+    "python-training-security-audit.json": {
+      "dependencies": 36,
+      "vulnerable": [],
+      "skipped": [
+        {
+          "name": "torch",
+          "reason": "Dependency not found on PyPI and could not be audited: torch (2.14.1+cpu)"
+        }
+      ]
+    }
+  }
+}

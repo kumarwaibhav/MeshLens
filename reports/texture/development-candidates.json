@@ -1,0 +1,272 @@
+[
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "joint",
+    "tail_fraction": 0.005,
+    "fit_scale": 0.47045176621031776,
+    "tune_cutoff": 1.0576706589594864,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9615384615384616,
+      "contamination": 0.8269230769230769,
+      "fibre": 0.6153846153846154,
+      "gap": 0.9807692307692307,
+      "glue": 0.23076923076923078
+    },
+    "synthetic_macro_recall": 0.7230769230769231
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "mixed",
+    "tail_fraction": 0.001,
+    "fit_scale": 0.8739600548116202,
+    "tune_cutoff": 1.1423532868379813,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9615384615384616,
+      "contamination": 0.8461538461538461,
+      "fibre": 0.6730769230769231,
+      "gap": 0.9807692307692307,
+      "glue": 0.1346153846153846
+    },
+    "synthetic_macro_recall": 0.7192307692307692
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "relative",
+    "tail_fraction": 0.001,
+    "fit_scale": 5.93295310183475,
+    "tune_cutoff": 1.2200390873712987,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9423076923076923,
+      "contamination": 0.8461538461538461,
+      "fibre": 0.6538461538461539,
+      "gap": 1.0,
+      "glue": 0.11538461538461539
+    },
+    "synthetic_macro_recall": 0.7115384615384615
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "joint",
+    "tail_fraction": 0.001,
+    "fit_scale": 0.6880124946743518,
+    "tune_cutoff": 1.1577309812954537,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9615384615384616,
+      "contamination": 0.8461538461538461,
+      "fibre": 0.6346153846153846,
+      "gap": 0.9807692307692307,
+      "glue": 0.1346153846153846
+    },
+    "synthetic_macro_recall": 0.7115384615384615
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "local",
+    "tail_fraction": 0.001,
+    "fit_scale": 0.12967982784131357,
+    "tune_cutoff": 1.1148562247246367,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9423076923076923,
+      "contamination": 0.8269230769230769,
+      "fibre": 0.6346153846153846,
+      "gap": 0.9807692307692307,
+      "glue": 0.1346153846153846
+    },
+    "synthetic_macro_recall": 0.7038461538461538
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "cell",
+    "tail_fraction": 0.005,
+    "fit_scale": 0.06091265512312984,
+    "tune_cutoff": 1.0785904954921393,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9807692307692307,
+      "contamination": 0.8076923076923077,
+      "fibre": 0.4807692307692308,
+      "gap": 0.9807692307692307,
+      "glue": 0.23076923076923078
+    },
+    "synthetic_macro_recall": 0.6961538461538461
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "relative",
+    "tail_fraction": 0.005,
+    "fit_scale": 3.851281447736585,
+    "tune_cutoff": 1.1157031117878973,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9423076923076923,
+      "contamination": 0.8461538461538461,
+      "fibre": 0.5769230769230769,
+      "gap": 0.9807692307692307,
+      "glue": 0.1346153846153846
+    },
+    "synthetic_macro_recall": 0.6961538461538461
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "mixed",
+    "tail_fraction": 0.005,
+    "fit_scale": 0.5819008921096304,
+    "tune_cutoff": 1.0856738411271114,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9423076923076923,
+      "contamination": 0.8076923076923077,
+      "fibre": 0.6153846153846154,
+      "gap": 0.9807692307692307,
+      "glue": 0.1346153846153846
+    },
+    "synthetic_macro_recall": 0.6961538461538461
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "cell",
+    "tail_fraction": 0.02,
+    "fit_scale": 0.04783247657342061,
+    "tune_cutoff": 0.962641851949709,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9615384615384616,
+      "contamination": 0.75,
+      "fibre": 0.5192307692307693,
+      "gap": 0.9807692307692307,
+      "glue": 0.25
+    },
+    "synthetic_macro_recall": 0.6923076923076923
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "local",
+    "tail_fraction": 0.005,
+    "fit_scale": 0.0882957945036842,
+    "tune_cutoff": 1.092371886571131,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9230769230769231,
+      "contamination": 0.75,
+      "fibre": 0.6153846153846154,
+      "gap": 0.9807692307692307,
+      "glue": 0.15384615384615385
+    },
+    "synthetic_macro_recall": 0.6846153846153846
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "joint",
+    "tail_fraction": 0.02,
+    "fit_scale": 0.32537421734976385,
+    "tune_cutoff": 1.0526467731425517,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9423076923076923,
+      "contamination": 0.7307692307692307,
+      "fibre": 0.5192307692307693,
+      "gap": 0.9615384615384616,
+      "glue": 0.23076923076923078
+    },
+    "synthetic_macro_recall": 0.676923076923077
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "relative",
+    "tail_fraction": 0.02,
+    "fit_scale": 2.6138057497036367,
+    "tune_cutoff": 1.08515141483911,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9423076923076923,
+      "contamination": 0.7307692307692307,
+      "fibre": 0.5384615384615384,
+      "gap": 0.9615384615384616,
+      "glue": 0.17307692307692307
+    },
+    "synthetic_macro_recall": 0.6692307692307693
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "cell",
+    "tail_fraction": 0.001,
+    "fit_scale": 0.08521827931259023,
+    "tune_cutoff": 1.1122366601793459,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9423076923076923,
+      "contamination": 0.75,
+      "fibre": 0.4423076923076923,
+      "gap": 0.9807692307692307,
+      "glue": 0.21153846153846154
+    },
+    "synthetic_macro_recall": 0.6653846153846154
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "mixed",
+    "tail_fraction": 0.02,
+    "fit_scale": 0.3874200819097363,
+    "tune_cutoff": 1.0773662613236736,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.9038461538461539,
+      "contamination": 0.6923076923076923,
+      "fibre": 0.46153846153846156,
+      "gap": 0.9615384615384616,
+      "glue": 0.19230769230769232
+    },
+    "synthetic_macro_recall": 0.6423076923076924
+  },
+  {
+    "kind": "normal-lattice-v1",
+    "image_size": 256,
+    "variant": "local",
+    "tail_fraction": 0.02,
+    "fit_scale": 0.06008571009205913,
+    "tune_cutoff": 1.087753050548648,
+    "tune_clean_count": 52,
+    "tune_clean_alerts": 2,
+    "synthetic_recall_by_family": {
+      "bend": 0.8653846153846154,
+      "contamination": 0.6923076923076923,
+      "fibre": 0.4423076923076923,
+      "gap": 0.8846153846153846,
+      "glue": 0.15384615384615385
+    },
+    "synthetic_macro_recall": 0.6076923076923076
+  }
+]

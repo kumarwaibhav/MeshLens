@@ -1,83 +1,102 @@
 # Deployment and local operation
 
-The actual trained ONNX model runs in the browser. Python is used for development and offline
-analysis; no Python inference process is required on the web host.
+MeshLens runs the inspection detector and the separate reconstruction autoencoder on the
+visitor's device. The static host serves versioned model files, metadata, JavaScript and
+WebAssembly assets. It needs Node.js to build the app and no Python inference server.
 
 ## Local web app
 
+From the project root:
+
 ```bash
 npm ci
+npm test
 npm run build
 npm run serve
 ```
 
-The Node-native server binds to loopback on port 4173 by default. No Python installation is
-needed for this local application path. Any compatible static HTTP server can serve `dist/`.
+Open the printed URL, normally `http://127.0.0.1:4173`. The Node server binds to loopback.
+On Windows use `npm.cmd` for these commands if PowerShell blocks the `npm.ps1` shim.
 
-If port 4173 is occupied, choose another available port without stopping an unknown process:
+If port 4173 is occupied, let the operating system choose an available port:
 
 ```bash
-node --input-type=module -e "import {startServer} from './scripts/serve_web.mjs'; await startServer({port:4174})"
+node --input-type=module -e "import {startServer} from './scripts/serve_web.mjs'; const server = await startServer({port:0}); console.log('http://127.0.0.1:' + server.address().port)"
 ```
 
-Open the URL printed by the server. On Windows use `npm.cmd` if PowerShell blocks npm's script shim.
+Open the URL that this command prints. Keep the terminal running, and press `Ctrl+C` to stop
+your server. Serve `dist/` through HTTP. Opening `index.html` with `file://` can block model
+and WebAssembly fetches.
 
-Open http://127.0.0.1:4173. Wait for model ready, inspect a bundled sample and check the score,
-threshold, reconstruction and residual evidence. Serve through HTTP rather than opening a
-`file://` page, because local model/WebAssembly fetches can otherwise fail.
+The build verifies and copies the shipped release. It does not download the training data,
+fit a new detector or train the autoencoder. The detector's score, threshold and heatmap belong
+to its own release. The autoencoder's reconstruction and residual provide separate visual
+evidence. Check [the model card](MODEL_CARD.md) for the exact decision method and measured results.
 
-## Vercel static deployment
+## Vercel
 
-Import the extracted source repository. Use Framework Other, Install Command `npm ci`, Build
-Command `npm run build`, Output Directory `dist` and the repository root. The Node-native static build requires no Python on the hosting service. It does not download
-raw data or retrain.
-Deploy and verify real inference, not only the host's successful-build status.
+Use the existing `kumarwaibhav/MeshLens` repository integration. These settings are recorded
+in `vercel.json`:
 
-## Cloudflare Pages
+| Setting | Value |
+|---|---|
+| Root directory | Repository root |
+| Framework | Other |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
 
-Use `npm ci && npm run build` and output `dist` on a Node.js build image, or publish
-a locally built static output using supported direct upload. Check model/WASM asset paths
-and correct MIME serving on the chosen HTTPS domain.
+Push the reviewed source through the [Windows GitHub steps](github-windows.md), then inspect
+the connected deployment. Confirm the deployed model version against the delivered detector
+metadata. A green build or GitHub push alone does not establish that the new release is live.
 
-## GitHub Pages
+## Other static hosts
 
-A root user-site/custom domain is the straightforward configuration for root-relative asset
-URLs. Repository subpath hosting needs a tested base-path adaptation; do not assume existing
-root-relative model URLs work under an arbitrary subdirectory.
+Cloudflare Pages can build with `npm ci && npm run build` and output `dist`, or receive a
+locally built release. Preserve correct asset paths, content types and HTTPS serving.
 
-## Live preview audience
+For GitHub Pages, use a root user site or a tested custom domain. Repository subpath hosting
+requires a tested base-path configuration. Root-relative model/runtime asset URLs cannot be
+assumed to work under a project subdirectory.
 
-The registered MeshLens preview is owner-private by default. Publication status and the final
-working URL are verified separately. A deployed private preview is not automatically a public
-portfolio link; use sharing controls deliberately for the intended audience.
+The registered ChatGPT preview is owner-private. Updating it preserves that audience.
+A private preview and the public Vercel deployment are separate destinations with separate
+versions and sharing settings.
 
 ## Deployment smoke checks
 
-- Model loading completes and a real sample produces finite inference results.
-- Model version and threshold match the frozen metadata.
-- Input/reconstruction/residual views work and history updates.
-- CSV export and Clear work; replay starts and stops without overlapping inference.
-- Narrow-screen controls remain readable and keyboard accessible.
-- Camera sampling starts only on user request and requires browser permission.
+Run these checks on the deployed HTTPS origin, including a fresh browser session:
 
-Browser memory/CPU and load times vary. Camera operation needs HTTPS or localhost and browser
-permission. Local history can be cleared and does not synchronize across devices. Physical
-camera operation and production throughput require their own verification.
+- Wait for the detector and reconstruction model to become ready. Check the displayed version
+  and threshold against the frozen metadata.
+- Run each guided example. Read its known label, actual decision and explanation. Benchmark
+  examples demonstrate behavior; they are not newly collected validation data.
+- Compare Original, Detector map, Reconstruction and AE error map. The detector map is a
+  relative response. The AE views illustrate reconstruction and do not set the active score.
+- Upload a supported still image. Check oversized, corrupt and unsupported files, as well as
+  a photo that cannot establish a usable mesh pattern. These cases must show an explanation.
+  An input below the detector's minimum side length, beyond its aspect-ratio limit or without
+  usable repetition must request input review without a numeric defect decision.
+- Check that a missing, corrupted or failed detector asset blocks decisions. An older
+  autoencoder score must not silently become the active detector result.
+- Test retry after a failed load, sequential replay, history clear/recovery and CSV/JSON downloads.
+  Confirm exported results retain the model version and threshold used for each inspection.
+- Test keyboard navigation and visible focus. Inspect narrow mobile widths, landscape,
+  enlarged text and zoom without horizontal clipping or inaccessible controls.
+- Start camera sampling only through its control. Check permission denial and stop/restart.
+  Verify a still-image alternative remains usable.
 
-See the [workflow guide](RUNBOOK.md) for exact environment setup, Windows commands,
-fresh-versus-reused training, input bounds, camera cadence and latency definitions. Camera
-software/mock-stream checks do not verify physical camera hardware or production line timing.
+Camera capture needs HTTPS or localhost and browser permission. CPU/memory, decode time and
+model load time vary across devices. Camera mode samples serially and does not establish
+full-video-FPS performance. Browser-local history is device-specific and can be cleared.
+Physical camera hardware, line timing and long-duration operation need target-system checks.
 
-## UI revision deployment checks
+Run a clean build immediately before deployment. `scripts/prepare_ui_review.mjs` prepares a
+local review fixture. Never deploy its modified output. `npm run build` recreates the verified
+release from source.
 
-Use the repository's existing Vercel integration. `vercel.json` retains `npm ci`, `npm run build`
-and output `dist`; no Python or retraining is needed. On the deployed HTTPS domain verify the
-real three-image walkthrough, input/reconstruction/error-map tabs, known-label explanations,
-file validation, JSON/CSV/metadata downloads and the 18-example ZIP. Confirm that the guided
-third example explains a missed defect and that recall remains 19.3%.
-
-Run a clean build before deployment. `scripts/prepare_ui_review.mjs` is a local-only test fixture;
-never upload a dist directory after preparing that fixture. Standard `npm run build` removes it.
-
-For the design decisions, responsive widths and limits of verification, see
-[the handoff](design/DESIGN_HANDOFF.md) and [accessibility audit](design/ACCESSIBILITY_REVIEW.md).
+Use the [workflow guide](RUNBOOK.md) for exact Python/data workflows and the
+[field validation guide](FIELD_VALIDATION.md) before making operational accuracy claims.
+The [design handoff](design/DESIGN_HANDOFF.md) and
+[accessibility review](design/ACCESSIBILITY_REVIEW.md) record the earlier UI revision and its
+verification scope; repeat relevant checks after changing the interface.

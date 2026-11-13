@@ -1,232 +1,178 @@
-![MeshLens - learn the pattern, reveal the exception](docs/banner.svg)
+![MeshLens: learn the pattern, reveal the exception](docs/banner.svg)
 
 # MeshLens
 
-**Industrial mesh inspection with a trained autoencoder and real inference in your browser.**
+**A visual inspection lab for woven industrial mesh, with local inference and evidence you can inspect.**
 
-**Use this as an industrial inspection prototype for human review.** At the frozen operating
-point it detected 11 of 57 benchmark defects and missed 46. It is unsuitable for automatic
-acceptance, rejection, or production quality guarantees without substantial further development
-and validation on the target line.
+Give MeshLens a close-up of mesh. It looks for regions that disagree with the repeating grid,
+returns **Review** or **Within calibrated range**, and shows the regions that influenced the
+score. **Input needs review** means the photo cannot support a numeric inspection decision.
+Use the result as a second check for a human inspector. The benchmark does not qualify
+automatic material acceptance or rejection on a factory line.
 
-A repeated grid pattern makes small defects easy to overlook. MeshLens learns the normal
-pattern from defect-free material, reconstructs a new image, and exposes where the
-reconstruction disagrees with it. The result is a review signal with visible evidence.
+The active detector compares neighboring pattern repetitions. A separately trained
+**autoencoder** reconstructs the image for visual comparison. Its reconstruction/error views
+explain the original experiment; the active texture detector supplies the review decision.
 
-[Public demo](https://mesh-lens.vercel.app) · [Run or deploy](docs/deployment.md) · [Technical report](reports/technical_report.pdf) ·
-[Executed walkthrough](notebooks/01_meshlens_walkthrough.ipynb) · [Model card](docs/MODEL_CARD.md)
-· [Workflow guide](docs/RUNBOOK.md) · [Project audit](reports/PROJECT_AUDIT.md)
+[Public demo](https://mesh-lens.vercel.app) · [Model card](docs/MODEL_CARD.md) ·
+[Run locally](docs/RUNBOOK.md) · [Deploy](docs/deployment.md) ·
+[Dataset](docs/DATASET_CARD.md) · [Windows GitHub steps](docs/github-windows.md)
 
-## Start here: a three-image walkthrough
+Check the model version displayed in a deployed demo against the release metadata.
+A source update, private preview and public Vercel deployment can contain different versions.
 
-1. **Example 1:** a normal mesh image. Compare Original, Reconstruction and Error map.
-2. **Example 2:** a known bent defect that triggers review.
-3. **Example 3:** a known defect that the model misses. Read the explanation below the score.
+## Try it in a minute
 
-Known labels appear after inference and never enter the model. All 18 gallery images are
-already-measured benchmark examples. Use the in-app **Download 18 examples** button for
-labeled PNGs, expected results, source paths and data terms. The image kit is also tracked at
-[web/downloads/MeshLens-18-Benchmark-Examples.zip](web/downloads/MeshLens-18-Benchmark-Examples.zip).
+1. Open Inspection and wait for the models to become ready.
+2. Try the guided images. Read each known label and the actual result after inference.
+3. Compare **Original**, **Detector map**, **Reconstruction** and **AE error map**.
+4. Read the score alongside its threshold. A low score can still miss a real defect.
+5. Download a result or replay more examples and export the local history.
 
-For a new image, capture a close-up of similar woven mesh with comparable scale, focus,
-viewpoint and steady lighting. Upload a still PNG/JPEG/WebP up to 12 MiB, 32–4096 pixels
-per side and 16 megapixels. The whole image is resized to 256×256. Uploads run inference;
-they do not train the model. Separately captured, reliably labeled material is needed for
-independent validation; benchmark crops and edits remain replay data.
+The 18 bundled images and downloadable example kit are already-evaluated MVTec Grid benchmark
+replays. Their labels help you understand behavior. Uploading or replaying them supplies no
+new independent accuracy evidence. The detector map shows relative pattern disagreement;
+it is not a defect probability or a validated segmentation mask.
 
-The revised interface provides named mobile navigation, adaptive layouts, readable contrast,
-keyboard tabs, enlarged-text support and local history recovery. See the
-[UI revision and executed checks](reports/UI_REDESIGN.md),
-[accessibility review](docs/design/ACCESSIBILITY_REVIEW.md) and
-[developer handoff](docs/design/DESIGN_HANDOFF.md). These checks do not certify every device
-or replace physical-device and screen-reader testing.
+## Where to get a new image
 
-## What you can try
+For a new inspection, photograph similar woven mesh yourself or capture a frame from your
+inspection camera. Use a sharp close-up, comparable mesh scale and stable lighting, with
+both sides at least **256 pixels** and a longest-to-shortest-side ratio no greater than **1.5**.
+Still PNG/JPEG/WebP files may be up to 12 MiB, 4096 pixels per side and 16 megapixels.
+The whole suitable image is resized to 256×256; no automatic crop repairs an unsuitable view.
 
-- Inspect a bundled mesh example, a local PNG/JPEG/WebP image, or a sampled camera frame.
-- Compare the input, trained-model reconstruction, and residual heatmap.
-- See the anomaly score, frozen calibration threshold, model version, and inference time.
-- Replay examples sequentially and export bounded browser-local history as CSV.
-- Inspect measured evaluation results and versioned model/data metadata.
+For an independent evaluation, collect separate physical parts or mesh sections from the
+intended process, including normal material and relevant defects. Have their labels checked
+independently of model scores. Keep repeated frames, crops and photos of the same part in
+one group. Follow the [field validation workflow](docs/FIELD_VALIDATION.md) to record the
+cohort, model/threshold, failures, confidence bounds and operator acceptance limits.
 
-The static app executes the actual ONNX graph through ONNX Runtime Web. Images stay on
-the device. History belongs to the current browser; it is not a shared production audit
-trail. Camera access begins only after user action and browser permission.
-Camera mode inspects one frame at a time, with a selectable 250, 1000 or 2500 ms wait after
-each completed inspection (default 1000 ms). It is sampled live review, not full-video-FPS
-processing. Model-call time excludes image decoding and other processing. Physical camera
-hardware and production line throughput have not been validated.
+Images stay on your device during inference. Camera mode begins after user action and
+browser permission, then samples one frame at a time. Browser-local history can be cleared
+and is specific to that browser. It does not provide a shared, authenticated industrial audit log.
 
-## How it works
+## How the project works
 
-![MeshLens architecture](reports/architecture.svg)
+| Step | What happens |
+|---|---|
+| Prepare | Decode the image, resolve orientation, composite alpha over white and apply the versioned integer area resize. |
+| Find the pattern | Estimate mesh repetition and compare small regions with neighboring repeats, allowing minor alignment changes. |
+| Score | Combine local/cell disagreement, normalize by the normal-fit reference and average the largest 0.5% of responses. |
+| Decide | Request review when the rounded score is strictly above the separately calibrated threshold. |
+| Explain | Show the detector map and separate AE reconstruction/error evidence. |
 
-1. Learn normal patterns using a convolutional autoencoder trained from random initialization.
-2. Compare candidates on reserved normal development images and fixed synthetic alterations.
-3. Calibrate the review threshold using another normal-only partition.
-4. Measure the frozen model on the official held-out real-defect test images.
-5. Deploy the frozen ONNX graph with the same tensor and scoring contract.
-
-The pixel residual is the mean squared RGB reconstruction difference. The image score
-averages a frozen top fraction of residuals. A score strictly above the separately calibrated
-threshold requests review. The score is not a defect probability, and the heatmap is not
-validated segmentation. [Model architecture](reports/model-architecture.svg).
+The selected method is a normal-fitted texture detector running in JavaScript. Its Python
+path needs NumPy and Pillow. The original autoencoder was trained from random initialization
+and runs separately through ONNX Runtime Web. Neither uploading a photo nor opening the app
+trains a model. The active recovered release is `meshlens-inspect-7665cb57f023`, with threshold **1.01049636**.
+Its hashes are recorded in `artifacts/inspection/detector.json` and
+`reports/inspection/frozen_configuration.json`.
 
 ## Measured results
 
-<!-- MESHLENS_MEASURED_RESULTS_START -->
-| Frozen method | AUROC | Average precision | Precision | Defect recall | F1 |
-|---|---:|---:|---:|---:|---:|
-| Convolutional autoencoder | 0.7594 | 0.9005 | 100.00% | 19.30% | 32.35% |
-| Patch PCA baseline | 0.7602 | 0.8987 | 100.00% | 8.77% | 16.13% |
+<!-- MESHLENS_INSPECTION_RESULTS_START -->
+**Verified recovery results:** the restored frozen release reproduced the previously recorded
+counts across all six conditions. These are known-benchmark reproducibility results.
 
-At the frozen threshold, **11 of 57 defects** were flagged, **46 were missed**, and **0 of 21 normal images** were flagged. The stratified fixed-model bootstrap 95% AUROC interval is 0.6391-0.8655. It measures resampling uncertainty for this fixed model, not retraining or new-factory variation.
+| Frozen pipeline | Defects flagged | Missed | Normal images flagged | AUROC |
+|---|---:|---:|---:|---:|
+| Active normal-lattice detector | 56/57 (98.25%) | 1 | 4/21 (19.05%) | 0.9958 |
+| Historical reconstruction AE | 11/57 (19.30%) | 46 | 0/21 (0.00%) | 0.7594 |
 
-Development selected `denoising`, 8 latent channels, checkpoint epoch 26, and the largest 1% of pixel residuals. Separate normal calibration fixed the threshold at `0.02402208`.
+All 78 original benchmark images produced scores. The detector's Wilson 95% interval
+is **90.71%–99.69%** for defect recall and **7.67%–40.00%** for the normal false-alarm rate.
+These small-sample intervals do not establish factory accuracy.
 
-Wilson 95% precision interval: 74.12%-100.00%; normal false-alarm interval: 0.00%-15.46%. Zero observed false alarms is not proof of zero population risk.
+**The declared release goal was not met.** Recall exceeded 90%, but the observed 19.05%
+normal false-alarm rate exceeded the 5% limit. A translated-view stress flagged all 21 normal
+images; brighter images flagged 6/21. The threshold remained frozen. These results support
+research and human review while false alarms and view sensitivity require further work.
 
-<!-- MESHLENS_MEASURED_RESULTS_END -->
+Try the [known missed glue image](data/raw/grid/test/glue/008.png) from the complete dataset:
+its reproduced score is 0.97635626, below the 1.01049636 threshold despite a real defect. It is
+an already-measured failure example. Full per-defect and six-condition results are in the
+[model card](docs/MODEL_CARD.md) and [evaluation](reports/inspection/evaluation.json).
+<!-- MESHLENS_INSPECTION_RESULTS_END -->
 
-![Held-out ROC and precision-recall curves](reports/figures/roc_pr.png)
+This release restores the previously selected algorithm and reproduces its frozen evaluation.
+The official benchmark outcomes were already known before this recovery. Architecture and
+cutoff are unchanged and were not retuned. The original detector selection excluded these test
+images from fitting, candidate selection and calibration. This recovery is reproducibility
+evidence; a new representative factory study is still required.
 
-Ranking and operating-point metrics answer different questions. Precision must be read
-alongside defect recall and the actual confusion counts. Failures and distribution-shift
-sensitivity remain visible in the technical report and model card.
+The historical AE's [model card](docs/AUTOENCODER_MODEL_CARD.md),
+[technical PDF](reports/technical_report.pdf), [plots](reports/figures/roc_pr.png) and
+[executed notebook](notebooks/01_meshlens_walkthrough.ipynb) retain its reconstruction experiment.
 
-## Dataset and experiment boundary
+## What the dataset contains
 
-MVTec AD grid is an industrial mesh-like texture category. The acquisition script records
-all source counts, per-image hashes, masks, and duplicate checks in the current provenance.
-The deterministic source-image split uses 160 fit, 52 tune, and 52 calibration normal images;
-the official 78-image test split contains 21 normal and 57 defective images.
+[MVTec AD Grid](docs/DATASET_CARD.md) contains real close-ups of an industrial grid texture:
+342 source images and 57 defect masks. Defects include bent/broken wires, glue, metal
+contamination and foreign thread.
 
-| Role | Permitted use |
+| Partition | Images | Purpose |
+|---|---:|---|
+| Fit | 160 normal | Normal reference fitting |
+| Tune | 52 normal | Candidate/score-rule comparison with seeded synthetic alterations |
+| Calibration | 52 normal | Freeze the review threshold |
+| Official test | 21 normal + 57 defective | Measure the frozen complete pipeline |
+
+The upgrade's tune suite adds 260 synthetic alterations to those 52 unchanged tune images.
+Synthetic development recall is reported separately from real-defect benchmark recall.
+Real test labels and masks do not fit the detector or set its threshold. All 401 raw files
+(images, masks and license/readme) are tracked; generated caches are ignored.
+
+## Run the application
+
+From the extracted project root, with Node.js 22 or newer:
+
+```powershell
+npm.cmd ci
+npm.cmd test
+npm.cmd run build
+npm.cmd run serve
+```
+
+Open the printed URL, normally `http://127.0.0.1:4173`. On Linux/macOS use `npm` in place of
+`npm.cmd`. The build uses shipped artifacts and does not retrain or download data.
+The [workflow guide](docs/RUNBOOK.md) includes an available-port fallback and Python examples.
+
+For offline detector inference on Python 3.12:
+
+```powershell
+py -3.12 -m venv .venv-inspection
+.\.venv-inspection\Scripts\python.exe -m pip install -r requirements-inspection.lock
+.\.venv-inspection\Scripts\python.exe -m pip install --no-deps -e .
+.\.venv-inspection\Scripts\python.exe scripts/inspect_image.py "C:\path\to\mesh-photo.png" --evidence inspection-output/run-1
+```
+
+Choose a new evidence directory for each run. The CLI returns an explicit inconclusive status
+for unsuitable inputs and protects existing outputs. See the guide for Linux commands,
+selected-detector reproduction and the separate historical AE training workflow.
+
+## Release contents and limits
+
+| Path | Contents |
 |---|---|
-| Fit | Weight optimization and extraction of normal training patches |
-| Tune | Checkpoint, candidate and score-rule comparison with fixed synthetic alterations |
-| Calibration | Frozen normal-tail decision threshold |
-| Official test | Final reported real-image evaluation after selection and calibration |
+| `artifacts/inspection/` | Frozen detector, calibration, metadata and canonical benchmark examples |
+| `reports/inspection/` | Protocol, candidate selection, freeze record and measured evaluation |
+| `artifacts/model.onnx` | Historical trained reconstruction AE |
+| `src/meshlens/`, `web/` | Python/browser input, scoring and interaction contracts |
+| `data/` | Complete licensed Grid acquisition, manifest and provenance |
+| `tests/` | Model, input, artifact, browser and lifecycle regression checks |
+| `docs/` | Cards, operation/deployment guides, field workflow and prior UI audit |
 
-The source image is the split unit. Patches never cross roles. Real test labels and masks
-do not train the network or select the threshold. Synthetic tune defects are development
-proxies and are never counted as real held-out defects. See the [dataset card](docs/DATASET_CARD.md).
+The build validates the selected release's hashes, threshold, source implementation,
+calibration, evaluation support and gallery provenance. Software tests cover defined cases.
+The recovered release's [78-source runtime check](reports/inspection/official-runtime-parity.json)
+and [18-gallery replay check](reports/inspection/gallery-runtime-parity.json) passed with identical
+canonical pixels, rounded scores and decisions between Python and JavaScript under Node.js.
+New materials, lighting, scale, viewpoints, blur, physical camera operation and line timing
+need representative testing. The responsive interface supports narrow layouts and keyboard
+use; physical-device and assistive-technology checks remain part of deployment verification.
 
-## Run the web app locally
-
-With Node.js/npm installed, build from the extracted project root:
-
-```bash
-npm ci
-npm run build
-npm run serve
-```
-
-Open http://127.0.0.1:4173. The server binds to loopback by default. If Python is available,
-an alternative local server is:
-
-```bash
-python -m http.server 8000 --bind 127.0.0.1 --directory dist
-```
-
-For the Python server, open http://127.0.0.1:8000. Wait for model ready and inspect a bundled example.
-The Node-native static build copies existing trained artifacts; it does not retrain or download raw
-training images. See the [deployment guide](docs/deployment.md) for hosted deployment.
-
-## Reproduce training and evaluation
-
-Use Python 3.12 on Linux x86_64 in an isolated environment. The exact Python locks were measured
-on this platform; native Windows/macOS dependency installation is not a tested claim. Windows
-users can run the static application with Node.js and use a Python 3.12 Linux/WSL environment
-for model development; see the [workflow guide](docs/RUNBOOK.md).
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements-dev.lock
-python -m pip install --no-deps -e .
-npm ci
-python scripts/download_data.py
-python scripts/train.py
-python scripts/evaluate.py
-python scripts/export_model.py
-python -m pytest -q
-npm test
-python scripts/verify_wasm.py --full-test
-python scripts/make_notebook.py
-python scripts/make_report.py
-```
-
-Inspect a local image with the exported graph:
-
-```bash
-python scripts/predict.py artifacts/samples/bent-000.png --output tmp/inspection.json --evidence tmp/evidence
-```
-
-The notebook loads the shipped model and reports rather than rerunning training. The
-source manifest, package locks, candidate records, epoch history, calibration scores,
-per-image test predictions, export checks, and runtime checks retain the experiment evidence.
-The release includes completed `candidate-*.pt` files. `train.py` validates and reuses matching
-candidates, then recomputes development selection; an interrupted optimization resumes from
-its matching `training-resume-*.pt` file. To optimize again from random initialization, first
-move both sets of files out of `artifacts/` and retain a copy of the release for comparison.
-`requirements-training-original.lock` records the historical training environment; the
-default locks select the patched runtime. A frozen-checkpoint compatibility comparison
-does not establish identical weights after retraining with a different runtime.
-
-## Project layout
-
-| Directory | Contents |
-|---|---|
-| `artifacts/` | Checkpoint, ONNX graph, metadata and tracked real examples |
-| `src/meshlens/` | Autoencoder and runtime-independent data/scoring contracts |
-| `scripts/` | Acquire, train, evaluate, export, predict, build and report commands |
-| `web/` | Original responsive workspace and browser inference |
-| `reports/` | Measured experiments, predictions, plots and technical PDF |
-| `notebooks/` | Executed trained-model walkthrough and execution record |
-| `data/` | Manifest and provenance; ignored raw acquisition and cache |
-| `tests/` | Data, model, export and browser numerical regression checks |
-| `docs/` | Model/data cards, architecture, deployment and Windows guides |
-
-## Verification and limitations
-
-<!-- MESHLENS_VERIFICATION_START -->
-Source/model verification: passed; 145 Python tests, 145 passed, 0 failures, 0 errors and 0 skips.
-
-Node.js browser-contract tests: 85 tests, 85 passed, 0 failures, 0 errors and 0 skipped.
-
-Source-only checkout verification: passed; 145 Python tests, 144 passed, 0 failures, 0 errors and 1 skipped. The optional full raw-data audit is separate from mandatory tracked-model/example inference.
-
-PyTorch/ONNX export check: 78 official test images, maximum tensor difference 2.98e-07, maximum score difference 4.29e-09, 0 changed decisions.
-
-Actual ONNX Runtime Web WebAssembly under Node.js: passed; 78 shared canonical tensors, maximum score difference 3.01e-09, 0 changed decisions. Browser decoding, DOM interactions and physical cameras are outside this check.
-
-Framework boundary diagnostic: PyTorch 2.9.0+cpu to 2.14.1+cpu on 130 calibration/test images. Strict decision parity failed; maximum score difference 3.52e-10. Changed decisions: calibration 1, official test 0. A calibration score exactly equal to the frozen threshold crosses it after a tiny floating-point change. Numerical tolerances are met, but exact decision equality is not. The threshold was not retuned. Browser/CLI inference use the frozen ONNX graph. No retraining is implied.
-
-Named-scope dependency advisory scans: recommended runtime: passed, 36/36 packages, 0 findings; development: passed, 97/97 packages, 0 findings; historical original-training lock: 5 findings (provenance only, not the default install); npm: 0 findings. These scans are not security certification.
-<!-- MESHLENS_VERIFICATION_END -->
-
-A source-only test checkout must use tracked model/example assets rather than assume the
-ignored raw dataset exists. The full raw-data audit is separate. Export checks compare the
-trained checkpoint with ONNX; JavaScript checks and actual WebAssembly execution cover the
-browser contract. A successful dependency scan is not a security certification.
-
-The learned scope is controlled views of grid-like material. Lighting, scale, pose, blur,
-material changes and camera movement can cause false alarms or missed defects. A curated
-benchmark does not establish factory qualification, safety certification or production throughput.
-The [project audit](reports/PROJECT_AUDIT.md) distinguishes fixes, observed passing checks,
-open model limitations, and physical scenarios that have not been tested. No finite test suite
-proves that every possible edge case is covered.
-
-## License and authorship
-
-Original code and documentation: **Kumar Waibhav AKshat** · **kwa.waibhav@gmail.com** · [MIT](LICENSE).
-
-MVTec AD images, masks, bundled examples and dataset-derived material retain CC BY-NC-SA 4.0
-terms. The code license does not grant commercial data rights. See the
-[dataset card](docs/DATASET_CARD.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
-
-Use the [Windows PowerShell GitHub guide](docs/github-windows.md) to verify commit identity
-and authenticated GitHub account before publishing the extracted source.
-
-Latest checksum repair and full audit: [reports/REPAIR_AUDIT.md](reports/REPAIR_AUDIT.md).
+Original code and documentation: **Kumar Waibhav Akshat**, [MIT](LICENSE).
+MVTec data, masks, examples and dataset-derived material retain **CC BY-NC-SA 4.0** terms.
+The code license does not grant commercial data rights. Preserve the
+[third-party notices](THIRD_PARTY_NOTICES.md) when sharing the project.

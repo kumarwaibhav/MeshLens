@@ -1,5 +1,7 @@
 # Accessibility Audit: MeshLens guided inspection
 
+**Document scope:** the original dated UI record is retained below. The inspection-detector revision at the end updates behavior and review criteria. Current accuracy evidence is in the [active model card](../MODEL_CARD.md); earlier UI checks retain their original scope.
+
 **Target:** WCAG 2.1 AA · **Date:** 2026-11-03
 **Method:** source review, declared-color calculations, axe-core 4.14.0, real Chromium UI interactions, and responsive iframe viewports.
 
@@ -107,3 +109,21 @@ Raw records: [browser scans](../../reports/ui-redesign-browser-scans.json), [con
 - [Apple materials](https://developer.apple.com/design/human-interface-guidelines/materials)
 
 Apple guidance informed a web interpretation. This page does not use native SwiftUI or UIKit APIs.
+
+## Inspection detector revision (2026-11-13)
+
+The dated findings above describe the earlier AE interface. Adding a detector and a fourth
+evidence tab changes content, wrapping and announcements. Retain those historical results;
+record a new audit against the restored release before claiming its measured outcomes.
+
+| Review area | Revision acceptance check |
+|---|---|
+| Names/roles/values | Four correctly named tabs/panels; selected state and keyboard navigation remain exposed. |
+| Text alternatives | Current canvas name identifies detector map versus AE reconstruction/error; decision and legend remain available as text. |
+| Errors/status | Input needs review explains the issue; loading, failure and retry are announced without stale success results. |
+| Focus | User uploads move focus to their result/error; cancelled or superseded requests do not steal focus. |
+| Reflow | Four tabs, score provenance and warnings fit 320px, 200% text and text-spacing changes without page clipping. |
+| Contrast/targets | Recheck rendered palettes and map controls; preserve readable surfaces, visible focus and 44px core targets. |
+
+Automated axe/layout checks complement keyboard, zoom and actual assistive-technology testing.
+They do not establish complete WCAG conformance or compatibility with every device.

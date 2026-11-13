@@ -1,96 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-	<testcase name="corrupt or non-array local history cannot prevent startup" time="0.088602" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="history filters malformed records and treats hostile filenames as text" time="0.035574" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="storage quota failure retains the completed result and export" time="0.024481" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="pending inference is single-flight and disposes every tensor" time="0.016663" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="failed inference releases input and records no decision" time="0.018517" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="newer input invalidates an older in-flight result" time="0.010241" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="asynchronous file decodes retain the newest input and close stale bitmaps" time="0.021487" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="stopping replay before fetch resolves prevents stale inspection" time="0.014239" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="failed replay fetch stops replay without a timer or decision" time="0.010829" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="replay visits every sample once and finishes without a recurring timer" time="0.017622" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="camera denial restores controls and records no result" time="0.012695" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="missing camera API offers upload fallback" time="0.011757" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="permission grant after cancellation stops every stale track" time="0.011314" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="video playback failure releases stream and restores controls" time="0.013804" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="stop during pending video.play cannot reactivate camera controls" time="0.008519" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="stale permission denial cannot stop a newer stream" time="0.011402" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="empty media stream cannot be sampled" time="0.011489" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="ended video track stops sampling and clears recurring work" time="0.015909" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="page hiding releases tracks and cancels timers" time="0.009322" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="model fetch failure remains retryable without a usable session" time="0.179077" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="tampered model bytes are rejected before runtime creation" time="0.011198" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="session tensor-name mismatch is rejected before inference" time="0.011348" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="tampered sample bytes cannot produce an inspection" time="0.011954" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="measured misses and low-recall limitation stay visible" time="0.018870" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="history rejects negative scores invalid dates giant filenames and contradictory decisions" time="0.012483" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="invalid runtime output type records no decision and disposes tensors" time="0.009646" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="invalid runtime output shape records no decision and disposes tensors" time="0.012879" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="invalid runtime output length records no decision and disposes tensors" time="0.008379" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="invalid runtime output nan records no decision and disposes tensors" time="0.009690" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="invalid runtime output range records no decision and disposes tensors" time="0.022386" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="file byte limits and dimensions reject before native image decode" time="0.015455" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="native decode failure is recoverable and records no result" time="0.010193" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="stale decode rejection cannot cover a newer successful result with an error" time="0.014555" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="replacing the session during inference discards stale results" time="0.011546" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="camera inference failure stops tracks and cancels recurring work" time="0.010811" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="camera sampling never queues frames and applies the selected post-inference delay" time="0.013755" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="benchmark labels stay hidden until inference and never enter model feeds" time="0.016344" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="pending reinspection clears old decision and cancelled work preserves only completed history" time="0.015499" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/app-lifecycle.test.mjs"/>
-	<testcase name="build creates an internally consistent release manifest and all 18 sample digests" time="0.198095" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="successful replacement removes stale assets without changing source inputs" time="0.146492" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="tampered artifacts/model.onnx cannot replace the previous build" time="0.060934" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="tampered artifacts/checkpoint.pt cannot replace the previous build" time="0.066371" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="tampered reports/calibration_scores.csv cannot replace the previous build" time="0.059013" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="tampered data/manifest.csv cannot replace the previous build" time="0.060022" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="tampered artifacts/samples/good-000.png cannot replace the previous build" time="0.067984" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="mismatched evaluation metrics or frozen thresholds cannot be packaged" time="0.124302" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="sample traversal and duplicate gallery entries fail before publication" time="0.117717" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="late runtime-copy failure cleans staging and retains the previous build" time="0.079524" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="build refuses source directories and paths outside the project" time="0.060945" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="symlinked public input cannot leak a private file into a release" time="0.066973" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="server serves GET and HEAD with exact bytes MIME and no-sniff headers" time="0.027867" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="server returns real 404 and refuses non-read-only methods" time="0.006093" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="server blocks encoded traversal dotfiles backslashes NUL and malformed escapes" time="0.012394" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="server rejects symlinks outside the served root and ignores query strings" time="0.005880" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="server startup reports missing roots and occupied ports" time="0.003972" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/build-server.test.mjs"/>
-	<testcase name="RGBA decoding produces RGB channel-major float32 values and ignores alpha" time="0.002169" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="invalid image dimensions and incomplete pixel buffers are rejected" time="0.000599" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="RGB residual means square error across channels, then averages the largest ceiling tail" time="0.000576" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="RGB channels are averaged rather than summed" time="0.000191" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="score calculation preserves the input heatmap and uses numeric ordering" time="0.000236" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="nonfinite tensors and mismatched model output shapes fail explicitly" time="0.000329" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="invalid score tails and heatmap values cannot produce a decision" time="0.000340" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="the frozen threshold uses strict greater-than, including exact ties" time="0.000295" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="reconstruction display clamps pixel bytes without changing floating point model output" time="0.000427" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="display smoothing has replicated boundaries and leaves a no-op map unaliased" time="0.000540" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="CSV cell escaping preserves delimiters, quotes and line breaks" time="0.000298" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="CSV exports neutralize spreadsheet formulas in untrusted filenames" time="0.000166" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/inference.test.mjs"/>
-	<testcase name="real png container dimensions are bounded before native decoding" time="0.002640" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="real pngAlpha container dimensions are bounded before native decoding" time="0.000267" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="real jpeg container dimensions are bounded before native decoding" time="0.000177" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="real webp container dimensions are bounded before native decoding" time="0.000225" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="animated PNG and WebP are rejected before bitmap allocation" time="0.000731" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="empty unsupported oversized and truncated containers are rejected" time="0.000319" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="PNG dimensions are checked before native decoder allocation" time="0.001593" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="forged PNG lengths and appended trailing bytes are rejected" time="0.000395" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="forged WebP RIFF length is rejected" time="0.000176" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="metadata rejects changed scoring and tensor contracts" time="0.004928" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="singleton acTL animation chunk is rejected before bitmap allocation" time="0.000273" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="singleton fcTL animation chunk is rejected before bitmap allocation" time="0.000157" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="singleton fdAT animation chunk is rejected before bitmap allocation" time="0.000102" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="singleton ANIM animation chunk is rejected before bitmap allocation" time="0.000130" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="singleton ANMF animation chunk is rejected before bitmap allocation" time="0.000134" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="WebCrypto SHA256 passes the abc known-answer vector" time="0.012580" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="actual local noble fallback works without WebCrypto" time="0.005410" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<testcase name="asset verification rejects altered bytes or missing/mismatched digests" time="0.001752" classname="test" file="/workspace/scratch/54d9bc3b3ef6/MeshLens/tests/validation.test.mjs"/>
-	<!-- tests 85 -->
+	<testcase name="v2 decision, evidence and stored record use the detector while AE stays separate" time="0.238152" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="raw detector distances survive history reload and exact cutoff ties stay within range" time="0.197535" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="v2 missing detector.json fails closed without falling back to the AE" time="0.015593" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="v2 missing detector-model.json fails closed without falling back to the AE" time="0.012374" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="v2 missing detector-evaluation.json fails closed without falling back to the AE" time="0.014125" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="detector tampering or a mismatched evaluation cannot start the worker" time="0.028982" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="unsupported input geometry clears the prior result and produces no acceptance record" time="0.174888" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="an unreadable mesh pattern is inconclusive and a later supported image recovers" time="0.174840" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="a pending worker result cannot replace a newer image" time="0.250988" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="camera quality failure stops sampling and preserves capture instructions" time="0.169661" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="a worker failure disables new inspections and a fresh model load recovers" time="0.344297" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="all capture stresses expose false alarms and inconclusive inputs beside the main result" time="0.163978" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="missing or invalid stress counts stay unavailable instead of becoming zero" time="0.164258" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-detector.test.mjs"/>
+	<testcase name="corrupt or non-array local history cannot prevent startup" time="0.085791" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="history filters malformed records and treats hostile filenames as text" time="0.035356" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="storage quota failure retains the completed result and export" time="0.024446" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="pending inference is single-flight and disposes every tensor" time="0.021497" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="failed inference releases input and records no decision" time="0.015984" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="newer input invalidates an older in-flight result" time="0.014517" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="asynchronous file decodes retain the newest input and close stale bitmaps" time="0.017295" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="stopping replay before fetch resolves prevents stale inspection" time="0.016438" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="failed replay fetch stops replay without a timer or decision" time="0.008294" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="replay visits every sample once and finishes without a recurring timer" time="0.016069" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="camera denial restores controls and records no result" time="0.010005" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="missing camera API offers upload fallback" time="0.011140" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="permission grant after cancellation stops every stale track" time="0.013345" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="video playback failure releases stream and restores controls" time="0.012787" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="stop during pending video.play cannot reactivate camera controls" time="0.008208" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="stale permission denial cannot stop a newer stream" time="0.012468" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="empty media stream cannot be sampled" time="0.009316" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="ended video track stops sampling and clears recurring work" time="0.009523" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="page hiding releases tracks and cancels timers" time="0.009475" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="model fetch failure remains retryable without a usable session" time="0.185366" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="a stalled model download times out and the retry starts a fresh load" time="0.180411" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="oversized streamed model data is cancelled before ONNX session creation" time="0.011997" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="tampered model bytes are rejected before runtime creation" time="0.022915" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="session tensor-name mismatch is rejected before inference" time="0.010413" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="tampered sample bytes cannot produce an inspection" time="0.008181" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="measured misses and low-recall limitation stay visible" time="0.012345" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="history rejects negative scores invalid dates giant filenames and contradictory decisions" time="0.010646" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="invalid runtime output type records no decision and disposes tensors" time="0.010492" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="invalid runtime output shape records no decision and disposes tensors" time="0.009740" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="invalid runtime output length records no decision and disposes tensors" time="0.011763" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="invalid runtime output nan records no decision and disposes tensors" time="0.007675" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="invalid runtime output range records no decision and disposes tensors" time="0.008971" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="file byte limits and dimensions reject before native image decode" time="0.014575" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="native decode failure is recoverable and records no result" time="0.015555" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="stale decode rejection cannot cover a newer successful result with an error" time="0.011681" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="replacing the session during inference discards stale results" time="0.008931" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="camera inference failure stops tracks and cancels recurring work" time="0.011749" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="camera sampling never queues frames and applies the selected post-inference delay" time="0.009230" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="benchmark labels stay hidden until inference and never enter model feeds" time="0.012001" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="pending reinspection clears old decision and cancelled work preserves only completed history" time="0.016399" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="own-image upload is unavailable during initialization and inference" time="0.007634" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="known defective sample within range explicitly explains the missed defect" time="0.011615" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="a chosen local file leads to its evidence and a rejected file leads to the error" time="0.014343" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="a superseded file picker decode does not refocus a newer error" time="0.066617" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="history clear can be undone without losing later inspection records" time="0.026083" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/app-lifecycle.test.mjs"/>
+	<testcase name="build creates an internally consistent release manifest and all 18 sample digests" time="0.178433" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="successful replacement removes stale assets without changing source inputs" time="0.175011" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="tampered artifacts/model.onnx cannot replace the previous build" time="0.067504" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="tampered artifacts/checkpoint.pt cannot replace the previous build" time="0.063048" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="tampered reports/calibration_scores.csv cannot replace the previous build" time="0.069879" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="tampered data/manifest.csv cannot replace the previous build" time="0.059602" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="tampered artifacts/samples/good-000.png cannot replace the previous build" time="0.060730" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="mismatched evaluation metrics or frozen thresholds cannot be packaged" time="0.116091" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="sample traversal and duplicate gallery entries fail before publication" time="0.108122" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="late runtime-copy failure cleans staging and retains the previous build" time="0.105371" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="build refuses source directories and paths outside the project" time="0.054605" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="symlinked public input cannot leak a private file into a release" time="0.083185" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="active detector tampering in artifacts/inspection/detector-model.json preserves the previous release" time="0.067625" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="active detector tampering in artifacts/inspection/calibration.json preserves the previous release" time="0.071167" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="active detector tampering in reports/inspection/independent_evaluation.json preserves the previous release" time="0.054373" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="active detector tampering in src/meshlens/texture_detector.py preserves the previous release" time="0.056612" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="active detector tampering in web/inspection_input.js preserves the previous release" time="0.073254" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="active detector tampering in artifacts/inspection/samples/glue-008.png preserves the previous release" time="0.078675" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="active detector tampering in web/downloads/MeshLens-18-Benchmark-Examples.zip preserves the previous release" time="0.067776" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="schema2 never falls back to the historical autoencoder when an inspection artifact is missing" time="0.052543" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="reserved normal calibration membership and rank51 remain enforced after all digests are rebound" time="0.118767" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="raw strict-threshold decisions,78x6coverage and pre-evaluation freeze are independently checked" time="0.271466" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="all six public summaries, Wilson intervals and qualification claims must agree with raw records" time="0.161620" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="raw cached aggregate metrics are ignored in favor of recomputation from per-image records" time="0.097051" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="server serves GET and HEAD with exact bytes MIME and no-sniff headers" time="0.024486" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="server returns real 404 and refuses non-read-only methods" time="0.005214" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="server blocks encoded traversal dotfiles backslashes NUL and malformed escapes" time="0.006451" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="server rejects symlinks outside the served root and ignores query strings" time="0.003837" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="server startup reports missing roots and occupied ports" time="0.002659" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/build-server.test.mjs"/>
+	<testcase name="detector metadata accepts nonprobability scores and rejects changed contracts" time="0.001787" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="detector evaluation binds score limit, artifact, provenance and all test outcomes" time="0.000390" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="unsupported capture geometry is an explicit quality review" time="0.000437" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="texture worker copies input, preserves unbounded score and releases resources" time="0.005981" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="worker start failure has no main-thread fallback" time="0.000295" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="texture artifact cutoff and preprocessing must match metadata before worker creation" time="0.000283" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="quality rejection is recoverable while invalid worker result never becomes a score" time="0.001111" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="releasing pending inference rejects it and rejects overlapping score requests" time="0.000661" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="a mismatched worker response terminates the detector" time="0.000617" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="worker initialization and stalled scoring have bounded, fatal timeouts" time="0.020361" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="ONNX adapter uses canonical RGB channels and validates both independent outputs" time="0.004382" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="ONNX invalid type cannot return a score and tensors are disposed" time="0.001688" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="ONNX invalid score cannot return a score and tensors are disposed" time="0.001526" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="ONNX invalid shape cannot return a score and tensors are disposed" time="0.001547" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="ONNX invalid map cannot return a score and tensors are disposed" time="0.002040" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="ONNX shape mismatch releases the created session before exposing an adapter" time="0.000588" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="actual module worker loads the texture runtime, transfers maps and reports unreadable patterns" time="0.402943" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/detector-adapter.test.mjs"/>
+	<testcase name="RGBA decoding produces RGB channel-major float32 values and ignores alpha" time="0.001462" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="invalid image dimensions and incomplete pixel buffers are rejected" time="0.000391" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="RGB residual means square error across channels, then averages the largest ceiling tail" time="0.000429" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="RGB channels are averaged rather than summed" time="0.000140" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="score calculation preserves the input heatmap and uses numeric ordering" time="0.000157" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="nonfinite tensors and mismatched model output shapes fail explicitly" time="0.000215" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="invalid score tails and heatmap values cannot produce a decision" time="0.000329" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="the frozen threshold uses strict greater-than, including exact ties" time="0.000184" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="reconstruction display clamps pixel bytes without changing floating point model output" time="0.000284" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="display smoothing has replicated boundaries and leaves a no-op map unaliased" time="0.000417" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="CSV cell escaping preserves delimiters, quotes and line breaks" time="0.000194" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="CSV exports neutralize spreadsheet formulas in untrusted filenames" time="0.000109" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inference.test.mjs"/>
+	<testcase name="canonical input declares area-rgb8-v1" time="0.000716" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inspection-input.test.mjs"/>
+	<testcase name="constant colors survive fractional and extreme-aspect area resizing" time="0.188051" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inspection-input.test.mjs"/>
+	<testcase name="independent two by two block oracle rounds half upwards" time="0.001439" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inspection-input.test.mjs"/>
+	<testcase name="identity alpha composites white without modifying source pixels" time="0.001000" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inspection-input.test.mjs"/>
+	<testcase name="integer enlargement repeats source pixels exactly" time="0.004023" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inspection-input.test.mjs"/>
+	<testcase name="incomplete buffers and unsupported bounds fail before resizing" time="0.000714" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/inspection-input.test.mjs"/>
+	<testcase name="flat frames require an identifiable quality review" time="0.087293" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/texture-detector.test.mjs"/>
+	<testcase name="invalid artifacts and buffers fail before producing a score" time="0.000322" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/texture-detector.test.mjs"/>
+	<testcase name="local texture damage increases and localizes the anomaly signal" time="0.513067" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/texture-detector.test.mjs"/>
+	<testcase name="real png container dimensions are bounded before native decoding" time="0.001581" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="real pngAlpha container dimensions are bounded before native decoding" time="0.000132" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="real jpeg container dimensions are bounded before native decoding" time="0.000127" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="real webp container dimensions are bounded before native decoding" time="0.000120" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="animated PNG and WebP are rejected before bitmap allocation" time="0.000529" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="empty unsupported oversized and truncated containers are rejected" time="0.000308" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="PNG dimensions are checked before native decoder allocation" time="0.000345" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="forged PNG lengths and appended trailing bytes are rejected" time="0.000184" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="forged WebP RIFF length is rejected" time="0.000203" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="metadata rejects changed scoring and tensor contracts" time="0.002238" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="singleton acTL animation chunk is rejected before bitmap allocation" time="0.000251" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="singleton fcTL animation chunk is rejected before bitmap allocation" time="0.000151" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="singleton fdAT animation chunk is rejected before bitmap allocation" time="0.000143" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="singleton ANIM animation chunk is rejected before bitmap allocation" time="0.000104" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="singleton ANMF animation chunk is rejected before bitmap allocation" time="0.000182" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="WebCrypto SHA256 passes the abc known-answer vector" time="0.007685" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="actual local noble fallback works without WebCrypto" time="0.004908" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<testcase name="asset verification rejects altered bytes or missing/mismatched digests" time="0.001547" classname="test" file="/workspace/scratch/489f51eb6a7b/meshlens_upgrade/MeshLens/tests/validation.test.mjs"/>
+	<!-- tests 143 -->
 	<!-- suites 0 -->
-	<!-- pass 85 -->
+	<!-- pass 143 -->
 	<!-- fail 0 -->
 	<!-- cancelled 0 -->
 	<!-- skipped 0 -->
 	<!-- todo 0 -->
-	<!-- duration_ms 1281.3407 -->
+	<!-- duration_ms 7324.361296 -->
 </testsuites>

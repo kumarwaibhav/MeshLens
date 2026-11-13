@@ -1,5 +1,7 @@
 # Research Synthesis: MeshLens first-visit comprehension
 
+**Document scope:** the original dated UI record is retained below. The inspection-detector revision at the end updates behavior and review criteria. Current accuracy evidence is in the [active model card](../MODEL_CARD.md); earlier UI checks retain their original scope.
+
 **Method:** stakeholder feedback, supplied screenshot, source inspection and experiment-record review
 **Feedback contributors:** 1 project owner; no recruited participant study
 **Date:** 2026-11-03
@@ -68,3 +70,20 @@ No segment sizes or prevalence percentages are known.
 4. Test the same tasks with keyboard, VoiceOver/NVDA, and a physical small-screen device.
 
 Record completion time, errors and comprehension before claiming a usability improvement. This revision's browser checks verify behavior and layout, not user comprehension.
+
+## Inspection detector revision (2026-11-13)
+
+Additional input is the project owner's accuracy concern and recorded model experiments.
+It is not a new recruited-participant study. The owner questioned 11/57 defect detections,
+which motivates stronger measurement and a more specialized detector, while leaving actual
+first-visit comprehension to be tested with representative users.
+
+| Observation | Product implication | Research question |
+|---|---|---|
+| The active method and AE have different roles | Name the detector map and AE views separately. | Can a new visitor identify which method supplies the decision? |
+| High recall can coexist with false alarms | Show both rates with their support counts and limitations. | Can a visitor explain what a normal-image alert means? |
+| Benchmark replays are already measured | Label examples and explain independent part collection. | Can a visitor distinguish trying the UI from validating a model? |
+| Unsuitable photos need abstention | Provide an actionable input-review reason. | Can users recover with a better photo without treating rejection as a normal part? |
+
+Separate these questions from claims about measured user success. Future usability sessions
+should include narrow screens, keyboard users and people unfamiliar with anomaly detection.

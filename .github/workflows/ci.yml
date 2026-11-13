@@ -55,6 +55,10 @@ jobs:
         run: python -m ruff check src scripts tests
       - name: Run actual WebAssembly inference on all tracked real samples
         run: PYTHONPATH=src python scripts/verify_wasm.py
+      - name: Verify active detector Python and browser parity on all 18 gallery images
+        run: |
+          rm -f reports/inspection/gallery-runtime-parity.json
+          python scripts/verify_inspection_runtime.py
       - name: Build the verified release from the frozen assets
         run: npm run build
       - uses: actions/upload-artifact@v4
@@ -66,6 +70,7 @@ jobs:
             reports/verification-node-junit.xml
             reports/verification.json
             reports/wasm-parity.json
+            reports/inspection/gallery-runtime-parity.json
 
   dataset-audit:
     name: Full research-data audit
