@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import time
 import unittest
 from unittest import mock
 
@@ -13,6 +14,22 @@ ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('verification_runner', ROOT / 'scripts/verify_project.py')
 RUNNER = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(RUNNER)
+
+
+def wait_for_linux_process_exit(pid, timeout=5):
+    """A reaped process has no stat file; a zombie has already stopped running."""
+    deadline = time.monotonic() + timeout
+    while True:
+        try:
+            stat = Path(f'/proc/{pid}/stat').read_text()
+        except (FileNotFoundError, ProcessLookupError):
+            return True
+        state = stat.rsplit(') ', 1)[1].split()[0]
+        if state in {'Z', 'X', 'x'}:
+            return True
+        if time.monotonic() >= deadline:
+            return False
+        time.sleep(.01)
 
 
 class VerificationRunnerTests(unittest.TestCase):
@@ -97,24 +114,38 @@ class VerificationRunnerTests(unittest.TestCase):
     def test_complete_dual_reporter_evidence_allows_current_pass(self):
         self.run_report_fixture('<testsuite><testcase/></testsuite>', 0)
 
-    @unittest.skipUnless(os.name == 'posix', 'Requires POSIX process groups')
+    def test_reaped_descendant_is_stopped_when_stat_file_disappears(self):
+        for error in (FileNotFoundError, ProcessLookupError):
+            with self.subTest(error=error.__name__), mock.patch.object(Path, 'read_text', side_effect=error):
+                self.assertTrue(wait_for_linux_process_exit(123, timeout=0))
+
+    def test_zombie_or_dead_descendant_has_already_stopped(self):
+        for state in ('Z', 'X', 'x'):
+            with self.subTest(state=state), mock.patch.object(Path, 'read_text', return_value=f'123 (child) {state} 1'):
+                self.assertTrue(wait_for_linux_process_exit(123, timeout=0))
+
+    def test_running_descendant_is_rejected_after_the_deadline(self):
+        with mock.patch.object(Path, 'read_text', return_value='123 (child) S 1'):
+            self.assertFalse(wait_for_linux_process_exit(123, timeout=0))
+
+    def test_descendant_can_finish_termination_before_the_deadline(self):
+        with mock.patch.object(Path, 'read_text', side_effect=['123 (child) R 1', FileNotFoundError]), \
+                mock.patch.object(time, 'sleep') as pause:
+            self.assertTrue(wait_for_linux_process_exit(123))
+            pause.assert_called_once_with(.01)
+
+    @unittest.skipUnless(sys.platform.startswith('linux'), 'Requires Linux process groups and /proc state')
     def test_timeout_preserves_output_and_terminates_descendants(self):
         script = ('import subprocess,sys,time; '
                   'child=subprocess.Popen([sys.executable,"-c","import time;time.sleep(60)"]); '
                   'print("descendant="+str(child.pid),flush=True); '
                   'print("before timeout",flush=True);time.sleep(60)')
-        result = RUNNER.run_check('timeout fixture', [sys.executable, '-c', script], dict(os.environ), .5)
+        result = RUNNER.run_check('timeout fixture', [sys.executable, '-c', script], dict(os.environ), 2)
         self.assertEqual(result['exit_code'], 124)
         self.assertTrue(result['timed_out'])
         self.assertIn('before timeout', result['output'])
         pid = int(result['output'].split('descendant=')[1].splitlines()[0])
-        try:
-            os.kill(pid, 0)
-        except ProcessLookupError:
-            return
-        stat = Path(f'/proc/{pid}/stat')
-        self.assertTrue(stat.exists())
-        self.assertTrue(stat.read_text().split(') ', 1)[1].startswith('Z '))
+        self.assertTrue(wait_for_linux_process_exit(pid), f'Descendant {pid} remained running after timeout cleanup')
 
 
 if __name__ == '__main__':
