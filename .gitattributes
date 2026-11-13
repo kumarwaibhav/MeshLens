@@ -1,3 +1,4 @@
+* text=auto eol=lf
 *.pdf binary
 # Frozen CSV digests cover exact CRLF bytes; never normalize these files.
 *.csv -text whitespace=cr-at-eol
