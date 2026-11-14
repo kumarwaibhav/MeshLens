@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+<title id="title">Mesh inspection with evidence</title><desc id="desc">A reproducible browser application and an honest engineering case study</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Mesh inspection with evidence</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">A reproducible browser application and an honest engineering case study</text>
+<rect x="38" y="170" width="720" height="180" rx="16" fill="#163f39" stroke="#163f39" stroke-width="2"/>
+<text x="66" y="224" font-size="48" fill="#ffffff" font-weight="700" text-anchor="start">MeshLens</text>
+<text x="66" y="268" font-size="24" fill="#dce8db" font-weight="400" text-anchor="start">Local inference. Visible limits. Reproducible results.</text>
+<text x="66" y="310" font-size="20" fill="#dce8db" font-weight="400" text-anchor="start">Technical report  /  Architecture  /  Development lessons</text>
+<path d="M830 193l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M873 193l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M916 193l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M959 193l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1002 193l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1045 193l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1088 193l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M830 224l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M873 224l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M916 224l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M959 224l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1002 224l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1045 224l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1088 224l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M830 255l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M873 255l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M916 255l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M959 255l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1002 255l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1045 255l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1088 255l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M830 286l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M873 286l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M916 286l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M959 286l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1002 286l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1045 286l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1088 286l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M830 317l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M873 317l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M916 317l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M959 317l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1002 317l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1045 317l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<path d="M1088 317l21 -14l21 14l-21 14Z" fill="none" stroke="#699488" stroke-width="2"/>
+<circle cx="1000" cy="250" r="43" fill="none" stroke="#a96524" stroke-width="5"/><path d="M1032 281l48 48" stroke="#a96524" stroke-width="10" stroke-linecap="round"/>
+<text x="38" y="405" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Kumar Waibhav Akshat  |  Research and human review prototype  |  Code MIT / benchmark CC BY-NC-SA 4.0</text>
+</svg>

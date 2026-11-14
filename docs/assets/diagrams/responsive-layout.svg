@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="755" viewBox="0 0 1200 755" role="img" aria-labelledby="title desc">
+<title id="title">Responsive behavior specified in CSS</title><desc id="desc">Layout schematic only; this is not a mobile screenshot or a physical-device certification</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Responsive behavior specified in CSS</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Layout schematic only; this is not a mobile screenshot or a physical-device certification</text>
+<rect x="40" y="185" width="650" height="370" rx="18" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<rect x="62" y="210" width="606" height="42" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<rect x="62" y="274" width="180" height="245" rx="16" fill="#f7f8f2" stroke="#c9d7ce" stroke-width="2"/>
+<rect x="260" y="274" width="408" height="245" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="75" y="237" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Desktop navigation</text>
+<text x="80" y="313" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Source controls</text>
+<text x="284" y="313" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">Evidence and result</text>
+<rect x="800" y="185" width="310" height="370" rx="25" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<rect x="818" y="208" width="274" height="45" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<rect x="818" y="270" width="274" height="84" rx="16" fill="#f7f8f2" stroke="#c9d7ce" stroke-width="2"/>
+<rect x="818" y="372" width="274" height="150" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="835" y="238" font-size="19" fill="#536b62" font-weight="400" text-anchor="start">Wrapped navigation</text>
+<text x="835" y="318" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Source controls</text>
+<text x="835" y="415" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">Evidence</text>
+<text x="835" y="450" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">and result</text>
+<text x="40" y="598" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">1100 px: tighter spacing and toolbars. 820 px: main grids stack. 600 px: compact navigation and controls.</text>
+<text x="40" y="639" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Reduced motion, reduced transparency, dark appearance and forced-colors rules are present.</text>
+<text x="40" y="687" font-size="20" fill="#a96524" font-weight="400" text-anchor="start">Current delivery includes fresh desktop captures. Physical phones, screen readers and camera hardware remain to test.</text>
+<text x="38" y="730" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

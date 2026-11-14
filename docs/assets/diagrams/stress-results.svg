@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Capture stress exposes the operating limits</title><desc id="desc">Deterministic transformations of the same 78 benchmark images; the threshold stays fixed</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Capture stress exposes the operating limits</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Deterministic transformations of the same 78 benchmark images; the threshold stays fixed</text>
+<text x="40" y="194" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">CONDITION</text>
+<text x="355" y="194" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">NORMAL FALSE ALARMS  /  OUT OF 21</text>
+<text x="1040" y="194" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">DEFECTS</text>
+<text x="40" y="262" font-size="22" fill="#163f39" font-weight="400" text-anchor="start">Original</text>
+<rect x="355" y="237" width="555" height="33" rx="6" fill="#e6eee3" stroke="#e6eee3" stroke-width="2"/>
+<rect x="355" y="237" width="105.71428571428571" height="33" rx="6" fill="#bd813c" stroke="#bd813c" stroke-width="2"/>
+<text x="935" y="262" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">4/21</text>
+<text x="1085" y="262" font-size="22" fill="#163f39" font-weight="700" text-anchor="middle">56/57</text>
+<text x="40" y="329" font-size="22" fill="#163f39" font-weight="400" text-anchor="start">Brightness x0.70</text>
+<rect x="355" y="304" width="555" height="33" rx="6" fill="#e6eee3" stroke="#e6eee3" stroke-width="2"/>
+<rect x="355" y="304" width="52.857142857142854" height="33" rx="6" fill="#bd813c" stroke="#bd813c" stroke-width="2"/>
+<text x="935" y="329" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">2/21</text>
+<text x="1085" y="329" font-size="22" fill="#163f39" font-weight="700" text-anchor="middle">56/57</text>
+<text x="40" y="396" font-size="22" fill="#163f39" font-weight="400" text-anchor="start">Brightness x1.30</text>
+<rect x="355" y="371" width="555" height="33" rx="6" fill="#e6eee3" stroke="#e6eee3" stroke-width="2"/>
+<rect x="355" y="371" width="158.57142857142856" height="33" rx="6" fill="#bd813c" stroke="#bd813c" stroke-width="2"/>
+<text x="935" y="396" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">6/21</text>
+<text x="1085" y="396" font-size="22" fill="#163f39" font-weight="700" text-anchor="middle">56/57</text>
+<text x="40" y="463" font-size="22" fill="#163f39" font-weight="400" text-anchor="start">Reflected shift 8 / 4 px</text>
+<rect x="355" y="438" width="555" height="33" rx="6" fill="#e6eee3" stroke="#e6eee3" stroke-width="2"/>
+<rect x="355" y="438" width="555.0" height="33" rx="6" fill="#bd813c" stroke="#bd813c" stroke-width="2"/>
+<text x="935" y="463" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">21/21</text>
+<text x="1085" y="463" font-size="22" fill="#163f39" font-weight="700" text-anchor="middle">57/57</text>
+<text x="40" y="530" font-size="22" fill="#163f39" font-weight="400" text-anchor="start">Blur sigma 0.8</text>
+<rect x="355" y="505" width="555" height="33" rx="6" fill="#e6eee3" stroke="#e6eee3" stroke-width="2"/>
+<text x="935" y="530" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">0/21</text>
+<text x="1085" y="530" font-size="22" fill="#163f39" font-weight="700" text-anchor="middle">56/57</text>
+<text x="40" y="597" font-size="22" fill="#163f39" font-weight="400" text-anchor="start">JPEG quality 75</text>
+<rect x="355" y="572" width="555" height="33" rx="6" fill="#e6eee3" stroke="#e6eee3" stroke-width="2"/>
+<rect x="355" y="572" width="105.71428571428571" height="33" rx="6" fill="#bd813c" stroke="#bd813c" stroke-width="2"/>
+<text x="935" y="597" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">4/21</text>
+<text x="1085" y="597" font-size="22" fill="#163f39" font-weight="700" text-anchor="middle">56/57</text>
+<text x="40" y="692" font-size="23" fill="#a96524" font-weight="700" text-anchor="start">A shift flagged every normal image. High recall alone can hide an unusable review workload.</text>
+<text x="40" y="737" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">No inconclusive inputs were recorded in these six conditions. Simulated stress is not a physical camera study.</text>
+<text x="38" y="775" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

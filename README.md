@@ -1,178 +1,124 @@
-![MeshLens: learn the pattern, reveal the exception](docs/banner.svg)
+![MeshLens industrial mesh inspection](docs/assets/diagrams/brand-banner.svg)
 
 # MeshLens
 
-**A visual inspection lab for woven industrial mesh, with local inference and evidence you can inspect.**
+**Browser-based mesh inspection with local inference and visible evidence.**
 
-Give MeshLens a close-up of mesh. It looks for regions that disagree with the repeating grid,
-returns **Review** or **Within calibrated range**, and shows the regions that influenced the
-score. **Input needs review** means the photo cannot support a numeric inspection decision.
-Use the result as a second check for a human inspector. The benchmark does not qualify
-automatic material acceptance or rejection on a factory line.
+[![Checks](https://github.com/kumarwaibhav/MeshLens/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kumarwaibhav/MeshLens/actions/workflows/ci.yml)
+[![Code license MIT](https://img.shields.io/badge/code-MIT-174D47)](LICENSE)
+[Data license CC BY-NC-SA 4.0](docs/DATASET_CARD.md)
 
-The active detector compares neighboring pattern repetitions. A separately trained
-**autoencoder** reconstructs the image for visual comparison. Its reconstruction/error views
-explain the original experiment; the active texture detector supplies the review decision.
+[Open live demo](https://mesh-lens.vercel.app) · [Read the project report](docs/report/MeshLens_Project_Report.pdf) · [Explore documentation](docs/README.md) · [Lessons learned](docs/LESSONS_LEARNED.md)
 
-[Public demo](https://mesh-lens.vercel.app) · [Model card](docs/MODEL_CARD.md) ·
-[Run locally](docs/RUNBOOK.md) · [Deploy](docs/deployment.md) ·
-[Dataset](docs/DATASET_CARD.md) · [Windows GitHub steps](docs/github-windows.md)
+MeshLens examines a close-up of woven industrial mesh, finds regions that disagree with its repeating pattern, and returns **Review**, **Within calibrated range**, or **Input needs review**. It displays the score, threshold, model version, and supporting evidence.
 
-Check the model version displayed in a deployed demo against the release metadata.
-A source update, private preview and public Vercel deployment can contain different versions.
+The active decision comes from a normal-fitted texture detector. A separately trained **convolutional autoencoder** supplies reconstruction and residual views. It is an engineering and research prototype for human review; factory acceptance or rejection requires independent qualification.
 
-## Try it in a minute
+![MeshLens application overview](docs/assets/screenshots/overview-desktop.jpg)
 
-1. Open Inspection and wait for the models to become ready.
-2. Try the guided images. Read each known label and the actual result after inference.
-3. Compare **Original**, **Detector map**, **Reconstruction** and **AE error map**.
-4. Read the score alongside its threshold. A low score can still miss a real defect.
-5. Download a result or replay more examples and export the local history.
+*Current desktop application capture. Screenshots illustrate the workflow; they are not accuracy or universal device-compatibility evidence.*
 
-The 18 bundled images and downloadable example kit are already-evaluated MVTec Grid benchmark
-replays. Their labels help you understand behavior. Uploading or replaying them supplies no
-new independent accuracy evidence. The detector map shows relative pattern disagreement;
-it is not a defect probability or a validated segmentation mask.
+## Inspect an image
 
-## Where to get a new image
+1. Open the demo and wait for model readiness. Start with a guided example to understand the controls.
+2. Compare **Original**, **Detector map**, **Reconstruction**, and **AE error map**. The texture detector supplies the decision; the AE views explain reconstruction.
+3. Read the result beside its threshold and limitation. Download a JSON record or export browser-local history as CSV.
+4. Upload a new photograph of comparable mesh, or explicitly permit camera sampling. Use the capture guidance below.
 
-For a new inspection, photograph similar woven mesh yourself or capture a frame from your
-inspection camera. Use a sharp close-up, comparable mesh scale and stable lighting, with
-both sides at least **256 pixels** and a longest-to-shortest-side ratio no greater than **1.5**.
-Still PNG/JPEG/WebP files may be up to 12 MiB, 4096 pixels per side and 16 megapixels.
-The whole suitable image is resized to 256×256; no automatic crop repairs an unsuitable view.
+The 18 bundled examples and downloadable image kit replay an already measured MVTec benchmark. Their known labels help explain successes and failures. Replaying them supplies no new independent accuracy evidence. The detector map shows relative disagreement, not defect probability or validated segmentation.
 
-For an independent evaluation, collect separate physical parts or mesh sections from the
-intended process, including normal material and relevant defects. Have their labels checked
-independently of model scores. Keep repeated frames, crops and photos of the same part in
-one group. Follow the [field validation workflow](docs/FIELD_VALIDATION.md) to record the
-cohort, model/threshold, failures, confidence bounds and operator acceptance limits.
+<details>
+<summary>View the inspection workspace and measured-results page</summary>
 
-Images stay on your device during inference. Camera mode begins after user action and
-browser permission, then samples one frame at a time. Browser-local history can be cleared
-and is specific to that browser. It does not provide a shared, authenticated industrial audit log.
+![Inspection workspace with input and evidence controls](docs/assets/screenshots/inspection-desktop.jpg)
 
-## How the project works
+![Results page with measured performance and limitations](docs/assets/screenshots/results-desktop.jpg)
 
-| Step | What happens |
-|---|---|
-| Prepare | Decode the image, resolve orientation, composite alpha over white and apply the versioned integer area resize. |
-| Find the pattern | Estimate mesh repetition and compare small regions with neighboring repeats, allowing minor alignment changes. |
-| Score | Combine local/cell disagreement, normalize by the normal-fit reference and average the largest 0.5% of responses. |
-| Decide | Request review when the rounded score is strictly above the separately calibrated threshold. |
-| Explain | Show the detector map and separate AE reconstruction/error evidence. |
+</details>
 
-The selected method is a normal-fitted texture detector running in JavaScript. Its Python
-path needs NumPy and Pillow. The original autoencoder was trained from random initialization
-and runs separately through ONNX Runtime Web. Neither uploading a photo nor opening the app
-trains a model. The active recovered release is `meshlens-inspect-7665cb57f023`, with threshold **1.01049636**.
-Its hashes are recorded in `artifacts/inspection/detector.json` and
-`reports/inspection/frozen_configuration.json`.
+## Architecture
 
-## Measured results
+![MeshLens development and browser inference architecture](docs/assets/diagrams/system-architecture.svg)
+
+Python handles verification, development, calibration, evaluation, and offline inspection. Node.js builds the static release. The browser runs the active detector in a module worker and the separate AE through ONNX Runtime Web. Vercel serves the application and frozen assets; it does not receive inspection images for inference.
+
+The active release is `meshlens-inspect-7665cb57f023`. The detector estimates lattice repeats, compares neighboring regions at two scales, normalizes against normal-fit statistics, and averages the largest 0.5% of responses. Its eight-decimal score requests review only when strictly above **1.01049636**. Opening the application or uploading a photograph does not train either model.
+
+## Measured performance and limits
 
 <!-- MESHLENS_INSPECTION_RESULTS_START -->
-**Verified recovery results:** the restored frozen release reproduced the previously recorded
-counts across all six conditions. These are known-benchmark reproducibility results.
-
-| Frozen pipeline | Defects flagged | Missed | Normal images flagged | AUROC |
+| Frozen pipeline | Defects flagged | Missed | Normal false alarms | AUROC |
 |---|---:|---:|---:|---:|
-| Active normal-lattice detector | 56/57 (98.25%) | 1 | 4/21 (19.05%) | 0.9958 |
+| Active normal-lattice detector | **56/57 (98.25%)** | **1** | **4/21 (19.05%)** | **0.9958** |
 | Historical reconstruction AE | 11/57 (19.30%) | 46 | 0/21 (0.00%) | 0.7594 |
 
-All 78 original benchmark images produced scores. The detector's Wilson 95% interval
-is **90.71%–99.69%** for defect recall and **7.67%–40.00%** for the normal false-alarm rate.
-These small-sample intervals do not establish factory accuracy.
+All 78 original benchmark images produced scores. The active detector's Wilson 95% intervals are 90.71%-99.69% for recall and 7.67%-40.00% for the normal false-alarm rate.
 
-**The declared release goal was not met.** Recall exceeded 90%, but the observed 19.05%
-normal false-alarm rate exceeded the 5% limit. A translated-view stress flagged all 21 normal
-images; brighter images flagged 6/21. The threshold remained frozen. These results support
-research and human review while false alarms and view sensitivity require further work.
-
-Try the [known missed glue image](data/raw/grid/test/glue/008.png) from the complete dataset:
-its reproduced score is 0.97635626, below the 1.01049636 threshold despite a real defect. It is
-an already-measured failure example. Full per-defect and six-condition results are in the
-[model card](docs/MODEL_CARD.md) and [evaluation](reports/inspection/evaluation.json).
+**The declared release goal was not met.** Recall exceeded 90%, but normal false alarms exceeded the 5% limit. Reflected-border translation flagged **21/21 normal images**; brighter views flagged 6/21. The known missed glue image scores 0.97635626, below the frozen threshold despite a real defect. The threshold was not retuned after these observations.
 <!-- MESHLENS_INSPECTION_RESULTS_END -->
 
-This release restores the previously selected algorithm and reproduces its frozen evaluation.
-The official benchmark outcomes were already known before this recovery. Architecture and
-cutoff are unchanged and were not retuned. The original detector selection excluded these test
-images from fitting, candidate selection and calibration. This recovery is reproducibility
-evidence; a new representative factory study is still required.
+These are known-benchmark reproducibility results. The recovered release repeats a previously selected algorithm whose official outcomes were already known. Original selection excluded test images from fitting, candidate choice, and calibration. A new representative target-line study is still required. See the [model card](docs/MODEL_CARD.md) and [complete evaluation](reports/inspection/evaluation.json) for counts, all six conditions, coverage, and uncertainty.
 
-The historical AE's [model card](docs/AUTOENCODER_MODEL_CARD.md),
-[technical PDF](reports/technical_report.pdf), [plots](reports/figures/roc_pr.png) and
-[executed notebook](notebooks/01_meshlens_walkthrough.ipynb) retain its reconstruction experiment.
+## Dataset and development
 
-## What the dataset contains
+MVTec AD Grid contains **342 real photographs and 57 defect masks**. Defects include bent and broken wires, glue, metal contamination, and foreign thread. The 264 normal training sources are partitioned before development:
 
-[MVTec AD Grid](docs/DATASET_CARD.md) contains real close-ups of an industrial grid texture:
-342 source images and 57 defect masks. Defects include bent/broken wires, glue, metal
-contamination and foreign thread.
-
-| Partition | Images | Purpose |
+| Role | Sources | Use |
 |---|---:|---|
-| Fit | 160 normal | Normal reference fitting |
-| Tune | 52 normal | Candidate/score-rule comparison with seeded synthetic alterations |
-| Calibration | 52 normal | Freeze the review threshold |
-| Official test | 21 normal + 57 defective | Measure the frozen complete pipeline |
+| Fit | 160 normal | Normal reference fitting and AE training |
+| Tune | 52 normal | Candidate comparison with fixed synthetic alterations |
+| Calibration | 52 normal | Freeze the threshold |
+| Official test | 21 normal + 57 defective | Measure the frozen pipeline |
 
-The upgrade's tune suite adds 260 synthetic alterations to those 52 unchanged tune images.
-Synthetic development recall is reported separately from real-defect benchmark recall.
-Real test labels and masks do not fit the detector or set its threshold. All 401 raw files
-(images, masks and license/readme) are tracked; generated caches are ignored.
+The tune suite adds 260 seeded synthetic alterations to its 52 unchanged sources. Patches and derivatives stay with their source role. Synthetic development recall is separate from real-defect recall. [Dataset provenance and rights](docs/DATASET_CARD.md) explain the pinned archive, digests, masks, and reuse terms.
 
-## Run the application
+## Test with new data
 
-From the extracted project root, with Node.js 22 or newer:
+Photograph similar woven mesh under stable lighting with a sharp, close-up view and comparable mesh scale. Use still PNG/JPEG/WebP files up to **12 MiB**, **4096 pixels per side**, and **16 megapixels**. Both sides must be at least **256 pixels**, with aspect ratio at most **1.5**. The whole suitable image is resized; there is no hidden crop to repair framing. Missing repetition or invalid inputs must produce input review rather than a numerical acceptance.
 
-```powershell
-npm.cmd ci
-npm.cmd test
-npm.cmd run build
-npm.cmd run serve
+For independent evaluation, collect separate physical parts or sections, label them independently of model scores, and group repeated frames/crops by part. Follow the [field-validation guide](docs/FIELD_VALIDATION.md). Camera mode samples one frame at a time after permission; it does not claim video-rate inspection. History is local to the browser, exportable, and clearable, rather than an authenticated industrial audit store.
+
+## Run locally
+
+With Node.js 22 or newer:
+
+```bash
+git clone https://github.com/kumarwaibhav/MeshLens.git
+cd MeshLens
+npm ci
+npm test
+npm run build
+npm run serve
 ```
 
-Open the printed URL, normally `http://127.0.0.1:4173`. On Linux/macOS use `npm` in place of
-`npm.cmd`. The build uses shipped artifacts and does not retrain or download data.
-The [workflow guide](docs/RUNBOOK.md) includes an available-port fallback and Python examples.
+Open the printed URL, normally `http://127.0.0.1:4173`. On Windows PowerShell, use `npm.cmd` if the `npm.ps1` shim is blocked. The build verifies shipped assets without retraining or downloading the dataset. An occupied port, Python setup, and deployment troubleshooting are covered in the [workflow guide](docs/RUNBOOK.md).
 
-For offline detector inference on Python 3.12:
+For lightweight offline inspection on Python 3.12:
 
-```powershell
-py -3.12 -m venv .venv-inspection
-.\.venv-inspection\Scripts\python.exe -m pip install -r requirements-inspection.lock
-.\.venv-inspection\Scripts\python.exe -m pip install --no-deps -e .
-.\.venv-inspection\Scripts\python.exe scripts/inspect_image.py "C:\path\to\mesh-photo.png" --evidence inspection-output/run-1
+```bash
+python3.12 -m venv .venv-inspection
+.venv-inspection/bin/python -m pip install -r requirements-inspection.lock
+.venv-inspection/bin/python -m pip install --no-deps -e .
+.venv-inspection/bin/python scripts/inspect_image.py /path/to/mesh.png --evidence inspection-output/run-1
 ```
 
-Choose a new evidence directory for each run. The CLI returns an explicit inconclusive status
-for unsuitable inputs and protects existing outputs. See the guide for Linux commands,
-selected-detector reproduction and the separate historical AE training workflow.
+The active Python path uses NumPy and Pillow. Choose a new evidence directory for each inspection. [Windows equivalents, CLI exits, and reproduction commands](docs/PROJECT_DOCUMENTATION.md#installation-and-operation) are documented separately from historical AE training.
 
-## Release contents and limits
+## Engineering contribution
 
-| Path | Contents |
+MeshLens combines frozen data roles, independently calibrated decisions, cross-runtime numerical checks, bounded asynchronous workflows, explicit inconclusive states, and reproducible deployment. These are useful engineering outcomes around an established anomaly-detection problem. The project does not establish a new state-of-the-art method or a commercially qualified inspection process. Its [retrospective](docs/LESSONS_LEARNED.md) records model weaknesses, deployment mistakes, documentation gaps, and the fixes that improved delivery.
+
+The reference source release `5f11b39` passed both GitHub Actions jobs in [run 43376785899](https://github.com/kumarwaibhav/MeshLens/actions/runs/43376785899). Runtime checks reproduced Python/JavaScript decisions on all 78 official inputs and 18 gallery replays. Responsive CSS and prior accessibility work do not certify every physical device, browser, or assistive technology.
+
+## Documentation
+
+| Read | Purpose |
 |---|---|
-| `artifacts/inspection/` | Frozen detector, calibration, metadata and canonical benchmark examples |
-| `reports/inspection/` | Protocol, candidate selection, freeze record and measured evaluation |
-| `artifacts/model.onnx` | Historical trained reconstruction AE |
-| `src/meshlens/`, `web/` | Python/browser input, scoring and interaction contracts |
-| `data/` | Complete licensed Grid acquisition, manifest and provenance |
-| `tests/` | Model, input, artifact, browser and lifecycle regression checks |
-| `docs/` | Cards, operation/deployment guides, field workflow and prior UI audit |
+| [Project report PDF](docs/report/MeshLens_Project_Report.pdf) · [Editable Word report](docs/report/MeshLens_Project_Report.docx) | Branded architecture, evidence, UI, development history, and assessment |
+| [Complete technical documentation](docs/PROJECT_DOCUMENTATION.md) | Algorithms, contracts, commands, reproduction, and operation |
+| [Lessons learned](docs/LESSONS_LEARNED.md) · [Next project playbook](docs/NEXT_PROJECT_PLAYBOOK.md) | Failures, causes, corrective actions, and staged acceptance criteria |
+| [Documentation index](docs/README.md) | Model/data cards, diagrams, runbooks, UI design, and field workflow |
 
-The build validates the selected release's hashes, threshold, source implementation,
-calibration, evaluation support and gallery provenance. Software tests cover defined cases.
-The recovered release's [78-source runtime check](reports/inspection/official-runtime-parity.json)
-and [18-gallery replay check](reports/inspection/gallery-runtime-parity.json) passed with identical
-canonical pixels, rounded scores and decisions between Python and JavaScript under Node.js.
-New materials, lighting, scale, viewpoints, blur, physical camera operation and line timing
-need representative testing. The responsive interface supports narrow layouts and keyboard
-use; physical-device and assistive-technology checks remain part of deployment verification.
+## Ownership and licenses
 
-Original code and documentation: **Kumar Waibhav Akshat**, [MIT](LICENSE).
-MVTec data, masks, examples and dataset-derived material retain **CC BY-NC-SA 4.0** terms.
-The code license does not grant commercial data rights. Preserve the
-[third-party notices](THIRD_PARTY_NOTICES.md) when sharing the project.
+Original code and documentation: **Kumar Waibhav Akshat**, [MIT](LICENSE). MVTec photographs, masks, examples, and dataset-derived material retain **CC BY-NC-SA 4.0** terms. The code license does not grant commercial dataset rights. Preserve [third-party notices](THIRD_PARTY_NOTICES.md) when sharing the project.

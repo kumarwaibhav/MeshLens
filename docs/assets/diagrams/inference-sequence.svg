@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Inspection interaction sequence</title><desc id="desc">The active worker path returns evidence before a completed record is stored</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Inspection interaction sequence</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">The active worker path returns evidence before a completed record is stored</text>
+<rect x="30" y="175" width="230" height="64" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="145" y="216" font-size="23" fill="#163f39" font-weight="700" text-anchor="middle">User</text>
+<path d="M145 239V722" stroke="#c9d7ce" stroke-width="2" stroke-dasharray="7 7"/>
+<rect x="340" y="175" width="230" height="64" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="455" y="216" font-size="23" fill="#163f39" font-weight="700" text-anchor="middle">Main browser UI</text>
+<path d="M455 239V722" stroke="#c9d7ce" stroke-width="2" stroke-dasharray="7 7"/>
+<rect x="650" y="175" width="230" height="64" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="765" y="216" font-size="23" fill="#163f39" font-weight="700" text-anchor="middle">Texture worker</text>
+<path d="M765 239V722" stroke="#c9d7ce" stroke-width="2" stroke-dasharray="7 7"/>
+<rect x="950" y="175" width="230" height="64" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="1065" y="216" font-size="23" fill="#163f39" font-weight="700" text-anchor="middle">Local history</text>
+<path d="M1065 239V722" stroke="#c9d7ce" stroke-width="2" stroke-dasharray="7 7"/>
+<polyline points="145,288 455,288" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="210" y="276" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">choose image</text>
+<text x="470" y="334" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Decode and validate input</text>
+<polyline points="455,380 765,380" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="487" y="367" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">canonical RGB + request ID</text>
+<text x="780" y="427" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Score or return inconclusive</text>
+<polyline points="765,477 455,477" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="493" y="464" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">score + map / reason</text>
+<polyline points="455,545 145,545" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="185" y="532" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">show decision and evidence</text>
+<polyline points="455,614 1065,614" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="479" y="601" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">store completed record with model / threshold provenance</text>
+<text x="50" y="698" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Separate ONNX AE reconstruction supplies its own evidence tabs. It does not replace an unavailable detector.</text>
+<text x="50" y="742" font-size="20" fill="#a96524" font-weight="400" text-anchor="start">Cancellation, stale responses and model failures do not become a new successful history record.</text>
+<text x="38" y="795" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

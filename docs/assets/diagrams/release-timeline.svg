@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="855" viewBox="0 0 1200 855" role="img" aria-labelledby="title desc">
+<title id="title">Release history and the CI repair</title><desc id="desc">Published source commits and their workflow outcomes</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Release history and the CI repair</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Published source commits and their workflow outcomes</text>
+<path d="M65 193V727" stroke="#c9d7ce" stroke-width="4"/>
+<circle cx="65" cy="207" r="9" fill="#a96524"/>
+<text x="94" y="205" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">31 Oct 2026  /  16e8150</text>
+<text x="330" y="205" font-size="23" fill="#163f39" font-weight="700" text-anchor="start">Initial autoencoder and application</text>
+<text x="330" y="237" font-size="20" fill="#a96524" font-weight="400" text-anchor="start">First source check failed</text>
+<circle cx="65" cy="294" r="9" fill="#26766b"/>
+<text x="94" y="292" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">31 Oct 2026  /  2bc8231</text>
+<text x="330" y="292" font-size="23" fill="#163f39" font-weight="700" text-anchor="start">Frozen CSV integrity and verification</text>
+<text x="330" y="324" font-size="20" fill="#26766b" font-weight="400" text-anchor="start">Source and data checks passed</text>
+<circle cx="65" cy="381" r="9" fill="#26766b"/>
+<text x="94" y="379" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">09 Nov 2026  /  55d3593</text>
+<text x="330" y="379" font-size="23" fill="#163f39" font-weight="700" text-anchor="start">Guided interface and dataset explanation</text>
+<text x="330" y="411" font-size="20" fill="#26766b" font-weight="400" text-anchor="start">Source and data checks passed</text>
+<circle cx="65" cy="468" r="9" fill="#26766b"/>
+<text x="94" y="466" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">13 Nov 2026  /  acafd50</text>
+<text x="330" y="466" font-size="23" fill="#163f39" font-weight="700" text-anchor="start">Specialized detector and verified workflow</text>
+<text x="330" y="498" font-size="20" fill="#26766b" font-weight="400" text-anchor="start">Source and data checks passed</text>
+<circle cx="65" cy="555" r="9" fill="#a96524"/>
+<text x="94" y="553" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">13 Nov 2026  /  2d33d61</text>
+<text x="330" y="553" font-size="23" fill="#163f39" font-weight="700" text-anchor="start">Cross-platform text normalization</text>
+<text x="330" y="585" font-size="20" fill="#a96524" font-weight="400" text-anchor="start">Cleanup-test race caused CI failure</text>
+<circle cx="65" cy="642" r="9" fill="#26766b"/>
+<text x="94" y="640" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">13 Nov 2026  /  5f11b39</text>
+<text x="330" y="640" font-size="23" fill="#163f39" font-weight="700" text-anchor="start">Fix process reaping race in timeout test</text>
+<text x="330" y="672" font-size="20" fill="#26766b" font-weight="400" text-anchor="start">Source and full dataset audit passed</text>
+<text x="40" y="785" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Old failed runs remain in history. A passing later run verifies that commit, not every possible device or use case.</text>
+<text x="38" y="830" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+<title id="title">Historical autoencoder architecture</title><desc id="desc">Full-frame inference shapes are shown; the original model was trained on 64 x 64 normal patches</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Historical autoencoder architecture</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Full-frame inference shapes are shown; the original model was trained on 64 x 64 normal patches</text>
+<rect x="40" y="185" width="250" height="140" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="223" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Input</text>
+<text x="62" y="257" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">3 x 256 x 256</text>
+<polyline points="290,255 330,255" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="330" y="185" width="250" height="140" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="352" y="223" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Reflect padding</text>
+<text x="352" y="257" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">16 px each side</text>
+<text x="352" y="285" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">3 x 288 x 288</text>
+<polyline points="580,255 620,255" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="620" y="185" width="250" height="140" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="642" y="223" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Linear bottleneck</text>
+<text x="642" y="257" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">8 x 36 x 36</text>
+<polyline points="870,255 910,255" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="910" y="185" width="250" height="140" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="932" y="223" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Reconstruction</text>
+<text x="932" y="257" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Crop 16 px each side</text>
+<text x="932" y="285" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">3 x 256 x 256</text>
+<rect x="40" y="375" width="540" height="165" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="413" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Encoder</text>
+<text x="62" y="447" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Conv 3-&gt;12, k3 s1; LeakyReLU(0.1)</text>
+<text x="62" y="475" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Conv 12-&gt;16-&gt;24-&gt;8, each k4 s2</text>
+<text x="62" y="503" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Spatial sizes: 288 -&gt; 144 -&gt; 72 -&gt; 36</text>
+<rect x="620" y="375" width="540" height="165" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="642" y="413" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Decoder</text>
+<text x="642" y="447" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Transpose conv 8-&gt;24-&gt;16-&gt;12, k4 s2</text>
+<text x="642" y="475" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Conv 12-&gt;3, k3 s1; sigmoid output</text>
+<text x="642" y="503" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Spatial sizes: 36 -&gt; 72 -&gt; 144 -&gt; 288</text>
+<text x="40" y="590" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">25,339 parameters  |  26 recorded epochs  |  training seed 43  |  frozen historical threshold 0.02402208</text>
+<text x="38" y="625" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

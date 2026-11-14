@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850" role="img" aria-labelledby="title desc">
+<title id="title">Deployment and verification architecture</title><desc id="desc">Hosting and software verification are separate status paths for the same source commit</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Deployment and verification architecture</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Hosting and software verification are separate status paths for the same source commit</text>
+<rect x="405" y="175" width="390" height="100" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="427" y="213" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">GitHub source commit</text>
+<text x="427" y="247" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Code, frozen artifacts, evidence and docs</text>
+<polyline points="505,275 505,310 300,310 300,350" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="695,275 695,310 900,310 900,350" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="350" width="520" height="178" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="388" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">GitHub Actions source job</text>
+<text x="62" y="422" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Frozen Python / Node dependencies</text>
+<text x="62" y="450" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Python + browser tests, lint, runtime parity</text>
+<text x="62" y="478" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Verified release build</text>
+<rect x="640" y="350" width="520" height="178" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="662" y="388" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Vercel static deployment</text>
+<text x="662" y="422" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">npm ci -&gt; npm run build -&gt; dist/</text>
+<text x="662" y="450" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Serve UI, JavaScript, ONNX / WASM assets</text>
+<text x="662" y="478" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">No Python server and no scoring API</text>
+<polyline points="300,528 300,585" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="320" y="562" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">requires source job success</text>
+<polyline points="900,528 900,585" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="585" width="520" height="135" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="623" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Full dataset audit job</text>
+<text x="62" y="657" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Verify pinned acquisition and every image / mask</text>
+<text x="62" y="685" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Python tests + WASM checks on all 78 test images</text>
+<rect x="640" y="585" width="520" height="135" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="662" y="623" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Visitor browser</text>
+<text x="662" y="657" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Download verified assets and execute locally</text>
+<text x="662" y="685" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Inspect model readiness and real user journey</text>
+<text x="40" y="777" font-size="21" fill="#a96524" font-weight="400" text-anchor="start">A green deployment alone does not establish green CI, field accuracy or acceptable operational false alarms.</text>
+<text x="38" y="825" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

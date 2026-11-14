@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+<title id="title">System architecture</title><desc id="desc">Offline development, verified static delivery, and inference on the visitor device</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">System architecture</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Offline development, verified static delivery, and inference on the visitor device</text>
+<rect x="28" y="170" width="1144" height="215" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="50" y="204" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">OFFLINE DEVELOPMENT</text>
+<rect x="50" y="228" width="330" height="132" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="72" y="266" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Licensed Grid data</text>
+<text x="72" y="300" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">160 fit / 52 tune / 52 calibrate</text>
+<text x="72" y="328" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">78 official test images</text>
+<rect x="435" y="228" width="330" height="132" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="457" y="266" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Python workflows</text>
+<text x="457" y="300" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Fit, select, calibrate, freeze</text>
+<text x="457" y="328" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Evaluate and verify evidence</text>
+<rect x="820" y="228" width="330" height="132" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="842" y="266" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Frozen release bundle</text>
+<text x="842" y="300" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Detector + calibration + hashes</text>
+<text x="842" y="328" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">AE checkpoint and ONNX</text>
+<polyline points="380,291 435,291" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="765,291 820,291" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="435" y="425" width="330" height="114" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="457" y="463" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Node build and Vercel</text>
+<text x="457" y="497" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Verified HTML / JS / model assets</text>
+<polyline points="985,360 985,407 600,407 600,425" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="28" y="582" width="1144" height="243" rx="16" fill="white" stroke="#26766b" stroke-width="2"/>
+<text x="50" y="617" font-size="18" fill="#536b62" font-weight="700" text-anchor="start">BROWSER BOUNDARY  /  INSPECTION PIXELS REMAIN LOCAL</text>
+<rect x="50" y="650" width="330" height="126" rx="16" fill="#f7f8f2" stroke="#c9d7ce" stroke-width="2"/>
+<text x="72" y="688" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Input and suitability</text>
+<text x="72" y="722" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Still image or camera frame</text>
+<text x="72" y="750" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Bounds, orientation, RGB resize</text>
+<rect x="435" y="650" width="330" height="126" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="457" y="688" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Local model execution</text>
+<text x="457" y="722" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Texture worker: active decision</text>
+<text x="457" y="750" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">ONNX AE: separate evidence</text>
+<rect x="820" y="650" width="330" height="126" rx="16" fill="#f7f8f2" stroke="#c9d7ce" stroke-width="2"/>
+<text x="842" y="688" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Explain and record</text>
+<text x="842" y="722" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Review / range / input review</text>
+<text x="842" y="750" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Local history and JSON / CSV</text>
+<polyline points="600,539 600,650" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="620" y="567" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">asset download</text>
+<polyline points="380,715 435,715" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="765,715 820,715" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="50" y="804" font-size="18" fill="#536b62" font-weight="400" text-anchor="start">No Python inference API  |  No image upload for scoring  |  Browser-local history is not a shared audit store</text>
+<text x="38" y="875" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

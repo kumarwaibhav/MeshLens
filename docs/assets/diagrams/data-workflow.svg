@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="815" viewBox="0 0 1200 815" role="img" aria-labelledby="title desc">
+<title id="title">Data and evaluation workflow</title><desc id="desc">Partition by source image before patches, alterations, model selection or calibration</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Data and evaluation workflow</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">Partition by source image before patches, alterations, model selection or calibration</text>
+<rect x="40" y="175" width="1120" height="94" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="213" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">MVTec AD Grid</text>
+<text x="62" y="247" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">342 original images  |  264 normal training images  |  78 official test images  |  57 masks</text>
+<polyline points="172,269 172,320" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="320" width="265" height="145" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="358" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Fit</text>
+<text x="62" y="392" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">160 normal</text>
+<text x="62" y="420" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Fit normal statistics</text>
+<polyline points="457,269 457,320" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="325" y="320" width="265" height="145" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="347" y="358" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Tune</text>
+<text x="347" y="392" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">52 normal / 260 altered</text>
+<text x="347" y="420" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Candidate selection</text>
+<polyline points="742,269 742,320" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="610" y="320" width="265" height="145" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="632" y="358" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Calibration</text>
+<text x="632" y="392" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">52 separate normal</text>
+<text x="632" y="420" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Score rank 51</text>
+<polyline points="1027,269 1027,320" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="895" y="320" width="265" height="145" rx="16" fill="#fff0d9" stroke="#c9d7ce" stroke-width="2"/>
+<text x="917" y="358" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Official test</text>
+<text x="917" y="392" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">21 normal / 57 defects</text>
+<text x="917" y="420" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Frozen evaluation</text>
+<rect x="40" y="530" width="835" height="125" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="568" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Freeze before evaluation</text>
+<text x="62" y="602" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Selected method + score rule + normal-only calibration threshold</text>
+<text x="62" y="630" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Model, implementation, source manifest and protocol are hash-pinned</text>
+<polyline points="172,465 172,530" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="457,465 457,530" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="742,465 742,530" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="895" y="530" width="265" height="125" rx="16" fill="#fff0d9" stroke="#c9d7ce" stroke-width="2"/>
+<text x="917" y="568" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Measure outcomes</text>
+<text x="917" y="602" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Misses, alerts, coverage</text>
+<text x="917" y="630" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Six replay conditions</text>
+<polyline points="1027,465 1027,530" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="875,593 895,593" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="40" y="707" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Derived data stay with their source role. Test images and masks do not fit the detector or set its threshold.</text>
+<text x="40" y="743" font-size="21" fill="#a96524" font-weight="400" text-anchor="start">The recovered release repeats a known benchmark. Independent target-line qualification remains outstanding.</text>
+<text x="38" y="790" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

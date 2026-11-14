@@ -1,0 +1,4 @@
+# Documentation builders only; separate from model runtime and training.
+python-docx==1.2.0
+lxml==6.1.1
+typing-extensions==4.16.0

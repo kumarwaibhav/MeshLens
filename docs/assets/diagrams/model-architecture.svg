@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
+<title id="title">Two models with separate responsibilities</title><desc id="desc">The active texture detector sets the review decision; the autoencoder supplies comparison views</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Two models with separate responsibilities</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">The active texture detector sets the review decision; the autoencoder supplies comparison views</text>
+<rect x="320" y="172" width="560" height="88" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="342" y="210" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">One native input image</text>
+<text x="342" y="244" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Resolve orientation and composite transparency</text>
+<polyline points="465,260 465,285 305,285 305,310" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="735,260 735,285 895,285 895,310" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="310" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="348" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Canonical area RGB input</text>
+<text x="62" y="382" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">256 x 256 RGB, area-rgb8-v1</text>
+<rect x="630" y="310" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="652" y="348" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Separate reconstruction input</text>
+<text x="652" y="382" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">256 x 256 RGB float32 AE view</text>
+<polyline points="305,422 305,440" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="895,422 895,440" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="440" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="478" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Find repeat directions</text>
+<text x="62" y="512" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Contrast normalization + autocorrelation</text>
+<rect x="630" y="440" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="652" y="478" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Convolutional encoder</text>
+<text x="652" y="512" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">12 / 16 / 24 / 8 channels</text>
+<polyline points="305,552 305,570" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="895,552 895,570" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="570" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="608" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Compare neighboring repetitions</text>
+<text x="62" y="642" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Local 7 x 7 and cell 19 x 19 windows</text>
+<rect x="630" y="570" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="652" y="608" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Decoder and image reconstruction</text>
+<text x="652" y="642" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">25,339 learned parameters; ONNX Web</text>
+<polyline points="305,682 305,700" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="895,682 895,700" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="700" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="738" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Combine, normalize and score</text>
+<text x="62" y="772" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">0.6 local + 0.4 cell; normal-fit scale</text>
+<text x="62" y="800" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Mean largest 328 responses; round to 8 dp</text>
+<rect x="630" y="700" width="530" height="112" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="652" y="738" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Reconstruction residual</text>
+<text x="652" y="772" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Per-pixel mean squared RGB error</text>
+<text x="652" y="800" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Historical score averages largest 1%</text>
+<polyline points="305,812 305,830" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="895,812 895,830" fill="none" stroke="#26766b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="830" width="530" height="112" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="62" y="868" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Active output</text>
+<text x="62" y="902" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Review if score &gt; 1.01049636</text>
+<text x="62" y="930" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Relative detector map; explicit inconclusive</text>
+<rect x="630" y="830" width="530" height="112" rx="16" fill="#f7f8f2" stroke="#c9d7ce" stroke-width="2"/>
+<text x="652" y="868" font-size="24" fill="#163f39" font-weight="700" text-anchor="start">Historical evidence only</text>
+<text x="652" y="902" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Reconstruction and AE error map</text>
+<text x="652" y="930" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Does not set the active review decision</text>
+<text x="40" y="985" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Both paths execute locally. Uploading an image does not train or update either model.</text>
+<text x="38" y="1015" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>

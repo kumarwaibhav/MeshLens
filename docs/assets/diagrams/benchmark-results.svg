@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" role="img" aria-labelledby="title desc">
+<title id="title">Benchmark results at the frozen threshold</title><desc id="desc">78 known Grid test images; image-level outcomes from the recovered release</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#26766b"/></marker></defs>
+<rect width="1200" height="100%" fill="#f7f8f2"/>
+<style>text{font-family:Arial,Helvetica,sans-serif} .small{font-size:18px} .body{font-size:22px} .label{font-size:24px;font-weight:700}</style>
+<text x="38" y="41" font-size="17" fill="#536b62" font-weight="700" text-anchor="start">MESHLENS  /  PROJECT DOCUMENTATION</text>
+<text x="38" y="96" font-size="36" fill="#163f39" font-weight="700" text-anchor="start">Benchmark results at the frozen threshold</text>
+<text x="38" y="130" font-size="20" fill="#536b62" font-weight="400" text-anchor="start">78 known Grid test images; image-level outcomes from the recovered release</text>
+<text x="220" y="206" font-size="23" fill="#163f39" font-weight="700" text-anchor="middle">Review</text>
+<text x="460" y="206" font-size="23" fill="#163f39" font-weight="700" text-anchor="middle">Within range</text>
+<text x="35" y="285" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">Defective</text>
+<text x="35" y="455" font-size="22" fill="#163f39" font-weight="700" text-anchor="start">Normal</text>
+<rect x="135" y="230" width="220" height="150" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="245" y="306" font-size="50" fill="#163f39" font-weight="700" text-anchor="middle">56</text>
+<text x="245" y="350" font-size="20" fill="#536b62" font-weight="400" text-anchor="middle">Defects flagged</text>
+<rect x="375" y="230" width="220" height="150" rx="16" fill="#fff0d9" stroke="#c9d7ce" stroke-width="2"/>
+<text x="485" y="306" font-size="50" fill="#163f39" font-weight="700" text-anchor="middle">1</text>
+<text x="485" y="350" font-size="20" fill="#536b62" font-weight="400" text-anchor="middle">Missed defect</text>
+<rect x="135" y="400" width="220" height="150" rx="16" fill="#fff0d9" stroke="#c9d7ce" stroke-width="2"/>
+<text x="245" y="476" font-size="50" fill="#163f39" font-weight="700" text-anchor="middle">4</text>
+<text x="245" y="520" font-size="20" fill="#536b62" font-weight="400" text-anchor="middle">False alarms</text>
+<rect x="375" y="400" width="220" height="150" rx="16" fill="#e6eee3" stroke="#c9d7ce" stroke-width="2"/>
+<text x="485" y="476" font-size="50" fill="#163f39" font-weight="700" text-anchor="middle">17</text>
+<text x="485" y="520" font-size="20" fill="#536b62" font-weight="400" text-anchor="middle">Correct normal</text>
+<rect x="680" y="230" width="480" height="320" rx="16" fill="white" stroke="#c9d7ce" stroke-width="2"/>
+<text x="702" y="268" font-size="25" fill="#163f39" font-weight="700" text-anchor="start">Read both kinds of error</text>
+<text x="702" y="302" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Recall: 56/57 = 98.25%</text>
+<text x="702" y="330" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">False alarms: 4/21 = 19.05%</text>
+<text x="702" y="358" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Precision: 93.33%</text>
+<text x="702" y="386" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">AUROC: 0.9958</text>
+<text x="702" y="414" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Coverage: 78/78 scored; 0 inconclusive</text>
+<text x="702" y="442" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Declared false-alarm limit: 5%</text>
+<text x="40" y="610" font-size="21" fill="#536b62" font-weight="400" text-anchor="start">Historical reconstruction AE: 11/57 defects flagged, 46 missed and 0/21 normal false alarms.</text>
+<text x="40" y="653" font-size="21" fill="#a96524" font-weight="400" text-anchor="start">The 5% false-alarm goal was not met. These counts do not establish independent factory performance.</text>
+<text x="38" y="705" font-size="17" fill="#536b62" font-weight="400" text-anchor="start">Source release 5f11b39  |  Kumar Waibhav Akshat  |  14 November 2026</text>
+</svg>
